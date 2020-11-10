@@ -11,8 +11,8 @@ hr {
 }
 
 body {
-    background-color: #191D24;
-    background-image: url('../img/background.jpg');
+    background-color: #2F2F2F;
+    background-image: url('../img/5eaa3ff521d7c1cf80900cbe95b412ba.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -42,8 +42,9 @@ div {
     align-content: center;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: 6px 7px 20px 1px #7e3af1,
-    -6px -7px 20px 1px #7e3af1  ;
+    box-shadow: 6px 7px 20px 1px #724085,
+    -6px -7px 20px 1px #724085  ;
+    z-index:1;
 ;
     flex-direction: column;
     padding-top: 20px;
@@ -63,7 +64,7 @@ input, button {
     align-items: center;
     justify-content: center;
     width: 80%;
-    border: 2px solid #7e3af1;
+    border: 2px solid #724085;
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
@@ -77,7 +78,7 @@ button:hover, input[type=button] {
 #entrar {
     border-color: darkgray;
     color: white;
-    background-color: #7e3af1;
+    background-color: #724085;
 }
 
 @media (max-width: 768px) {
