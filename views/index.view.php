@@ -23,7 +23,14 @@
         <button type="submit" name="entrar" id="entrar" class="boton" value="Entrar">👉 &nbsp;Entrar</button>
         <input type="button" onclick="location.href='register.view.php';" value="✏️ &nbsp;Registrarse" />
     </form>
-    <?php if ()?>
+<?php if ($error==1){  //Se ejecuta si la contraseña no es correcta
+    ?>
+    <span><?= "La contraseña es incorrecta"?></span>
+<?php }
+elseif($error==2){  //se ejecuta cuando el usuario no existe
+    ?>
+    <span><?="El usuario no existe"?></span>
+<?php } ?>
 </div>
 
 

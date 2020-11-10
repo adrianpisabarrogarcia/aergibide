@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Aergibide</title>
     <link rel="stylesheet" type="text/css" href="../css/principal.css">
-
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
 
 </head>
 <body>
@@ -27,28 +28,27 @@
     </div>
 </article>
 <main>
-    <article id="temas">
+    <div class="temas multiple-items">
 
-            <div>
-                <button class="tema">Tema 1</button>
+            <div class="items">
+                <button >Tema 1</button>
             </div>
-            <div>
-                <button class="tema">Tema 2</button>
+            <div class="items">
+                <button >Tema 2</button>
             </div>
-            <div>
-                <button class="tema">Tema 3</button>
+            <div class="items">
+                <button >Tema 3</button>
             </div>
-            <div>
-                <button class="tema">Tema 4</button>
+            <div class="items">
+                <button >Tema 4</button>
             </div>
-            <div>
-                <button class="tema">Tema 5</button>
+            <div class="items">
+                <button >Tema 5</button>
             </div>
-            <div>
-                <button class="tema">Tema 6</button>
+            <div class="items">
+                <button >Tema 6</button>
             </div>
-
-    </article>
+    </div>
 
     <section id="publicaciones">
         <table>
@@ -56,6 +56,7 @@
         </table>
     </section>
 </main>
-
+<script src="../JS/carrusel_categorias.js"></body>
+<script src="../JS/slick.min.js"></script>
 </body>
 </html>
