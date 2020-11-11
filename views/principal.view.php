@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aergibide</title>
-    <link rel="stylesheet" type="text/css" href="../css/principal.css">
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
-    <link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
+
 
 </head>
 <body>
@@ -28,8 +26,7 @@
     </div>
 </article>
 <main>
-    <div class="temas multiple-items">
-
+    <div class="temas">
             <div class="items">
                 <button >Tema 1</button>
             </div>
@@ -56,7 +53,5 @@
         </table>
     </section>
 </main>
-<script src="../JS/carrusel_categorias.js"></body>
-<script src="../JS/slick.min.js"></script>
 </body>
 </html>
