@@ -8,7 +8,7 @@
 <body>
 <header>
     <div id="logotipo">
-        <img src="logo.png">
+        <img src="../img/logo_horizontal_negativo.png">
     </div>
     <div id="lista">
         <ul>
@@ -17,7 +17,7 @@
         </ul>
     </div>
     <div id="boton">
-        <button id="perfil"><img src="persona.png"></button>
+        <button id="perfil"><img src="../img/persona.png"></button>
     </div>
 </header>
 </body>

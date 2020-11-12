@@ -23,10 +23,9 @@
         <button type="submit" name="entrar" id="entrar" class="boton" value="Entrar">👉 &nbsp;Entrar</button>
         <input type="button" onclick="location.href='register.view.php';" value="✏️ &nbsp;Registrarse" />
     </form>
-<?php if (isset($_POST["user"]) && isset($_POST["password"])){  //Se ejecuta si la contraseña o el usuario no es correcta
-    ?>
-    <span style="color: red"><?= "La contraseña o usuario es incorrecta"?></span>
-<?php }?>
+    <?php if (isset($mensaje)){ ?>
+        <span style="color: red"><?=$mensaje?></span>
+    <?php } ?>
 </div>
 
 

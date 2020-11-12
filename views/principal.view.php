@@ -27,52 +27,29 @@
     </div>
 </article>
 <main>
-    <div class="temas">
-            <div class="items">
-                <button >Tema 1</button>
-            </div>
-            <div class="items">
-                <button >Tema 2</button>
-            </div>
-            <div class="items">
-                <button >Tema 3</button>
-            </div>
-            <div class="items">
-                <button >Tema 4</button>
-            </div>
-            <div class="items">
-                <button >Tema 5</button>
-            </div>
-            <div class="items">
-                <button >Tema 6</button>
-            </div>
+    <div class="splide" id="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide"><button>Tema 1</button></li>
+                <li class="splide__slide"><button>Tema 2</button></li>
+                <li class="splide__slide"><button>Tema 3</button></li>
+                <li class="splide__slide"><button>Tema 4</button></li>
+                <li class="splide__slide"><button>Tema 5</button></li>
+                <li class="splide__slide"><button>Tema 6</button></li>
+                <li class="splide__slide"><button>Tema 7</button></li>
+                <li class="splide__slide"><button>Tema 8</button></li>
+                <li class="splide__slide"><button>Tema 9</button></li>
+                <li class="splide__slide"><button>Tema 10</button></li>
+            </ul>
+        </div>
     </div>
 
     <section id="publicaciones">
-        <table>
 
-        </table>
     </section>
 
-
 </main>
-hola
-<div class="splide" id="splide">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <li class="splide__slide">Slide 01</li>
-            <li class="splide__slide">Slide 02</li>
-            <li class="splide__slide">Slide 03</li>
-            <li class="splide__slide">Slide 04</li>
-            <li class="splide__slide">Slide 05</li>
-            <li class="splide__slide">Slide 06</li>
-            <li class="splide__slide">Slide 07</li>
-            <li class="splide__slide">Slide 08</li>
-            <li class="splide__slide">Slide 09</li>
-            <li class="splide__slide">Slide 10</li>
-        </ul>
-    </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 <script>
