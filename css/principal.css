@@ -17,6 +17,9 @@ header{
     grid-row: 1/2;
     z-index:1;
 }
+a:hover{
+    color: #b5b5b5;
+}
 #barra_busqueda{
     grid-column: 1/2;
     grid-row: 2/3;
@@ -43,6 +46,7 @@ header{
 #filtro > a:hover{
     cursor: pointer;
     text-decoration: underline;
+    color: #b5b5b5;
 }
 #filtro> a:focus{
     text-decoration: underline;
@@ -93,6 +97,8 @@ header{
     width: 10vw;
     height: 13vh;
     z-index: 2;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 #menu_usuario > ul{
     list-style-type: none;
@@ -142,7 +148,7 @@ main{
 .splide__slide > button{
     background-color: #302f2f;
     color: white;
-    width: 35%;
+    width: 55%;
     height: 80%;
     border-radius: 10px;
     font-size: 1.1em;

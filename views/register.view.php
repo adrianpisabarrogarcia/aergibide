@@ -18,19 +18,25 @@
     <img src="../img/logo_vertical_color.png">
     <h2>Registrarse</h2>
     <form action="" method="post">
-        <input type="text" name="user" id="user" class="campo" placeholder="🙋‍♀️ Usuario *">
-        <input type="text" name="user" id="user" class="campo" placeholder="✍️ Nombre *">
-        <input type="text" name="user" id="user" class="campo" placeholder="✍️ Apellidos *">
-        <input type="email" name="email" id="email" class="campo" placeholder="🧑‍💻 Correo Electrónico *">
-        <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña *">
-        <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Repite la contraseña *">
+        <input type="text" name="user" id="user" class="campo" placeholder="🙋‍♀️ Usuario *" required>
+        <input type="text" name="user" id="nombre" class="campo" placeholder="✍️ Nombre *" required>
+        <input type="text" name="user" id="apellido" class="campo" placeholder="✍️ Apellidos *" required>
+        <input type="email" name="email" id="email" class="campo" placeholder="🧑‍💻 Correo Electrónico *" required>
+        <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña *" required>
+        <input type="password" name="password" id="passwordRep" class="campo" placeholder="🗝️ Repite la contraseña *" required>
 
-        <button type="submit" name="entrar" id="entrar" class="boton" value="Registrarse">🚪️ &nbsp;Registrarse</button>
+        <button type="submit" name="entrar" id="registrar" class="boton" value="Registrarse">🚪️ &nbsp;Registrarse</button>
         <input type="button" onclick="location.href='index.view.php';" value="🤏️ &nbsp;Atrás" />
 
     </form>
 </div>
 
-
+<!-- CDN JQUERY -->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+</script>
+<script src="../js/validacionRegistro.js"></script>
 </body>
 </html>

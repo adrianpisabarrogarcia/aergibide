@@ -45,7 +45,6 @@ div {
     box-shadow: 6px 7px 20px 1px #724085,
     -6px -7px 20px 1px #724085  ;
     z-index:1;
-;
     flex-direction: column;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -58,6 +57,7 @@ form {
     flex-direction: column;
 }
 
+
 input, button {
     display: flex;
     flex-direction: column;
@@ -69,16 +69,24 @@ input, button {
     padding: 5px;
     margin: 10px;
     font-size: 13px;
+    outline: none;
+}
+input:focus{
+    outline: none;
 }
 
 button:hover, input[type=button] {
     cursor: pointer;
 }
 
-#entrar {
-    border-color: darkgray;
+.boton {
+    border: 2px solid #3b3b3b;
     color: white;
     background-color: #724085;
+}
+.boton:hover{
+    border: 3px solid #724085;
+    background-color: #3b3b3b;
 }
 
 @media (max-width: 768px) {
