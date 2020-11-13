@@ -23,10 +23,13 @@
         <input type="text" name="user" id="apellido" class="campo" placeholder="✍️ Apellidos *" required>
         <input type="email" name="email" id="email" class="campo" placeholder="🧑‍💻 Correo Electrónico *" required>
         <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña *" required>
-        <input type="password" name="password" id="passwordRep" class="campo" placeholder="🗝️ Repite la contraseña *" required>
+        <input type="password" name="passwordRep" id="passwordRep" class="campo" placeholder="🗝️ Repite la contraseña *" required>
+        <?php if (isset($mensaje)){ ?>
+            <span style="text-align: center; color: red"><?php echo $mensaje; ?></span>
+        <?php }?>
 
         <button type="submit" name="entrar" id="registrar" class="boton" value="Registrarse">🚪️ &nbsp;Registrarse</button>
-        <input type="button" onclick="location.href='../model/index.php';" value="🤏️ &nbsp;Atrás" />
+        <input type="button" onclick="location.href='../model/login.php';" value="🤏️ &nbsp;Atrás" />
 
     </form>
 </div>

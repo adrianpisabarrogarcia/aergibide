@@ -11,7 +11,7 @@
 <?php require "header.view.php";?>
 <article id="barra_busqueda">
     <div id="filtro">
-        <a href=""> Filtrar</a>
+        <a> Filtrar</a>
     </div>
     <div id="buscador">
         <input type="text" placeholder="Inicia tu búsqueda"name="busqueda">
@@ -80,7 +80,6 @@
                     <button class="fav"><img src=""></button>
                 </div>
             </div>
-
         </div>
 
     </section>
@@ -92,13 +91,8 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous">
 </script>
+<script src="../js/principal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-<script>
-    new Splide( '#splide', {
-        perPage: 3,
-        rewind : true,
-    } ).mount();
-</script>
 <script>
     $(document).ready(function(){
         let like= $('.like').eq(0);

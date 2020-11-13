@@ -70,9 +70,9 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
     $rutaImagenPredeterminada = "../img/uploads/persona.jpg";
     // Crear la contraseña:
     $hash = Password::hash($password);
-    $data = array('nombre' => $nombre, 'apellido' => $apellido, 'usuario' => $usuario, 'correo' => $email, 'password' => $hash);
+    $data = array('nombre' => $nombre, 'apellido' => $apellido, 'usuario' => $usuario, 'correo' => $email, 'password' => $hash, 'imagen' => $rutaImagenPredeterminada);
 
-    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (value1, value2, value3, ...);");
+    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (nombre, apellido, usuario, correo, password, imagen);");
     $stmt->execute($data);
 
 

@@ -11,8 +11,14 @@ if (isset($_POST["user"]) && isset($_POST["nombre"])  && isset($_POST["apellido"
 
     require "conexion.php";
     $login = registrarLogin($dbh, $usuario, $nombre, $apellido, $email, $password);
-    require "../views/principal.view.php";
-    die();
+    if ($login){
+        require "../views/principal.view.php";
+    }else{
+        $mensaje="El usuario ya esta registrado";
+        require "../views/register.view.php";
+    }
+}else{
+    require "../views/register.view.php";
 }
-require "../views/register.view.php";
+
 
