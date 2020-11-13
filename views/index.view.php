@@ -21,7 +21,7 @@
         <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña" required >
 
         <button type="submit" name="entrar" id="entrar" class="boton" value="Entrar">👉 &nbsp;Entrar</button>
-        <input type="button" onclick="location.href='register.view.php';" value="✏️ &nbsp;Registrarse" />
+        <input type="button" onclick="location.href='../views/register.view.php';" value="✏️ &nbsp;Registrarse" />
     </form>
     <?php if (isset($mensaje)){ ?>
         <span style="color: red"><?=$mensaje?></span>

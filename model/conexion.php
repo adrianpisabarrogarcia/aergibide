@@ -21,7 +21,7 @@ session_start();
     }
 
     $dbh = connect();
-    entrarLogin($dbh, $usuario,$password);
+
 
     function entrarLogin($dbh, $usuario,$password){
         $data = array('user' => $usuario);
@@ -37,12 +37,10 @@ session_start();
 
                 if($contra== $password){
                     $_SESSION["usuario"]= $usuario;
-                    require  "../views/principal.view.php";
+                    return true;
                 }
-                else{
-                    $mensaje= "Usuario o contraseña incorrecta.";
-                    require  "../views/index.view.php";
-                }
+                return false;
+
             }
 
 
