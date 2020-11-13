@@ -1,5 +1,8 @@
 <?php
 
+require "conexion.php";
+
+$dbh = connect();
 
 if (isset($_POST["entrar"]))  {
     $usuario = $_POST["user"];
@@ -8,7 +11,7 @@ if (isset($_POST["entrar"]))  {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    require "conexion.php";
+
     $login = registrarLogin($dbh, $usuario, $nombre, $apellido, $email, $password);
     if ($login){
         require "../views/principal.view.php";

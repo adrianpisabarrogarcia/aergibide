@@ -21,7 +21,7 @@ function close()
     $dbh = null;
 }
 
-$dbh = connect();
+
 
 
 function entrarLogin($dbh, $usuario, $password)
@@ -72,8 +72,8 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
     $hash = Password::hash($password);
     $data = array('nombre' => $nombre, 'apellido' => $apellido, 'usuario' => $usuario, 'correo' => $email, 'password' => $hash, 'imagen' => $rutaImagenPredeterminada);
 
-    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (nombre, apellido, usuario, correo, password, imagen);");
-    $stmt->execute($data);
+    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (':nombre', 'asd', 'asd', 'asd', 'asd', 'adas');");
+    $stmt->execute();
 
 
 }
