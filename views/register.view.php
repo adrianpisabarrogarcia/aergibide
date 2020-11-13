@@ -26,7 +26,7 @@
         <input type="password" name="password" id="passwordRep" class="campo" placeholder="🗝️ Repite la contraseña *" required>
 
         <button type="submit" name="entrar" id="registrar" class="boton" value="Registrarse">🚪️ &nbsp;Registrarse</button>
-        <input type="button" onclick="location.href='index.view.php';" value="🤏️ &nbsp;Atrás" />
+        <input type="button" onclick="location.href='../model/index.php';" value="🤏️ &nbsp;Atrás" />
 
     </form>
 </div>

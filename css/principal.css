@@ -12,6 +12,8 @@ body{
     grid-template-columns: 100%;
     grid-template-rows: 9vh 10vh auto;
 }
+/*El css principal del header esta en el archivo header.css.
+Unicamente le asignamos la columna y fila que va a ocupar.*/
 header{
     grid-column: 1/2;
     grid-row: 1/2;
@@ -20,6 +22,7 @@ header{
 a:hover{
     color: #b5b5b5;
 }
+/*Articulo que contiene la barra de busqueda, el boton de filtrar y el menu desplegable del perfil.*/
 #barra_busqueda{
     grid-column: 1/2;
     grid-row: 2/3;
@@ -29,6 +32,7 @@ a:hover{
     background-color: #724085;
 
 }
+/*Div que guarda un elemento "a" que sirve como botón para desplegar el menú de categorias.*/
 #filtro{
     grid-row: 1/2;
     grid-column: 1/2;
@@ -52,6 +56,7 @@ a:hover{
     text-decoration: underline;
 
 }
+/*Div que guarda un input y un boton, sirven como barra de busqueda para buscar publicaciones especificas.*/
 #buscador{
     grid-column: 2/3;
     grid-row: 1/2;
@@ -86,6 +91,8 @@ a:hover{
 #lupa:hover{
     cursor: pointer;
 }
+/*Div que se despliega al clickar el botón de usuario situado en el header.
+El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
 #menu_usuario{
     display: flex;
     justify-content: center;
@@ -110,7 +117,7 @@ a:hover{
 #menu_usuario >ul >li > a{
     color: black;
 }
-
+/*El main contiene el menú de categorias(un carousel), y la sección dedicada a las publicaciones*/
 main{
     grid-column: 1/2;
     grid-row: 3/4;
@@ -124,6 +131,7 @@ main{
 
 
 }
+/* Todos los elementos relacionados con splide estan relacionados con el menú de categorias.*/
 .splide{
     display: flex;
     width: 95%;
@@ -163,7 +171,7 @@ main{
 .splide__pagination{
     display: none !important;
 }
-
+/*Sección que contiene todas las publicaciones.*/
 #publicaciones{
     order: 2;
     width: 90%;
@@ -171,6 +179,112 @@ main{
     background-color: #b5b5b5;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
+}
+.cuadro_publicacion{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: auto;
+    margin: 30px;
+    margin-bottom: 0;
+    padding-bottom: 30px;
+    border-bottom: 2px solid dimgrey;
+}
+.publicacion{
+    grid-row: 1/2;
+    grid-column: 1/2;
+
+    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
+    grid-template-rows: repeat(3, 60px) ;
+}
+.publicacion:hover{
+    cursor: pointer;
+}
+.publicacion> div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div[class=titulo]{
+    grid-row: 1/2;
+    grid-column: 1/4;
+    justify-content: flex-start;
+}
+div[class=descripcion]{
+    grid-row: 2/3;
+    grid-column: 1/4;
+
+}
+.desc{
+    border: none ;
+    background-color: #b5b5b5;
+    outline: none;
+    width: 95%;
+    font-size: 1.2em;
+
+}
+.fecha{
+    grid-row: 1/2;
+    grid-column: 4/5;
+    font-size: 1.2em;
+}
+div[class=usuario]{
+    grid-row: 3/4;
+    grid-column: 4/5;
+    font-size: 1.2em;
+}
+
+div[class=respuestas]{
+    grid-row: 1/4;
+    grid-column: 5/6;
+    justify-content: space-around;
+    border-left: 2px solid dimgrey;
+}
+.num_respuestas{
+    padding: 13%;
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 10px dimgrey,
+    -2px -2px 5px dimgrey;
+    border: 1px solid dimgrey;
+    font-size: 2.6em;
+    color: dimgrey;
+}
+.respuestas > span{
+    grid-row: 3/4;
+}
+.like_fav{
+    margin-left: 20px;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(2, 5%);
+    grid-template-rows: 60px;
+
+
+}
+.corazon{
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+}
+.like{
+    width: 80%;
+    height: 100%;
+}
+.favorito{
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+}
+.fav{
+    width: 80%;
+    height: 100%;
 }
 
 

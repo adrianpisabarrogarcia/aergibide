@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST["user"]) && $_POST["password"]) {
+if (isset($_POST["user"]) && isset($_POST["password"])) {
     $usuario = $_POST["user"];
     $password = $_POST["password"];
     require "conexion.php";
