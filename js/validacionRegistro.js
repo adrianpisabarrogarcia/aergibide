@@ -18,8 +18,9 @@ $(document).ready(function () {
 })
 
 function validarRegistro(usuario, nombre, email, apellido, password, passwordRep) {
-    let error = false;
+
     try {
+        let error = false;
         //Usuario
         let validarUsuario = new RegExp("^[A-z._]{5,20}$");
 
@@ -50,9 +51,8 @@ function validarRegistro(usuario, nombre, email, apellido, password, passwordRep
 
         }
         //Password
-        let expPassword = new RegExp("^[A-z0-9]+$");
+        let expPassword = new RegExp("^[a-zA-Z0-9_]{8,}$");
         if (!expPassword.test(password.val())) {
-            console.log("expresion regular");
             password.css('border', '1px solid red');
             password.attr('placeholder', 'La password es incorrecta');
             password.val("");
@@ -63,7 +63,6 @@ function validarRegistro(usuario, nombre, email, apellido, password, passwordRep
         }
         //Comparar los dos campos de password
         if (password.val() != passwordRep.val()) {
-            console.log("no coinciden");
             password.css('border', '1px solid red');
             passwordRep.css('border', '1px solid red');
             password.attr('placeholder', 'La contraseña no coincide');

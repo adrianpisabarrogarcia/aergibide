@@ -1,8 +1,7 @@
 <?php
 
 
-if (isset($_POST["user"]) && isset($_POST["nombre"])  && isset($_POST["apellido"])
-    && isset($_POST["email"]) && isset($_POST["password"])  && isset($_POST["passwordRep"]) )  {
+if (isset($_POST["entrar"]))  {
     $usuario = $_POST["user"];
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];

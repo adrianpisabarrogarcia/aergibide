@@ -17,10 +17,10 @@
 <div class="">
     <img src="../img/logo_vertical_color.png">
     <h2>Registrarse</h2>
-    <form action="" method="post">
+    <form action="../model/register.php" method="post">
         <input type="text" name="user" id="user" class="campo" placeholder="🙋‍♀️ Usuario *" required>
-        <input type="text" name="user" id="nombre" class="campo" placeholder="✍️ Nombre *" required>
-        <input type="text" name="user" id="apellido" class="campo" placeholder="✍️ Apellidos *" required>
+        <input type="text" name="nombre" id="nombre" class="campo" placeholder="✍️ Nombre *" required>
+        <input type="text" name="apellido" id="apellido" class="campo" placeholder="✍️ Apellidos *" required>
         <input type="email" name="email" id="email" class="campo" placeholder="🧑‍💻 Correo Electrónico *" required>
         <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña *" required>
         <input type="password" name="passwordRep" id="passwordRep" class="campo" placeholder="🗝️ Repite la contraseña *" required>
