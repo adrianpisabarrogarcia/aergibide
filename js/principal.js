@@ -3,6 +3,7 @@ $(document).ready(function (){
     splide();
     mostrarCategorias();
     mostrarMenuPerfil();
+    botonCategoria();
 })
 
 function mostrarCategorias(){
@@ -44,8 +45,19 @@ function condicionDespliegue(boton, contador, menu){
 }
 
 function botonCategoria(){
-    let botones= $('.splide__slide>button');
+    let botones= $('.splide__slide button');
     botones.on('click',function (){
-        botones.selected.css('backgorund-color','purple');
+        botones.addClass("botonDesactivado");
+        botones.removeClass("botonActivado");
+        $(this).addClass("botonActivo");
+        $(this).removeClass("botonDesactivado");
+
+
+
+
+
+
+
     })
+
 }

@@ -173,8 +173,12 @@ main{
     outline: none;
     border: 2px solid #724085;
 }
-.splide__slide > button:active{
-    background-color: #724085;
+.botonActivo{
+    background-color: #724085 !important;
+}
+.botonDesactivado{
+    background-color: #302f2f !important;
+
 }
 
 
