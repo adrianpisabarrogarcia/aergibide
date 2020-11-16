@@ -16,7 +16,7 @@
 
 <div class="">
     <img src="../img/logo_vertical_color.png">
-    <form action="login.php" method="post">
+    <form action="login.php" method="post"  accept-charset="utf-8">
         <input type="text" name="user" id="user" class="campo" placeholder="‍💻  Correo Electrónico" required>
         <input type="password" name="password" id="password" class="campo" placeholder="🗝️ Contraseña" required >
 

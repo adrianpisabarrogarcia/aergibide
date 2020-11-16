@@ -1,4 +1,5 @@
 $(document).ready(function (){
+
     splide();
     mostrarCategorias();
     mostrarMenuPerfil();
@@ -8,9 +9,10 @@ function mostrarCategorias(){
     let boton= $('#filtro>a').eq(0);
     let contador=0;
     let menuCategoria=$('.splide').eq(0);
-    menuCategoria.css('display','none');
 
     condicionDespliegue(boton,contador,menuCategoria);
+
+
 
 }
 
@@ -34,9 +36,16 @@ function condicionDespliegue(boton, contador, menu){
     });
 }
 
-function splide(){
-    new Splide( '#splide', {
-        perPage: 3,
-        rewind : true,
-    } ).mount();
+    function splide(){
+        new Splide( '#splide', {
+            perPage: 3,
+            rewind : true,
+        } ).mount();
+}
+
+function botonCategoria(){
+    let botones= $('.splide__slide>button');
+    botones.on('click',function (){
+        botones.selected.css('backgorund-color','purple');
+    })
 }

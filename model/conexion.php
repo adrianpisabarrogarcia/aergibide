@@ -36,8 +36,8 @@ function entrarLogin($dbh, $usuario, $password)
 
 
         while ($row = $stmt->fetch()) {
-            $hash = $row->Password;
-            if (Password::verify($password, $hash)) {
+            $hash2 = $row->Password;
+            if (md5($password) == $hash2) {
                 // Si es que si lo guardo en sesión
                 $_SESSION["usuario"] = $usuario;
                 return true;
@@ -69,29 +69,33 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
     //Necesito añadir una imagen predeterminada que estará en la siguiente ruta:
     $rutaImagenPredeterminada = "../img/uploads/persona.jpg";
     // Crear la contraseña:
-    $hash = Password::hash($password);
+    $hash = md5($password);
     $data = array('nombre' => $nombre, 'apellido' => $apellido, 'usuario' => $usuario, 'correo' => $email, 'password' => $hash, 'imagen' => $rutaImagenPredeterminada);
+    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (:nombre, :apellido, :usuario, :correo, :password, :imagen);");
 
-    $stmt = $dbh->prepare("INSERT INTO Usuario (Nombre, Apellido, Usuario, Correo, Password, Imagen) VALUES (':nombre', 'asd', 'asd', 'asd', 'asd', 'adas');");
-    $stmt->execute();
+    $stmt->execute($data);
 
 
 }
+
+function generarPublicaciones($dbh){
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas
+                            FROM Pregunta, Respuesta, Usuario
+                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
+                            AND Pregunta.ID_Usuario= Usuario.ID
+                            GROUP BY Pregunta.ID
+                            ORDER BY Pregunta.Fecha DESC ;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+
+    $stmt->execute();
+    return $stmt;
+}
+
+
 
 
 $dbhcerrar = close();
 
-
-//Encriptación de Password
-class Password {
-    const SALT = 'EstoEsUnSalt';
-    public static function hash($password) {
-        return hash('sha512', self::SALT . $password);
-    }
-    public static function verify($password, $hash) {
-        return ($hash == self::hash($password));
-    }
-}
 
 
 

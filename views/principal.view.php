@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Aergibide</title>
-    <link rel="stylesheet" type="text/css" href="../css/principal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+<?php require "head.php"?>
+<link type="text/css" rel="stylesheet" href="../css/principal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 
 </head>
-<body>
-<?php require "header.view.php";?>
+<?php require "cabecera.php"?>
 <article id="barra_busqueda">
     <div id="filtro">
         <a> Filtrar</a>
@@ -46,27 +41,38 @@
 
     <section id="publicaciones">
         <div class="cuadro_publicacion">
+            <?php
+
+            while ($row = $stmt->fetch()){
+                $titulo = $row->Titulo;
+                $descripcion= $row->Descripcion;
+                $user= $row->Usuario;
+                $fecha=$row->Fecha;
+                $archivo=$row->Archivo;
+                $respuestas=$row->Respuestas;
+                ?>
+
             <div class="publicacion">
                 <div class="titulo">
-                    <h1 class="title">Titulo de la primera publicacion</h1>
+                    <h1 class="title"><?= utf8_encode($titulo) ?></h1>
                 </div>
 
                 <div class="descripcion">
-                    <input  type="text" maxlength="25"  class="desc" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec justo elit, finibus in dolor ut, hendrerit fringilla ex. Ut at consectetur nulla, eget molestie nunc. Etiam nibh nibh, iaculis sit amet nulla sed, volutpat tempor dui. Curabitur id dui in risus tincidunt dapibus. Integer vel rhoncus risus, ac hendrerit massa. Duis ut mollis ligula. In vitae est at velit feugiat condimentum.">
+                    <input  type="text" maxlength="25"  class="desc" value="<?=$descripcion?>">
                 </div>
 
                 <div class="fecha">
-                    <span class="date">2020-10-12</span>
+                    <span class="date"><?=$fecha?></span>
                 </div>
 
                 <div class="usuario">
-                    <span class="user">Mario.zaton</span>
+                    <span class="user"><?= utf8_encode($user)?></span>
                 </div>
 
 
 
                 <div class="respuestas">
-                    <h1 class="num_respuestas">05</h1>
+                    <h1 class="num_respuestas"><?=$respuestas ?></h1>
                     <span>respuestas</span>
                 </div>
 
@@ -80,11 +86,14 @@
                     <button class="fav"><img src=""></button>
                 </div>
             </div>
+            <?php
+            }?>
         </div>
 
     </section>
 
 </main>
+<!--Añadir paginación: https://github.com/itsalb3rt/ligne_paginatejs -->
 
 <script
         src="https://code.jquery.com/jquery-3.5.1.js"

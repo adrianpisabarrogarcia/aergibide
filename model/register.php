@@ -1,8 +1,9 @@
 <?php
 
-require "conexion.php";
 
+require "conexion.php";
 $dbh = connect();
+
 
 if (isset($_POST["entrar"]))  {
     $usuario = $_POST["user"];

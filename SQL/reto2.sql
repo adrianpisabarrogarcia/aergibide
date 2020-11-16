@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-11-2020 a las 07:46:30
+-- Tiempo de generación: 16-11-2020 a las 08:26:41
 -- Versión del servidor: 5.7.32-0ubuntu0.18.04.1
 -- Versión de PHP: 7.2.24-0ubuntu0.18.04.7
 
@@ -95,12 +95,12 @@ CREATE TABLE `Respuesta` (
 
 CREATE TABLE `Usuario` (
   `ID` int(5) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Usuario` varchar(20) NOT NULL,
-  `Correo` varchar(50) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `Imagen` varchar(500) DEFAULT NULL
+  `Nombre` varchar(70) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `Apellido` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `Usuario` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `Correo` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `Password` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish2_ci NOT NULL,
+  `Imagen` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -108,7 +108,8 @@ CREATE TABLE `Usuario` (
 --
 
 INSERT INTO `Usuario` (`ID`, `Nombre`, `Apellido`, `Usuario`, `Correo`, `Password`, `Imagen`) VALUES
-(1, 'Adrián', 'Pisabarro García', 'apisabarro', 'adrian.pisabarro.garcia@gmail.com', '12345Abcde', '');
+(11, 'Pepe', 'Fernandez', 'pepito', 'pepe@ikasle.egibde.org', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/persona.jpg'),
+(12, 'AdriÃ¡n', 'Pisabarro', 'apisabarro', 'adrian.pisabarro@ikasle.egibide.org', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/persona.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -192,7 +193,7 @@ ALTER TABLE `Respuesta`
 -- AUTO_INCREMENT de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
 --

@@ -17,7 +17,7 @@
 <div class="">
     <img src="../img/logo_vertical_color.png">
     <h2>Registrarse</h2>
-    <form action="../model/register.php" method="post">
+    <form action="../model/register.php" method="post" accept-charset="utf-8">
         <input type="text" name="user" id="user" class="campo" placeholder="🙋‍♀️ Usuario *" required>
         <input type="text" name="nombre" id="nombre" class="campo" placeholder="✍️ Nombre *" required>
         <input type="text" name="apellido" id="apellido" class="campo" placeholder="✍️ Apellidos *" required>
