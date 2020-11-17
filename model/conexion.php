@@ -91,6 +91,22 @@ function generarPublicaciones($dbh){
     return $stmt;
 }
 
+function generarMisPublicaciones($dbh){
+
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario);
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas 
+                            FROM Pregunta, Respuesta, Usuario
+                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
+                            AND Pregunta.ID_Usuario= Usuario.ID
+                            AND Usuario.Usuario = :usuario
+                            GROUP BY Pregunta.ID
+                            ORDER BY Pregunta.Fecha DESC ;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
+
 
 
 

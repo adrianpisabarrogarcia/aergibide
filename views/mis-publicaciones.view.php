@@ -1,5 +1,7 @@
 <?php require "head.php"?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
+<link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -11,7 +13,7 @@
     </div>
     <div id="buscador">
         <input type="text" placeholder="Inicia tu búsqueda"name="busqueda">
-        <div id="lupa"><span>🔎</span></div>
+        <div id="lupa"><span></span></div>
 
     </div>
 
@@ -41,16 +43,18 @@
     </div>
 
     <section id="publicaciones">
+
         <div class="cuadro_publicacion">
+            <h1>Mis Publicaciones</h1>
             <?php
 
             while ($row = $stmt->fetch()){
                 $titulo = $row->Titulo;
-                $descripcion= $row->Descripcion;
-                $user= $row->Usuario;
-                $fecha=$row->Fecha;
-                $archivo=$row->Archivo;
-                $respuestas=$row->Respuestas;
+                $descripcion = $row->Descripcion;
+                $user = $row->Usuario;
+                $fecha = $row->Fecha;
+                $archivo = $row->Archivo;
+                $respuestas = $row->Respuestas;
                 ?>
 
             <div class="publicacion">
@@ -80,11 +84,10 @@
             </div>
             <div class="like_fav">
                 <div class="corazon">
-                    <button class="like"><i class="fa fa-heart" style="font-size:36px;"></button>
+                    <button class="like"><i class="fa fa-heart" style="font-size:36px;"></i></button>
                 </div>
-
                 <div class="favorito">
-                    <button class="fav"><i class="fa fa-star" style="font-size:36px"></button>
+                    <button class="fav"><i class="fa fa-star" style="font-size:36px"></i></button>
                 </div>
             </div>
             <?php
