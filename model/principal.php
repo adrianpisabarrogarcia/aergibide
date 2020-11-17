@@ -3,7 +3,11 @@
 require "conexion.php";
 $dbh = connect();
 
-$stmt=generarPublicaciones($dbh);
+$publicacion=generarPublicaciones($dbh);
+
+$publicacionPorCategorias= mostrarPublicacionPorCategoria($dbh);
+
+$categorias=mostrarCategorias($dbh);
 
 
 require "../views/principal.view.php";

@@ -44,20 +44,47 @@ function condicionDespliegue(boton, contador, menu){
         } ).mount();
 }
 
-function botonCategoria(){
-    let botones= $('.splide__slide button');
-    botones.on('click',function (){
+function botonCategoria() {
+    let botones = $('.splide__slide button');
+    botones.on('click', function () {
         botones.addClass("botonDesactivado");
-        botones.removeClass("botonActivado");
+        $('.botonDesactivado').removeClass("botonActivo");
         $(this).addClass("botonActivo");
         $(this).removeClass("botonDesactivado");
 
-
-
-
-
-
-
-    })
-
+    });
 }
+
+/*function ajaxPrincipal() {
+    let boton = $('.splide__slide button');
+    boton.on('click', function () {
+        if (boton.hasClass('botonActivo')) {
+            let valor=$('.botonActivo').val();
+            $.ajax({
+
+                url: '../model/principal.php',
+
+                data: {valor:valor},
+
+                type: 'GET',
+
+                dataType: 'json',
+
+                success: function (json) {
+                    alert("correcto");
+                },
+
+                error: function (xhr, status) {
+                    alert("No hemos podido mostrar la información que desea.")
+                },
+
+                complete: function (xhr, status) {
+                    alert("Petición realizada");
+                }
+
+            })
+        } else {
+            alert("Error");
+        }
+    })
+}*/

@@ -9,8 +9,8 @@
 body{
     max-width: 100%;
     display: grid;
-    /grid-template-columns: 100%;
-    grid-template-rows: 9% 10% 81%;
+    grid-template-columns: 100%;
+    grid-template-rows: 9% 10% auto;
     background-color: black;
     overflow: scroll;
 }
@@ -191,7 +191,8 @@ main{
 #publicaciones{
     order: 2;
     width: 90%;
-    height: auto;
+    height: 900px;
+    margin-top: 50px;
     background-color: #b5b5b5;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -199,7 +200,7 @@ main{
 }
 .cuadro_publicacion{
     display: flex;
-    height: auto !important;
+    height: auto;
     flex-direction: column;
     margin: 30px;
     margin-bottom: 0;

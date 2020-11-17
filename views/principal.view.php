@@ -26,16 +26,12 @@
     <div class="splide" id="splide">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide"><button>Tema 1</button></li>
-                <li class="splide__slide"><button>Tema 2</button></li>
-                <li class="splide__slide"><button>Tema 3</button></li>
-                <li class="splide__slide"><button>Tema 4</button></li>
-                <li class="splide__slide"><button>Tema 5</button></li>
-                <li class="splide__slide"><button>Tema 6</button></li>
-                <li class="splide__slide"><button>Tema 7</button></li>
-                <li class="splide__slide"><button>Tema 8</button></li>
-                <li class="splide__slide"><button>Tema 9</button></li>
-                <li class="splide__slide"><button>Tema 10</button></li>
+                <?php
+                while ($row=$categorias -> fetch()){
+                    $categoria= utf8_encode($row->cat);
+                    ?>
+                    <li class="splide__slide"><button value="<?=$categoria?>"><?=$categoria?></button></li>
+                <?php } ?>
             </ul>
         </div>
     </div>
@@ -44,7 +40,7 @@
         <div class="cuadro_publicacion">
             <?php
 
-            while ($row = $stmt->fetch()){
+            while ($row = $publicacion->fetch()){
                 $titulo = $row->Titulo;
                 $descripcion= $row->Descripcion;
                 $user= $row->Usuario;

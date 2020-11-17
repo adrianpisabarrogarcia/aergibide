@@ -91,11 +91,34 @@ function generarPublicaciones($dbh){
     return $stmt;
 }
 
+function mostrarCategorias($dbh){
+    $stmt= $dbh->prepare("SELECT Descripcion AS cat FROM Categoria
+                            ORDER BY ID asc");
+    $stmt-> setFetchMode(PDO::FETCH_OBJ);
+    $stmt ->execute();
+
+    return $stmt;
+}
+
+function mostrarPublicacionPorCategoria($cat, $dbh){
+
+    $data= array("category"=>$cat);
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas
+                            FROM Pregunta, Respuesta, Usuario, Categoria
+                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
+                            AND Pregunta.ID_Usuario= Usuario.ID
+                            AND Pregunta.ID_Categoria =Categoria.ID 
+                            AND Categoria.Descripcion= :category
+                            GROUP BY Pregunta.ID
+                            ORDER BY Pregunta.Fecha DESC ;");
+    $stmt->execute($data);
+}
+
 function generarMisPublicaciones($dbh){
 
     $usuario = $_SESSION["usuario"];
     $data = array('usuario' => $usuario);
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas 
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo,  COUNT(Respuesta.ID_Pregunta) AS Respuestas 
                             FROM Pregunta, Respuesta, Usuario
                             WHERE Pregunta.ID = Respuesta.ID_Pregunta
                             AND Pregunta.ID_Usuario= Usuario.ID
