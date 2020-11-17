@@ -5,7 +5,7 @@
         </div>
         <div id="lista">
             <ul>
-                <li><a>Mis publicaciones</a></li>
+                <li><a href="../model/mis-publicaciones.php">Mis publicaciones</a></li>
                 <li><a>Favoritos</a></li>
             </ul>
         </div>

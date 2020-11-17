@@ -11,6 +11,9 @@ header{
     grid-template-rows: 9vh;
     box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
 }
+a{
+    color: white !important;
+}
 #logotipo{
     grid-row: 1/2;
     grid-column: 3/4;
