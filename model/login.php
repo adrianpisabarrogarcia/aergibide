@@ -8,7 +8,7 @@ if (isset($_POST["user"]) && isset($_POST["password"])) {
     $password = $_POST["password"];
     $login = entrarLogin($dbh, $usuario,$password);
     if($login){
-        require "../views/principal.view.php";
+        header('Location: ./principal.php');
         die();
     }
     else{

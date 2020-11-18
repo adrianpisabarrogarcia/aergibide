@@ -79,15 +79,25 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
 }
 
 function generarPublicaciones($dbh){
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas 
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Respuesta, Usuario
-                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
-                            AND Pregunta.ID_Usuario= Usuario.ID
+                            WHERE Pregunta.ID_Usuario= Usuario.ID
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
     $stmt ->setFetchMode(PDO::FETCH_OBJ);
 
     $stmt->execute();
+    return $stmt;
+}
+
+function generarRespuestas($pregunta, $dbh){
+    $data= array ('pregunta'=>$pregunta);
+    $stmt = $dbh ->prepare("SELECT ID_Pregunta
+                            FROM Respuesta
+                            WHERE ID_Pregunta= :pregunta");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+
     return $stmt;
 }
 
@@ -118,10 +128,9 @@ function generarMisPublicaciones($dbh){
 
     $usuario = $_SESSION["usuario"];
     $data = array('usuario' => $usuario);
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo,  COUNT(Respuesta.ID_Pregunta) AS Respuestas 
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Respuesta, Usuario
-                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
-                            AND Pregunta.ID_Usuario= Usuario.ID
+                            WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND Usuario.Usuario = :usuario
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");

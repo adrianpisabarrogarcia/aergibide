@@ -1,16 +1,16 @@
-<?php require "head.php"?>
+<?php require "head.php" ?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<?php require "cabecera.php"?>
+<?php require "cabecera.php" ?>
 <article id="barra_busqueda">
     <div id="filtro">
         <a> Filtrar</a>
     </div>
     <div id="buscador">
-        <input type="text" placeholder="Inicia tu búsqueda"name="busqueda">
+        <input type="text" placeholder="Inicia tu búsqueda" name="busqueda">
         <div id="lupa"><span>🔎</span></div>
 
     </div>
@@ -27,10 +27,12 @@
         <div class="splide__track">
             <ul class="splide__list">
                 <?php
-                while ($row=$categorias -> fetch()){
-                    $categoria= utf8_encode($row->cat);
+                while ($row = $categorias->fetch()) {
+                    $categoria = utf8_encode($row->cat);
                     ?>
-                    <li class="splide__slide"><button value="<?=$categoria?>"><?=$categoria?></button></li>
+                    <li class="splide__slide">
+                        <button value="<?= $categoria ?>"><?= $categoria ?></button>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
@@ -40,55 +42,66 @@
         <div class="cuadro_publicacion">
             <?php
 
-            while ($row = $publicacion->fetch()){
+            while ($row = $publicacion->fetch()) {
                 $titulo = $row->Titulo;
-                $descripcion= $row->Descripcion;
-                $user= $row->Usuario;
-                $fecha=$row->Fecha;
-                $archivo=$row->Archivo;
-                $respuestas=$row->Respuestas;
+                $descripcion = $row->Descripcion;
+                $user = $row->Usuario;
+                $fecha = $row->Fecha;
+                $archivo = $row->Archivo;
+                $ID = $row->ID;
+                $respuestas = generarRespuestas($ID, $dbh);
+                $row2 = $respuestas->fetchAll();
+                $numero = count($row2);
+
+
                 ?>
 
-            <div class="publicacion">
-                <div class="titulo">
-                    <h1 class="title"><?= utf8_encode($titulo) ?></h1>
+                <div class="publicacion">
+                    <div class="titulo">
+                        <h1 class="title"><?= utf8_encode($titulo) ?></h1>
+                    </div>
+
+                    <div class="descripcion">
+                        <input type="text" maxlength="25" class="desc" value="<?= $descripcion ?>">
+                    </div>
+
+                    <div class="fecha">
+                        <span class="date"><?= $fecha ?></span>
+                    </div>
+
+                    <div class="usuario">
+                        <span class="user"><?= utf8_encode($user) ?></span>
+                    </div>
+
+
+                    <div class="respuestas">
+                        <h1 class="num_respuestas"><?= $numero ?></h1>
+                        <span>respuestas</span>
+                    </div>
+
                 </div>
+                <div class="like_fav">
+                    <div class="corazon">
+                        <button class="like">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            </svg>
+                        </button>
+                    </div>
 
-                <div class="descripcion">
-                    <input  type="text" maxlength="25"  class="desc" value="<?=$descripcion?>">
+                    <div class="favorito">
+                        <button class="fav">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="fecha">
-                    <span class="date"><?=$fecha?></span>
-                </div>
-
-                <div class="usuario">
-                    <span class="user"><?= utf8_encode($user)?></span>
-                </div>
-
-
-
-                <div class="respuestas">
-                    <h1 class="num_respuestas"><?=$respuestas ?></h1>
-                    <span>respuestas</span>
-                </div>
-
-            </div>
-            <div class="like_fav">
-                <div class="corazon">
-                    <button class="like"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                        </svg></button>
-                </div>
-
-                <div class="favorito">
-                    <button class="fav"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg></button>
-                </div>
-            </div>
-            <?php
-            }?>
+                <?php
+            } ?>
         </div>
 
     </section>
@@ -104,14 +117,14 @@
 <script src="../js/principal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 <script>
-    $(document).ready(function(){
-        let like= $('.like').eq(0);
-        like.on('click', function (){
+    $(document).ready(function () {
+        let like = $('.like').eq(0);
+        like.on('click', function () {
             alert("like");
         })
 
-        let publicacion= $('.publicacion').eq(0);
-        publicacion.on('click', function (){
+        let publicacion = $('.publicacion').eq(0);
+        publicacion.on('click', function () {
             alert("Funciona");
         })
 

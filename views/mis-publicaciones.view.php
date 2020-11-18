@@ -54,7 +54,10 @@
                 $user = $row->Usuario;
                 $fecha = $row->Fecha;
                 $archivo = $row->Archivo;
-                $respuestas = $row->Respuestas;
+                $ID = $row->ID;
+                $respuestas = generarRespuestas($ID, $dbh);
+                $row2 = $respuestas->fetchAll();
+                $numero = count($row2);
                 ?>
 
             <div class="publicacion">
@@ -77,7 +80,7 @@
 
 
                 <div class="respuestas">
-                    <h1 class="num_respuestas"><?=$respuestas ?></h1>
+                    <h1 class="num_respuestas"><?=$numero ?></h1>
                     <span>respuestas</span>
                 </div>
 

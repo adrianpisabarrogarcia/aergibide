@@ -55,7 +55,7 @@ function botonCategoria() {
     });
 }
 
-/*function ajaxPrincipal() {
+function ajaxPrincipal() {
     let boton = $('.splide__slide button');
     boton.on('click', function () {
         if (boton.hasClass('botonActivo')) {
@@ -64,12 +64,10 @@ function botonCategoria() {
 
                 url: '../model/principal.php',
 
-                data: {valor:valor},
+                data: valor,
 
                 type: 'GET',
-
-                dataType: 'json',
-
+                dataType:"text",
                 success: function (json) {
                     alert("correcto");
                 },
@@ -87,4 +85,4 @@ function botonCategoria() {
             alert("Error");
         }
     })
-}*/
+}
