@@ -15,7 +15,8 @@ if (isset($_POST["entrar"]))  {
 
     $login = registrarLogin($dbh, $usuario, $nombre, $apellido, $email, $password);
     if ($login){
-        require "../views/principal.view.php";
+        header('Location: ../model/login.php');
+        die();
     }else{
         $mensaje="El usuario ya esta registrado";
         require "../views/register.view.php";
