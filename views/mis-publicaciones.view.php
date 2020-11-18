@@ -45,7 +45,7 @@
     <section id="publicaciones">
 
         <div class="cuadro_publicacion">
-            <h1>Mis Publicaciones</h1>
+            <h1><?=$tituloPagina?></h1>
             <?php
 
             while ($row = $stmt->fetch()){

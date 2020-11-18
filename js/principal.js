@@ -4,13 +4,13 @@ $(document).ready(function (){
     mostrarCategorias();
     mostrarMenuPerfil();
     botonCategoria();
+    ajaxPrincipal();
 })
 
 function mostrarCategorias(){
     let boton= $('#filtro>a').eq(0);
     let contador=0;
     let menuCategoria=$('.splide').eq(0);
-
     condicionDespliegue(boton,contador,menuCategoria);
 
 
@@ -64,21 +64,24 @@ function ajaxPrincipal() {
 
                 url: '../model/principal.php',
 
-                data: valor,
+                data: {valor: "hola"},
 
-                type: 'GET',
-                dataType:"text",
-                success: function (json) {
-                    alert("correcto");
+                type: "POST",
+
+                success: function (response) {
+                    alert(response);
+
                 },
 
                 error: function (xhr, status) {
                     alert("No hemos podido mostrar la información que desea.")
                 },
 
+                /*
                 complete: function (xhr, status) {
                     alert("Petición realizada");
                 }
+                 */
 
             })
         } else {

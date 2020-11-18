@@ -9,8 +9,8 @@
 body{
     max-width: 100%;
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 9% 10% auto;
+    grid-template-columns: 100% 90% 100%;
+    grid-template-rows: repeat(2,100px) auto;
     background-color: black;
     overflow: scroll;
 }
@@ -20,14 +20,16 @@ header{
     grid-column: 1/2;
     grid-row: 1/2;
     z-index:1;
+    height: 9vh;
 }
 a:hover{
     color: #b5b5b5;
 }
 /*Articulo que contiene la barra de busqueda, el boton de filtrar y el menu desplegable del perfil.*/
 #barra_busqueda{
+    width: 100%;
     grid-column: 1/2;
-    grid-row: 2/3 !important;
+    grid-row: 2/3 ;
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 10vw 80vw 10vw;
@@ -128,17 +130,18 @@ El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
 /*El main contiene el menú de categorias(un carousel), y la sección dedicada a las publicaciones*/
 main{
     grid-column: 1/2;
-    grid-row: 4;
-    display: flex;
+    grid-row: 3/4;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: black ;
     opacity: 88%;
-    height: 79vh;
+    height: auto;
 
 
 }
+
 /* Todos los elementos relacionados con splide estan relacionados con el menú de categorias.*/
 .splide{
     display: none;
@@ -191,8 +194,8 @@ main{
 #publicaciones{
     order: 2;
     width: 90%;
-    height: 900px;
-    margin-top: 50px;
+    height: auto;
+    margin-top: 40px;
     background-color: #b5b5b5;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -308,5 +311,6 @@ div[class=respuestas]{
 .bi{
     font-size: 34px;
 }
+
 
 

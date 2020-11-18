@@ -47,6 +47,12 @@ function entrarLogin($dbh, $usuario, $password)
     return false;
 
 }
+function recogerDatosUsuario($dbh){
+    $data = array('user' => $usuario, 'email' => $email);
+    $stmt = $dbh->prepare("SELECT * FROM Usuario WHERE Correo = :email OR Usuario = :user");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+}
 
 function registrarLogin($dbh, $usuario, $nombre, $apellido, $email, $password)
 {
@@ -131,7 +137,24 @@ function generarMisPublicaciones($dbh){
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Respuesta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
-                            AND Usuario.Usuario = :usuario
+                            AND (Usuario.Usuario = :usuario OR Usuario.Correo = :usuario)
+                            GROUP BY Pregunta.ID
+                            ORDER BY Pregunta.Fecha DESC ;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
+
+function generarMisFavoritos($dbh){
+
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario);
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+                            FROM Pregunta, Respuesta, Usuario, Favoritos
+                            WHERE Pregunta.ID_Usuario= Usuario.ID
+                            AND Pregunta.ID = Favoritos.ID_Pregunta
+                            AND Favoritos.ID_Usuario= :usuario
+                            
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
     $stmt ->setFetchMode(PDO::FETCH_OBJ);

@@ -1,12 +1,15 @@
 <body>
     <header>
         <div id="logotipo">
-            <img src="../img/logo_horizontal_negativo.png">
+            <a href="../model/principal.php">
+                <img src="../img/logo_horizontal_negativo.png">
+
+            </a>
         </div>
         <div id="lista">
             <ul>
-                <li><a href="../model/mis-publicaciones.php">Mis publicaciones</a></li>
-                <li><a>Favoritos</a></li>
+                <li><a href="../model/mis-publicaciones.php?action=publicacion">Mis publicaciones</a></li>
+                <li><a href="../model/mis-publicaciones.php?action=fav">Favoritos</a></li>
             </ul>
         </div>
         <div id="boton">
