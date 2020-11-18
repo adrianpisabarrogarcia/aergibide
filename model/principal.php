@@ -5,7 +5,7 @@ $dbh = connect();
 
 $publicacion=generarPublicaciones($dbh);
 
-$publicacionPorCategorias= mostrarPublicacionPorCategoria($dbh);
+//$publicacionPorCategorias= mostrarPublicacionPorCategoria($dbh);
 
 $categorias=mostrarCategorias($dbh);
 

@@ -79,7 +79,7 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
 }
 
 function generarPublicaciones($dbh){
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas 
                             FROM Pregunta, Respuesta, Usuario
                             WHERE Pregunta.ID = Respuesta.ID_Pregunta
                             AND Pregunta.ID_Usuario= Usuario.ID
