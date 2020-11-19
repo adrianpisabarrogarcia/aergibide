@@ -1,25 +1,21 @@
 $(document).ready(function (){
-
+    let contador=0;
+    console.log(contador);
     splide();
-    mostrarCategorias();
-    mostrarMenuPerfil();
+    mostrarCategorias(contador);
+    mostrarMenuPerfil(contador);
     botonCategoria();
     ajaxPrincipal();
-})
+});
 
-function mostrarCategorias(){
+function mostrarCategorias(contador){
     let boton= $('#filtro>a').eq(0);
-    let contador=0;
     let menuCategoria=$('.splide').eq(0);
     condicionDespliegue(boton,contador,menuCategoria);
-
-
-
 }
 
-function mostrarMenuPerfil(){
+function mostrarMenuPerfil(contador){
     let boton= $('#perfil');
-    let contador=0;
     let menuperfil= $('#menu_usuario').eq(0);
     menuperfil.css('display','none');
     condicionDespliegue(boton,contador,menuperfil);
@@ -51,7 +47,6 @@ function botonCategoria() {
         $('.botonDesactivado').removeClass("botonActivo");
         $(this).addClass("botonActivo");
         $(this).removeClass("botonDesactivado");
-
     });
 }
 
@@ -61,7 +56,6 @@ function ajaxPrincipal() {
         if (boton.hasClass('botonActivo')) {
             let valor=$('.botonActivo').val();
             $.ajax({
-
                 url: '../model/principal.php',
 
                 data: {valor: "hola"},

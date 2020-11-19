@@ -5,14 +5,15 @@ $dbh = connect();
 
 
 if($_GET['action']=="publicacion"){
+    echo "<p style='color: white'> $user[x]</p>";
     $tituloPagina="Mis publicaciones";
     $stmt=generarMisPublicaciones($dbh);
 
 }
 
-if($_GET['action']=='fav'){
+if($_GET['action']=="fav"){
     $tituloPagina="Mis favoritos";
-    $favoritos= generarMisFavoritos($dbh);
+   $stmt= generarMisFavoritos($dbh);
 
 }
 

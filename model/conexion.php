@@ -90,7 +90,7 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
 
 function generarPublicaciones($dbh){
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
-                            FROM Pregunta, Respuesta, Usuario
+                            FROM Pregunta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
@@ -123,10 +123,9 @@ function mostrarCategorias($dbh){
 function mostrarPublicacionPorCategoria($cat, $dbh){
 
     $data= array("category"=>$cat);
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo, COUNT(Respuesta.ID_Pregunta) AS Respuestas
-                            FROM Pregunta, Respuesta, Usuario, Categoria
-                            WHERE Pregunta.ID = Respuesta.ID_Pregunta
-                            AND Pregunta.ID_Usuario= Usuario.ID
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+                            FROM Pregunta, Usuario, Categoria
+                            WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND Pregunta.ID_Categoria =Categoria.ID 
                             AND Categoria.Descripcion= :category
                             GROUP BY Pregunta.ID
@@ -135,11 +134,12 @@ function mostrarPublicacionPorCategoria($cat, $dbh){
 }
 
 function generarMisPublicaciones($dbh){
+    $user=guardarDatosUsuario($dbh);
 
     $usuario = $_SESSION["usuario"];
     $data = array('usuario' => $usuario);
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
-                            FROM Pregunta, Respuesta, Usuario
+                            FROM Pregunta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND (Usuario.Usuario = :usuario OR Usuario.Correo = :usuario)
                             GROUP BY Pregunta.ID
@@ -151,6 +151,15 @@ function generarMisPublicaciones($dbh){
 
 function generarMisFavoritos($dbh){
     $usuario=guardarDatosUsuario($dbh);
+    $data=array("id"=>$usuario[0]);
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+                            FROM Pregunta, Usuario, Favoritos
+                            WHERE Pregunta.ID_Usuario = Usuario.ID
+                            AND Pregunta.ID = Favoritos.ID_Pregunta
+                            AND Favoritos.ID_Usuario = :id;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
 }
 
 
