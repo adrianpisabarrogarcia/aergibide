@@ -85,7 +85,7 @@ button:hover, input[type=button] {
     background-color: #724085;
 }
 .boton:hover{
-    border: 3px solid #724085;
+    border-color: #724085;
     background-color: #3b3b3b;
 }
 

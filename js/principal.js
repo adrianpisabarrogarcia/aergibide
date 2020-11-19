@@ -58,13 +58,12 @@ function ajaxPrincipal() {
             $.ajax({
                 url: '../model/principal.php',
 
-                data: {valor: "hola"},
+                data: {valor: valor},
 
-                type: "POST",
+                type: 'GET',
 
-                success: function (response) {
-                    alert(response);
-
+                success: function () {
+                    alert("Funcuina");
                 },
 
                 error: function (xhr, status) {

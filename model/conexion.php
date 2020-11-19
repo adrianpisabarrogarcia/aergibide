@@ -131,11 +131,10 @@ function mostrarPublicacionPorCategoria($cat, $dbh){
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
     $stmt->execute($data);
+    return $stmt;
 }
 
 function generarMisPublicaciones($dbh){
-    $user=guardarDatosUsuario($dbh);
-
     $usuario = $_SESSION["usuario"];
     $data = array('usuario' => $usuario);
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
@@ -151,7 +150,9 @@ function generarMisPublicaciones($dbh){
 
 function generarMisFavoritos($dbh){
     $usuario=guardarDatosUsuario($dbh);
-    $data=array("id"=>$usuario[0]);
+    $row=$usuario->fetch();
+    $user=$row->ID;
+    $data=array("id"=>$user);
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario, Favoritos
                             WHERE Pregunta.ID_Usuario = Usuario.ID

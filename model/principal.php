@@ -3,24 +3,17 @@
 require "conexion.php";
 $dbh = connect();
 
-$publicacion=generarPublicaciones($dbh);
-/*
-while ($row= $publicacion->fetchAll()){
-    $ID= $row->ID;
-    $respuestas= generarRespuestas($ID, $dbh);
+if(isset($_GET["valor"])){
+    $publicacion= mostrarPublicacionPorCategoria( $_GET['valor'], $dbh);
+}
+
+else{
+
+    $publicacion=generarPublicaciones($dbh);
 
 }
-*/
-
-//$publicacionPorCategorias= mostrarPublicacionPorCategoria( valor$dbh);
-
 $categorias=mostrarCategorias($dbh);
 
-if(isset($_POST["valor"])){
-    $hola = "Hola Mundo!";
-    echo $hola;
-    die();
-}
 
 require "../views/principal.view.php";
 
