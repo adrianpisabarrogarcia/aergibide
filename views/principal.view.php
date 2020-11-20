@@ -5,13 +5,17 @@
 
 </head>
 <?php require "cabecera.php" ?>
+<!-- https://webcamp.es/crear-filtro-de-busqueda-con-jquery/-->
 <article id="barra_busqueda">
     <div id="filtro">
         <a> Filtrar</a>
     </div>
     <div id="buscador">
         <input type="text" placeholder="Inicia tu búsqueda" name="busqueda">
-        <div id="lupa"><span>🔎</span></div>
+        <div id="lupa"><span><svg width="1em" height="0.7em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" color="white" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+</svg></span></div>
 
     </div>
 
@@ -118,9 +122,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 <script>
     $(document).ready(function () {
-        let like = $('.like').eq(0);
+        let like = $('.like');
         like.on('click', function () {
-            alert("like");
+            $(this).css('color','#c43f58');
+        })
+        let fav = $('.fav');
+        fav.on('click', function () {
+            $(this).css('color','#e3c146');
         })
 
         let publicacion = $('.publicacion').eq(0);

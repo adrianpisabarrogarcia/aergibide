@@ -3,17 +3,20 @@
 require "conexion.php";
 $dbh = connect();
 
-if(isset($_GET["valor"])){
-    $publicacion= mostrarPublicacionPorCategoria( $_GET['valor'], $dbh);
-}
-
-else{
-
-    $publicacion=generarPublicaciones($dbh);
-
-}
 $categorias=mostrarCategorias($dbh);
 
+if(isset($_GET["valor"])){
+
+    echo  require "../views/principal-categorias.view.php";
+    die();
+
+
+
+}
+else{
+   $publicacion=generarPublicaciones($dbh);
+
+}
 
 require "../views/principal.view.php";
 

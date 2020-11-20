@@ -12,7 +12,6 @@ body{
     grid-template-columns: 100% 90% 100%;
     grid-template-rows: repeat(2,100px) auto;
     background-color: black;
-    overflow-x: hidden ;
 }
 /*El css principal del header esta en el archivo header.css.
 Unicamente le asignamos la columna y fila que va a ocupar.*/
@@ -91,6 +90,14 @@ a:hover{
     border:1px solid black;
     font-size: 1.2em;
     box-shadow: -5px 0px 3px  grey;
+}
+#lupa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#lupa > span{
+    height: auto;
 }
 #lupa:hover{
     cursor: pointer;

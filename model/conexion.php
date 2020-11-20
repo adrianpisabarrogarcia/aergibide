@@ -130,6 +130,7 @@ function mostrarPublicacionPorCategoria($cat, $dbh){
                             AND Categoria.Descripcion= :category
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
 }

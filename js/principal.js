@@ -54,29 +54,21 @@ function ajaxPrincipal() {
     let boton = $('.splide__slide button');
     boton.on('click', function () {
         if (boton.hasClass('botonActivo')) {
-            let valor=$('.botonActivo').val();
+            var valor=$('.botonActivo').val();
             $.ajax({
                 url: '../model/principal.php',
 
-                data: {valor: valor},
+                data: {valor:valor},
 
                 type: 'GET',
 
-                success: function () {
-                    alert("Funcuina");
-                },
-
-                error: function (xhr, status) {
-                    alert("No hemos podido mostrar la información que desea.")
-                },
-
-                /*
-                complete: function (xhr, status) {
-                    alert("Petición realizada");
-                }
-                 */
-
             })
+                .done(function (response){
+                    alert(response);
+                    $('.cuadro_publicacion').remove();
+                    $('#publicaciones').append(response);
+
+                })
         } else {
             alert("Error");
         }
