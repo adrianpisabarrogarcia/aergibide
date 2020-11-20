@@ -21,6 +21,10 @@ header{
     z-index:1;
     height: 9vh;
 }
+a{
+ display: flex;
+    align-items: center;
+}
 a:hover{
     color: #b5b5b5;
 }
@@ -79,7 +83,7 @@ a:hover{
     background-color: #b5b5b5;
 }
 #buscador >#lupa{
-    height: 45%;
+    height: 46%;
     width: 5%;
     background-color: black;
     border-top-right-radius: 50px;
@@ -89,7 +93,6 @@ a:hover{
     align-content: center;
     border:1px solid black;
     font-size: 1.2em;
-    box-shadow: -5px 0px 3px  grey;
 }
 #lupa {
     display: flex;
@@ -324,11 +327,12 @@ div[class=respuestas]{
     border-radius: 5px;
     outline: none;
 }
-.cuadro_publicacion:last-child{
-    border: none;
+button> .bi{
+    color: black;
 }
 .bi{
     font-size: 34px;
+
 }
 
 

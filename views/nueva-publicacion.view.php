@@ -47,10 +47,13 @@
         <div class="cuadro_publicacion">
             <h1>Nueva Publicación</h1>
             <form action="" method="post">
+                <!-- titulo -->
                 <label for="titulo">Título: * </label><br>
-                <input type="text" id="titulo" placeholder="Inserta aquí el título"><br><br>
+                <input type="text" id="titulo" placeholder="Inserta aquí el título" required><br><br>
+                <!-- descripción -->
                 <label for="descripcion">Descripción: *</label><br><br>
-                <textarea id="descripcion">Inserta aquí la pregunta</textarea><br><br>
+                <textarea id="descripcion" required>Inserta aquí la pregunta</textarea><br><br>
+                <!-- categoria -->
                 <label for="categoria">Categoría: *</label><br>
                 <?php while ($row = $categorias->fetch()) {
                     $categoria = utf8_encode($row->cat);
@@ -61,30 +64,25 @@
                 <label for="archivo">¿Algún archivo que añadir? </label><br>
                 <input type="file" name="archivo" id="archivo"><br><br>
 
+                <!-- botón enviar  -->
                 <i>* obligatorio</i>
                 <br>
                 <button type="submit" class="boton">
-                    <b><svg width="0.6em" height="0.6em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                        </svg>&nbsp;
-
-                        Publicar pregunta
-
+                    <b>
+                        Publicar pregunta <svg width="1em" height="0.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                        </svg>
                     </b>
                 </button>
             </form>
         </div>
-
     </section>
-
 </main>
-<!--Añadir paginación: https://github.com/itsalb3rt/ligne_paginatejs -->
-
 <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous">
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
 </script>
 <script src="../js/principal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
