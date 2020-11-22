@@ -12,7 +12,7 @@
         <a> Filtrar</a>
     </div>
     <div id="buscador">
-        <input type="text" placeholder="Inicia tu búsqueda"name="busqueda">
+        <input type="text" placeholder="Inicia tu búsqueda" name="busqueda">
         <div id="lupa"><span></span></div>
 
     </div>
@@ -46,13 +46,16 @@
 
         <div class="cuadro_publicacion">
             <h1>Nueva Publicación</h1>
-            <form action="" method="post">
+            <form action="../model/nueva-publicacion.php" method="post">
                 <!-- titulo -->
                 <label for="titulo">Título: * </label><br>
-                <input type="text" id="titulo" placeholder="Inserta aquí el título" required><br><br>
+                <input type="text" id="titulo" name="titulo" placeholder="Inserta aquí el título" required><br><br>
+
                 <!-- descripción -->
                 <label for="descripcion">Descripción: *</label><br><br>
-                <textarea id="descripcion" required>Inserta aquí la pregunta</textarea><br><br>
+                <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+                <span id="errorDescripcion"></span>
+
                 <!-- categoria -->
                 <label for="categoria">Categoría: *</label><br>
                 <?php while ($row = $categorias->fetch()) {
@@ -60,6 +63,7 @@
                     ?>
                     <input type="radio" class="categ-nueva-pregunta" name="categorias" value="<?= $categoria ?>"><?= $categoria ?><br>
                 <?php } ?>
+                <span id="errorCategoria"></span>
                 <br><br>
                 <label for="archivo">¿Algún archivo que añadir? </label><br>
                 <input type="file" name="archivo" id="archivo"><br><br>
@@ -67,7 +71,7 @@
                 <!-- botón enviar  -->
                 <i>* obligatorio</i>
                 <br>
-                <button type="submit" class="boton">
+                <button type="submit" name="introducir" class="boton" id="publicar" value="NuevaPregunta">
                     <b>
                         Publicar pregunta <svg width="1em" height="0.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
