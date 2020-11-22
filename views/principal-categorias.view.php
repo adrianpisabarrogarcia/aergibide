@@ -1,8 +1,15 @@
 <div class="cuadro_publicacion">
     <?php
+    if (isset($_GET['valor'])){
+        $publicacionporCat= mostrarPublicacionPorCategoria($_GET['valor'], $dbh);
+        $publicacion= $publicacionporCat;
+    }
+    elseif(isset($_POST['tituloPubli'])){
+        $publicacionBuscador= mostrarPublicacionPorBuscador($_POST['tituloPubli'], $dbh);
+        $publicacion=$publicacionBuscador;
+    }
 
-    $publicacionporCat= mostrarPublicacionPorCategoria( $_GET['valor'], $dbh);
-    while ($row = $publicacionporCat->fetch()) {
+    while ($row = $publicacion->fetch()) {
         $titulo = $row->Titulo;
         $descripcion = $row->Descripcion;
         $user = $row->Usuario;
@@ -21,7 +28,7 @@
             </div>
 
             <div class="descripcion">
-                <input type="text" maxlength="25" class="desc" value="<?= $descripcion ?>">
+                <input type="text" maxlength="25" class="desc" value="<?= utf8_encode($descripcion) ?>">
             </div>
 
             <div class="fecha">

@@ -23,7 +23,7 @@ header{
 }
 a{
  display: flex;
-    align-items: center;
+    text-align: center;
 }
 a:hover{
     color: #b5b5b5;
@@ -83,7 +83,7 @@ a:hover{
     background-color: #b5b5b5;
 }
 #buscador >#lupa{
-    height: 46%;
+    height: 45%;
     width: 5%;
     background-color: black;
     border-top-right-radius: 50px;
@@ -132,11 +132,12 @@ El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
 }
 #menu_usuario >ul >li{
     width: 100%;
-    text-align: center;
     padding: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 #menu_usuario >ul >li:hover{
-    opacity: 950%;
+    opacity: 90%;
     border: 1px solid white;
 }
 #menu_usuario >ul >li > a{
@@ -213,11 +214,11 @@ main{
 #publicaciones{
     order: 2;
     width: 90%;
-    height: auto;
+    min-height: 200px;
     margin-top: 40px;
     background-color: #b5b5b5;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
+    margin-bottom: 30px;
 
 }
 .cuadro_publicacion{

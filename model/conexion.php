@@ -122,12 +122,12 @@ function mostrarCategorias($dbh){
 
 function mostrarPublicacionPorCategoria($cat, $dbh){
 
-    $data= array("category"=>$cat);
+    $data= array("category"=>utf8_decode($cat));
     $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario, Categoria
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND Pregunta.ID_Categoria =Categoria.ID 
-                            AND Categoria.Descripcion= :category
+                            AND Categoria.Descripcion = :category 
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
     $stmt ->setFetchMode(PDO::FETCH_OBJ);
@@ -159,6 +159,18 @@ function generarMisFavoritos($dbh){
                             WHERE Pregunta.ID_Usuario = Usuario.ID
                             AND Pregunta.ID = Favoritos.ID_Pregunta
                             AND Favoritos.ID_Usuario = :id;");
+    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
+function mostrarPublicacionPorBuscador($title, $dbh){
+    $data= array("tituloPorBuscador"=>utf8_decode($title));
+    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+                            FROM Pregunta, Usuario
+                            WHERE Pregunta.ID_Usuario= Usuario.ID
+                            AND LOWER(Pregunta.Titulo) LIKE CONCAT('%',:tituloPorBuscador,'%')
+                            GROUP BY Pregunta.ID
+                            ORDER BY Pregunta.Fecha DESC ;");
     $stmt ->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
