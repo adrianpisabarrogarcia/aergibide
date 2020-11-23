@@ -1,6 +1,7 @@
 <?php
 
-require "general.php";
+require "conexion.php";
+$dbh = connect();
 
 $categorias=mostrarCategorias($dbh);
 
@@ -10,7 +11,7 @@ if(isset($_GET["valor"])){
     die();
 
 }
-elseif ($_POST["tituloPubli"]!=""){
+elseif (isset($_POST["tituloPubli"])){
      require "../views/principal-categorias.view.php";
     die();
 }

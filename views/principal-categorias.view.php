@@ -4,7 +4,7 @@
         $publicacionporCat= mostrarPublicacionPorCategoria($_GET['valor'], $dbh);
         $publicacion= $publicacionporCat;
     }
-    elseif(isset($_POST['tituloPubli'])){
+    elseif($_POST['tituloPubli']!=""){
         $publicacionBuscador= mostrarPublicacionPorBuscador($_POST['tituloPubli'], $dbh);
         $publicacion=$publicacionBuscador;
     }

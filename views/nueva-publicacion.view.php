@@ -1,4 +1,4 @@
-<?php require "head.php"?>
+<?php require "../vistasfijas/head.php"?>
 
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">
@@ -6,7 +6,7 @@
 
 
 </head>
-<?php require "cabecera.php"?>
+<?php require "../vistasfijas/cabecera.php"?>
 <article id="barra_busqueda">
     <div id="filtro">
         <a> Filtrar</a>

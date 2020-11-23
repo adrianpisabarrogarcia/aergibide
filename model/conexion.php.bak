@@ -176,64 +176,6 @@ function mostrarPublicacionPorBuscador($title, $dbh){
     return $stmt;
 }
 
-    function datosusuario($dbh,$usuario){
-        if (empty($usuario))
-            $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario);
-        $stmt=$dbh->prepare("SELECT * FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-
-        return $stmt->fetch();
-    }
-
-    function eliminarcuenta($dbh){
-        $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario);
-        $stmt=$dbh->prepare("DELETE FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
-    function modificarimg($dbh,$directorio){
-        $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario,'directorio'=>$directorio);
-        $stmt=$dbh->prepare("UPDATE Usuario SET Imagen=:directorio WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
-
-
-    function cantidadMisRespuestas($dbh){
-        $usuario = $_SESSION["usuario"];
-        $data = array('usuario' => $usuario);
-        $stmt = $dbh ->prepare("SELECT *
-                                FROM Respuesta
-                                WHERE ID_Usuario=(SELECT ID FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario)");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-
-        return $stmt;
-    }
-
-    function modificarcontra($dbh,$contra){
-        $usuario = $_SESSION["usuario"];
-        $data = array('usuario' => $usuario,"password" => $contra);
-        $stmt = $dbh -> prepare("UPDATE Usuario SET Password=:password WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
-
-    function modificardatosusu($dbh,$usu,$nombre,$apellido,$correo){
-        $usuario = $_SESSION["usuario"];
-        $data = array('usuario'=>$usuario,'usu'=>$usu,'nombre'=>$nombre,'apellido'=>$apellido,'correo'=>$correo);
-        $stmt = $dbh -> prepare("UPDATE Usuario SET Usuario=:usu,Nombre=:nombre,Apellido=:apellido,Correo=:correo WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-        $_SESSION["usuario"] = $usu;
-    }
-
-
-
-
-
-
-
 
 
 

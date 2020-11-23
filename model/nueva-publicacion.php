@@ -1,7 +1,6 @@
 <?php
 
-require "conexion.php";
-$dbh = connect();
+require "general.php";
 
 $categorias=mostrarCategorias($dbh);
 

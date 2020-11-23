@@ -1,46 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-*{
+
+* {
     font-family: 'Roboto', sans-serif;
-}
-*{
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     max-width: 100%;
     display: grid;
     grid-template-columns: 100% 90% 100%;
-    grid-template-rows: repeat(2,100px) auto;
+    grid-template-rows: repeat(2, 100px) auto;
     background-color: black;
 }
+
 /*El css principal del header esta en el archivo header.css.
 Unicamente le asignamos la columna y fila que va a ocupar.*/
-header{
+header {
     grid-column: 1/2;
     grid-row: 1/2;
-    z-index:1;
+    z-index: 1;
     height: 9vh;
 }
-a{
- display: flex;
+
+a {
+    display: flex;
     text-align: center;
 }
-a:hover{
+
+a:hover {
     color: #b5b5b5;
 }
+
 /*Articulo que contiene la barra de busqueda, el boton de filtrar y el menu desplegable del perfil.*/
-#barra_busqueda{
+#barra_busqueda {
     width: 100%;
     grid-column: 1/2;
-    grid-row: 2/3 ;
+    grid-row: 2/3;
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 10vw 80vw 10vw;
     background-color: #724085;
 
 }
+
 /*Div que guarda un elemento "a" que sirve como botón para desplegar el menú de categorias.*/
-#filtro{
+#filtro {
     grid-row: 1/2;
     grid-column: 1/2;
     color: white;
@@ -49,29 +54,34 @@ a:hover{
     align-items: center;
     font-size: 1.3em;
 }
-#filtro > a{
+
+#filtro > a {
     color: white;
     text-decoration: none;
 
 }
-#filtro > a:hover{
+
+#filtro > a:hover {
     cursor: pointer;
     text-decoration: underline;
     color: #b5b5b5;
 }
-#filtro> a:focus{
+
+#filtro > a:focus {
     text-decoration: underline;
 
 }
+
 /*Div que guarda un input y un boton, sirven como barra de busqueda para buscar publicaciones especificas.*/
-#buscador{
+#buscador {
     grid-column: 2/3;
     grid-row: 1/2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#buscador > input{
+
+#buscador > input {
     width: 40%;
     height: 45%;
     text-align: center;
@@ -82,7 +92,8 @@ a:hover{
     font-size: 1.1em;
     background-color: #b5b5b5;
 }
-#buscador >#lupa{
+
+#buscador > #lupa {
     height: 45%;
     width: 5%;
     background-color: black;
@@ -91,23 +102,27 @@ a:hover{
     display: flex;
     justify-content: center;
     align-content: center;
-    border:1px solid black;
+    border: 1px solid black;
     font-size: 1.2em;
 }
+
 #lupa {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#lupa > span{
+
+#lupa > span {
     height: auto;
 }
-#lupa:hover{
+
+#lupa:hover {
     cursor: pointer;
 }
+
 /*Div que se despliega al clickar el botón de usuario situado en el header.
 El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
-#menu_usuario{
+#menu_usuario {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +136,8 @@ El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#menu_usuario > ul{
+
+#menu_usuario > ul {
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -130,32 +146,38 @@ El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
     width: 100%;
     height: 50%;
 }
-#menu_usuario >ul >li{
+
+#menu_usuario > ul > li {
     width: 100%;
     padding: 20px 0;
     display: flex;
     justify-content: center;
 }
-#menu_usuario >ul >li:hover{
+
+#menu_usuario > ul > li:hover {
     opacity: 90%;
     border: 1px solid white;
+    cursor: pointer;
 }
-#menu_usuario >ul >li > a{
+
+#menu_usuario > ul > li > a {
     color: #363837;
     font-size: 1.3em;
 }
-#menu_usuario >ul >li > a:hover{
+
+#menu_usuario > ul > li > a:hover {
     text-decoration: underline;
 }
+
 /*El main contiene el menú de categorias(un carousel), y la sección dedicada a las publicaciones*/
-main{
+main {
     grid-column: 1/2;
     grid-row: 3/4;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black ;
+    background-color: black;
     opacity: 88%;
     height: auto;
 
@@ -163,7 +185,7 @@ main{
 }
 
 /* Todos los elementos relacionados con splide estan relacionados con el menú de categorias.*/
-.splide{
+.splide {
     display: none;
     width: 95%;
     justify-content: center;
@@ -173,22 +195,26 @@ main{
     order: 1;
 
 }
-.splide__track{
+
+.splide__track {
     width: 85%;
     height: 100%;
     display: flex;
     align-content: center;
 }
-.splide__list{
+
+.splide__list {
     width: 100% !important;
 }
-.splide__slide{
+
+.splide__slide {
     width: 35%;
     display: flex;
     justify-content: center;
     align-content: center;
 }
-.splide__slide > button{
+
+.splide__slide > button {
     background-color: #302f2f;
     color: white;
     width: 55%;
@@ -198,20 +224,23 @@ main{
     outline: none;
     border: 2px solid #724085;
 }
-.botonActivo{
+
+.botonActivo {
     background-color: #724085 !important;
 }
-.botonDesactivado{
+
+.botonDesactivado {
     background-color: #302f2f !important;
 
 }
 
 
-.splide__pagination{
+.splide__pagination {
     display: none !important;
 }
+
 /*Sección que contiene todas las publicaciones.*/
-#publicaciones{
+#publicaciones {
     order: 2;
     width: 90%;
     min-height: 200px;
@@ -221,65 +250,75 @@ main{
     margin-bottom: 30px;
 
 }
-.cuadro_publicacion{
+
+.cuadro_publicacion {
     display: flex;
     height: auto;
     flex-direction: column;
     margin: 30px;
     margin-bottom: 0;
 }
-.publicacion{
+
+.publicacion {
     grid-row: 1/2;
     grid-column: 1/2;
     margin-top: 30px;
     display: grid;
     grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
-    grid-template-rows: repeat(3, 60px) ;
+    grid-template-rows: repeat(3, 60px);
 }
-.publicacion:hover{
+
+.publicacion:hover {
     cursor: pointer;
 }
-.publicacion> div{
+
+.publicacion > div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-div[class=titulo]{
+
+div[class=titulo] {
     grid-row: 1/2;
     grid-column: 1/4;
     justify-content: flex-start;
 }
-div[class=descripcion]{
+
+div[class=descripcion] {
     grid-row: 2/3;
     grid-column: 1/4;
 
 }
-.desc{
-    border: none ;
+
+.desc {
+    border: none;
     background-color: #b5b5b5;
     outline: none;
     width: 95%;
     font-size: 1.2em;
 
 }
-.fecha{
+
+.fecha {
     grid-row: 1/2;
     grid-column: 4/5;
     font-size: 1.2em;
 }
-div[class=usuario]{
+
+div[class=usuario] {
     grid-row: 3/4;
     grid-column: 4/5;
     font-size: 1.2em;
 }
 
-div[class=respuestas]{
+div[class=respuestas] {
     grid-row: 1/4;
     grid-column: 5/6;
     justify-content: space-around;
     border-left: 2px solid dimgrey;
 }
-.num_respuestas{
+
+.num_respuestas {
     padding: 13%;
     background-color: whitesmoke;
     box-shadow: 2px 2px 10px 2px dimgrey,
@@ -288,10 +327,12 @@ div[class=respuestas]{
     font-size: 2.6em;
     color: dimgrey;
 }
-.respuestas > span{
+
+.respuestas > span {
     grid-row: 3/4;
 }
-.like_fav{
+
+.like_fav {
     margin-left: 20px;
     grid-column: 1/2;
     grid-row: 2/3;
@@ -299,11 +340,12 @@ div[class=respuestas]{
     grid-template-columns: repeat(2, 5%);
     grid-template-rows: 60px;
     padding-bottom: 20px;
-    border-bottom:2px solid dimgrey;
+    border-bottom: 2px solid dimgrey;
 
 
 }
-.corazon{
+
+.corazon {
     width: 100%;
     grid-row: 1/2;
     grid-column: 1/2;
@@ -311,7 +353,7 @@ div[class=respuestas]{
     justify-content: center;
 }
 
-.favorito{
+.favorito {
     width: 100%;
     grid-row: 1/2;
     grid-column: 2/3;
@@ -319,7 +361,8 @@ div[class=respuestas]{
     justify-content: center;
 
 }
-.like, .fav{
+
+.like, .fav {
     width: 80%;
     height: 100%;
     box-shadow: 2px 2px 10px 2px dimgrey,
@@ -328,10 +371,12 @@ div[class=respuestas]{
     border-radius: 5px;
     outline: none;
 }
-button> .bi{
+
+button > .bi {
     color: black;
 }
-.bi{
+
+.bi {
     font-size: 34px;
 
 }

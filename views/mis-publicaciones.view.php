@@ -1,4 +1,4 @@
-<?php require "head.php"?>
+<?php require "../vistasfijas/head.php"?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">
 
@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<?php require "cabecera.php"?>
+<?php require "../vistasfijas/cabecera.php"?>
 <article id="barra_busqueda">
     <div id="filtro">
         <a> Filtrar</a>

@@ -64,9 +64,8 @@ function ajaxPrincipal() {
 
             })
                 .done(function (response){
-                    alert($('.botonActivo').val());
                     $('.cuadro_publicacion').remove();
-                    $('#publicaciones').append(response);
+                    $('#publicaciones').append();
 
                 })
         } else {
@@ -89,7 +88,6 @@ function buscador(){
 
            })
        .done(function (response){
-           console.log(busqueda.val());
                $('.cuadro_publicacion').remove();
                $('#publicaciones').append(response);
 

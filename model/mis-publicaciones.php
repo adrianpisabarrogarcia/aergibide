@@ -1,11 +1,9 @@
 <?php
 
-require "conexion.php";
-$dbh = connect();
+require "general.php";
 
 
 if($_GET['action']=="publicacion"){
-    echo "<p style='color: white'> $user[x]</p>";
     $tituloPagina="Mis publicaciones";
     $stmt=generarMisPublicaciones($dbh);
 
