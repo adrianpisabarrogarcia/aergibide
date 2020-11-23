@@ -9,17 +9,29 @@ if (isset($_POST["introducir"])){
     $titulo = $_POST["titulo"];
     $descripcion = $_POST["descripcion"];
     $categorias = $_POST["categorias"];
-    $archivo = $_POST["archivo"];
-    $archivo = "../img/uploads/" . $archivo;
+    if(isset($_FILES['archivo']['tmp_name'])){
+        $nombreArchivo = $_FILES['archivo']['tmp_name'];
+        $nombreEspecial = str_shuffle($_FILES["archivo"]["name"].uniqid());
+        $archivoRuta = "../img/files/" . $nombreEspecial . "." .pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION); // Ruta
+        move_uploaded_file($nombreArchivo, $archivoRuta);
+    }else{
+        $archivoRuta= "";
+    }
 
 
+    $idUsuario = guardarDatosUsuario($dbh);
+    $row = $idUsuario->fetch();
+    $idUsuario = $row->ID;
 
+    $idCategoria = mostrarCategoria($dbh, $categorias);
+    $row2 = $idCategoria->fetch();
+    $idCategoria = $row2->ID;
 
-    echo $titulo . " " . $descripcion . " " . $categorias . " " . $archivo;
+    $fecha = date("Y-m-d");
+    insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $idCategoria, $archivoRuta);
+
+    header('Location: ../model/mis-publicaciones.php');
 
 }else{
     require "../views/nueva-publicacion.view.php";
 }
-
-
-

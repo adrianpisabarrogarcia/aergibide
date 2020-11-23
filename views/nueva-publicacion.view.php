@@ -46,7 +46,7 @@
 
         <div class="cuadro_publicacion">
             <h1>Nueva Publicación</h1>
-            <form action="../model/nueva-publicacion.php" method="post">
+            <form action="../model/nueva-publicacion.php" method="post" enctype="multipart/form-data">
                 <!-- titulo -->
                 <label for="titulo">Título: * </label><br>
                 <input type="text" id="titulo" name="titulo" placeholder="Inserta aquí el título" required><br><br>

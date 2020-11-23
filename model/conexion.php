@@ -22,12 +22,10 @@ function close()
 }
 
 
-
-
 function entrarLogin($dbh, $usuario, $password)
 {
     $data = array('user' => $usuario);
-    $stmt=recogerDatosUsuario($dbh, $data);
+    $stmt = recogerDatosUsuario($dbh, $data);
     if ($stmt->rowcount() > 0) {
         // Comprobar contraseña correcta
         // Comprobar la contraseña introducida
@@ -45,13 +43,16 @@ function entrarLogin($dbh, $usuario, $password)
     return false;
 
 }
-function guardarDatosUsuario($dbh){
-    $data=array('user'=>$_SESSION['usuario']);
-    $stmt=recogerDatosUsuario($dbh,$data);
+
+function guardarDatosUsuario($dbh)
+{
+    $data = array('user' => $_SESSION['usuario']);
+    $stmt = recogerDatosUsuario($dbh, $data);
     return $stmt;
 }
 
-function recogerDatosUsuario($dbh,$data){
+function recogerDatosUsuario($dbh, $data)
+{
     $stmt = $dbh->prepare("SELECT * FROM Usuario WHERE Correo = :user OR Usuario = :user");
     $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
@@ -88,21 +89,23 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
 
 }
 
-function generarPublicaciones($dbh){
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+function generarPublicaciones($dbh)
+{
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
-    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
 
     $stmt->execute();
     return $stmt;
 }
 
-function generarRespuestas($pregunta, $dbh){
-    $data= array ('pregunta'=>$pregunta);
-    $stmt = $dbh ->prepare("SELECT ID_Pregunta
+function generarRespuestas($pregunta, $dbh)
+{
+    $data = array('pregunta' => $pregunta);
+    $stmt = $dbh->prepare("SELECT ID_Pregunta
                             FROM Respuesta
                             WHERE ID_Pregunta= :pregunta");
     $stmt->setFetchMode(PDO::FETCH_OBJ);
@@ -111,130 +114,154 @@ function generarRespuestas($pregunta, $dbh){
     return $stmt;
 }
 
-function mostrarCategorias($dbh){
-    $stmt= $dbh->prepare("SELECT Descripcion AS cat FROM Categoria
+function mostrarCategorias($dbh)
+{
+    $stmt = $dbh->prepare("SELECT Descripcion AS cat FROM Categoria
                             ORDER BY ID asc");
-    $stmt-> setFetchMode(PDO::FETCH_OBJ);
-    $stmt ->execute();
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute();
 
     return $stmt;
 }
 
-function mostrarPublicacionPorCategoria($cat, $dbh){
+function mostrarCategoria($dbh, $datos)
+{
+    $data = array('descripcion' => $datos);
+    $stmt = $dbh->prepare("SELECT * FROM Categoria
+                            WHERE Descripcion = :descripcion");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
 
-    $data= array("category"=>utf8_decode($cat));
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+function mostrarPublicacionPorCategoria($cat, $dbh)
+{
+
+    $data = array("category" => utf8_decode($cat));
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario, Categoria
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND Pregunta.ID_Categoria =Categoria.ID 
                             AND Categoria.Descripcion = :category 
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
-    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
 }
 
-function generarMisPublicaciones($dbh){
+function generarMisPublicaciones($dbh)
+{
     $usuario = $_SESSION["usuario"];
     $data = array('usuario' => $usuario);
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND (Usuario.Usuario = :usuario OR Usuario.Correo = :usuario)
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
-    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
 }
 
-function generarMisFavoritos($dbh){
-    $usuario=guardarDatosUsuario($dbh);
-    $row=$usuario->fetch();
-    $user=$row->ID;
-    $data=array("id"=>$user);
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+function generarMisFavoritos($dbh)
+{
+    $usuario = guardarDatosUsuario($dbh);
+    $row = $usuario->fetch();
+    $user = $row->ID;
+    $data = array("id" => $user);
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario, Favoritos
                             WHERE Pregunta.ID_Usuario = Usuario.ID
                             AND Pregunta.ID = Favoritos.ID_Pregunta
                             AND Favoritos.ID_Usuario = :id;");
-    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
 }
-function mostrarPublicacionPorBuscador($title, $dbh){
-    $data= array("tituloPorBuscador"=>utf8_decode($title));
-    $stmt= $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+
+function mostrarPublicacionPorBuscador($title, $dbh)
+{
+    $data = array("tituloPorBuscador" => utf8_decode($title));
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario
                             WHERE Pregunta.ID_Usuario= Usuario.ID
                             AND LOWER(Pregunta.Titulo) LIKE CONCAT('%',:tituloPorBuscador,'%')
                             GROUP BY Pregunta.ID
                             ORDER BY Pregunta.Fecha DESC ;");
-    $stmt ->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
 }
 
-    function datosusuario($dbh,$usuario){
-        if (empty($usuario))
-            $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario);
-        $stmt=$dbh->prepare("SELECT * FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-
-        return $stmt->fetch();
-    }
-
-    function eliminarcuenta($dbh){
-        $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario);
-        $stmt=$dbh->prepare("DELETE FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
-    function modificarimg($dbh,$directorio){
-        $usuario=$_SESSION["usuario"];
-        $data=array('usuario'=>$usuario,'directorio'=>$directorio);
-        $stmt=$dbh->prepare("UPDATE Usuario SET Imagen=:directorio WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
-
-
-    function cantidadMisRespuestas($dbh){
+function datosusuario($dbh, $usuario)
+{
+    if (empty($usuario))
         $usuario = $_SESSION["usuario"];
-        $data = array('usuario' => $usuario);
-        $stmt = $dbh ->prepare("SELECT *
+    $data = array('usuario' => $usuario);
+    $stmt = $dbh->prepare("SELECT * FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+
+    return $stmt->fetch();
+}
+
+function eliminarcuenta($dbh)
+{
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario);
+    $stmt = $dbh->prepare("DELETE FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
+    $stmt->execute($data);
+}
+
+function modificarimg($dbh, $directorio)
+{
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario, 'directorio' => $directorio);
+    $stmt = $dbh->prepare("UPDATE Usuario SET Imagen=:directorio WHERE Usuario=:usuario OR Correo=:usuario");
+    $stmt->execute($data);
+}
+
+
+function cantidadMisRespuestas($dbh)
+{
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario);
+    $stmt = $dbh->prepare("SELECT *
                                 FROM Respuesta
                                 WHERE ID_Usuario=(SELECT ID FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario)");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
 
-        return $stmt;
-    }
+    return $stmt;
+}
 
-    function modificarcontra($dbh,$contra){
-        $usuario = $_SESSION["usuario"];
-        $data = array('usuario' => $usuario,"password" => $contra);
-        $stmt = $dbh -> prepare("UPDATE Usuario SET Password=:password WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-    }
+function modificarcontra($dbh, $contra)
+{
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario, "password" => $contra);
+    $stmt = $dbh->prepare("UPDATE Usuario SET Password=:password WHERE Usuario=:usuario OR Correo=:usuario");
+    $stmt->execute($data);
+}
 
-    function modificardatosusu($dbh,$usu,$nombre,$apellido,$correo){
-        $usuario = $_SESSION["usuario"];
-        $data = array('usuario'=>$usuario,'usu'=>$usu,'nombre'=>$nombre,'apellido'=>$apellido,'correo'=>$correo);
-        $stmt = $dbh -> prepare("UPDATE Usuario SET Usuario=:usu,Nombre=:nombre,Apellido=:apellido,Correo=:correo WHERE Usuario=:usuario OR Correo=:usuario");
-        $stmt->execute($data);
-        $_SESSION["usuario"] = $usu;
-    }
-
-
-
-
+function modificardatosusu($dbh, $usu, $nombre, $apellido, $correo)
+{
+    $usuario = $_SESSION["usuario"];
+    $data = array('usuario' => $usuario, 'usu' => $usu, 'nombre' => $nombre, 'apellido' => $apellido, 'correo' => $correo);
+    $stmt = $dbh->prepare("UPDATE Usuario SET Usuario=:usu,Nombre=:nombre,Apellido=:apellido,Correo=:correo WHERE Usuario=:usuario OR Correo=:usuario");
+    $stmt->execute($data);
+    $_SESSION["usuario"] = $usu;
+}
 
 
-
-
+function insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $idCategoria, $archivo)
+{
+    $data = array('titulo' => $titulo, 'descripcion' => $descripcion, 'idUsuario' => $idUsuario, 'fecha' => $fecha, 'idCategoria' => $idCategoria, 'archivo' => $archivo);
+    $stmt = $dbh->prepare("INSERT INTO Pregunta (Titulo, Descripcion, ID_Usuario, Fecha, ID_Categoria, Archivo) 
+                            VALUES (:titulo, :descripcion, :idUsuario, :fecha, :idCategoria, :archivo);");
+    $stmt->execute($data);
+}
 
 
 $dbhcerrar = close();
