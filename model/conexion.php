@@ -263,6 +263,36 @@ function insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $
     $stmt->execute($data);
 }
 
+function comprobarLike($dbh, $userID,$publicacionID){
+    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
+    $stmt= $dbh ->prepare("SELECT * FROM Likes
+                                    WHERE ID_Usuario= :userID
+                                    AND ID_Pregunta= :publicacionID;");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt ->execute($data);
+    if($stmt->rowcount()>0){
+        return false;
+    }
+    else{
+        return true;
+    }
+
+}
+
+function insertarLike($dbh,$userID, $publicacionID){
+    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
+    $stmt=$dbh->prepare("INSERT INTO Likes (ID_Pregunta,ID_Usuario) VALUES (:publicacionID,:userID)");
+    $stmt->execute($data);
+}
+
+function deleteLike($dbh,$userID, $publicacionID){
+    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
+    $stmt = $dbh->prepare("DELETE FROM Likes
+                             WHERE ID_Pregunta= :publicacionID
+                             AND ID_Usuario= :userID;");
+    $stmt->execute($data);
+
+}
 
 $dbhcerrar = close();
 

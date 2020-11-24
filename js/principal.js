@@ -78,25 +78,27 @@ function buscador(){
     var busqueda= $('#busqueda');
     busqueda.keyup(function (){
        var titulo=busqueda.val();
-       if(busqueda.val()){
+
            $.ajax({
                url: '../model/principal.php',
 
-               data: {tituloPubli:titulo},
+               data: {tituloPubli: titulo},
 
                type: 'POST',
 
            })
-       .done(function (response){
-               $('.cuadro_publicacion').remove();
-               $('#publicaciones').append(response);
 
-           })
-       }
+               .done(function (response){
+                   $('.cuadro_publicacion').remove();
+                   $('#publicaciones').append(response);
+
+               })
     });
-    busqueda.on('click', function (){
+    /*busqueda.on('click', function (){
         busqueda.val("");
     })
+
+     */
 }
 
 
