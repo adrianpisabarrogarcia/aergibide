@@ -1,21 +1,23 @@
 $(document).ready(function (){
-
-        let like = $('.like');
-        like.on('click', function () {
-            
-            $(this).css('fill','#c43f58');
-        })
+    darQuitarLike();
 
 
 
-        let fav = $('.fav');
-        fav.on('click', function () {
-            $(this).css('color','#e3c146');
-        })
-
-
-        let publicacion = $('.publicacion').eq(0);
-        publicacion.on('click', function () {
-            alert("Funciona");
-        })
 })
+function darQuitarLike(){
+    var boton= $('.like, svg');
+        boton.on('click',function (){
+                $.ajax({
+                    url: "../model/likeFav.php",
+
+                    data: {like: $(this).val()},
+
+                    type: "POST",
+
+                });
+
+        });
+
+}
+
+
