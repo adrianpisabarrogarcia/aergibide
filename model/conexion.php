@@ -147,6 +147,7 @@ function mostrarPublicacionPorCategoria($cat, $dbh)
                             ORDER BY Pregunta.Fecha DESC ;");
     $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
+
     return $stmt;
 }
 
@@ -262,22 +263,30 @@ function insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $
                             VALUES (:titulo, :descripcion, :idUsuario, :fecha, :idCategoria, :archivo);");
     $stmt->execute($data);
 }
-
-function comprobarLike($dbh, $userID,$publicacionID){
-    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
-    $stmt= $dbh ->prepare("SELECT * FROM Likes
+//Funciones orientadas a los Likes
+function comprobarLike($dbh, $userID,$publicacionID)
+{
+    $data = array('userID' => $userID, 'publicacionID' => $publicacionID);
+    $stmt = $dbh->prepare("SELECT * FROM Likes
                                     WHERE ID_Usuario= :userID
                                     AND ID_Pregunta= :publicacionID;");
     $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt ->execute($data);
+    $stmt->execute($data);
+    return $stmt;
+}
+
+function darQuitarLike($dbh, $userID,$publicacionID){
+    $stmt=comprobarLike($dbh, $userID,$publicacionID);
     if($stmt->rowcount()>0){
-        return false;
+        deleteLike($dbh, $userID, $_POST['like_fav']);
     }
     else{
-        return true;
+        insertarLike($dbh, $userID, $_POST['like_fav']);
     }
 
 }
+
+
 
 function insertarLike($dbh,$userID, $publicacionID){
     $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
@@ -288,6 +297,42 @@ function insertarLike($dbh,$userID, $publicacionID){
 function deleteLike($dbh,$userID, $publicacionID){
     $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
     $stmt = $dbh->prepare("DELETE FROM Likes
+                             WHERE ID_Pregunta= :publicacionID
+                             AND ID_Usuario= :userID;");
+    $stmt->execute($data);
+
+}
+//Funciones orientadas a los Favoritos
+function comprobarFav($dbh, $userID,$publicacionID)
+{
+    $data = array('userID' => $userID, 'publicacionID' => $publicacionID);
+    $stmt = $dbh->prepare("SELECT * FROM Favoritos
+                                    WHERE ID_Usuario= :userID
+                                    AND ID_Pregunta= :publicacionID;");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
+
+function darQuitarFav($dbh, $userID, $publicacionID){
+    $stmt= comprobarFav($dbh, $userID,$publicacionID);
+    if($stmt->rowcount()>0){
+        deleteFav($dbh, $userID, $_POST['like_fav']);
+    }
+    else{
+        insertarFav($dbh, $userID, $_POST['like_fav']);
+    }
+}
+
+function insertarFav($dbh,$userID, $publicacionID){
+    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
+    $stmt=$dbh->prepare("INSERT INTO Favoritos (ID_Pregunta,ID_Usuario) VALUES (:publicacionID,:userID)");
+    $stmt->execute($data);
+}
+
+function deleteFav($dbh,$userID, $publicacionID){
+    $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
+    $stmt = $dbh->prepare("DELETE FROM Favoritos
                              WHERE ID_Pregunta= :publicacionID
                              AND ID_Usuario= :userID;");
     $stmt->execute($data);

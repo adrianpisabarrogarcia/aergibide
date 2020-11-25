@@ -4,7 +4,7 @@ $(document).ready(function (){
     mostrarCategorias(contador);
     mostrarMenuPerfil(contador);
     botonCategoria();
-    ajaxPrincipal();
+    ajaxCategorias();
     buscador();
 });
 
@@ -50,26 +50,27 @@ function botonCategoria() {
     });
 }
 
-function ajaxPrincipal() {
+function ajaxCategorias() {
     let boton = $('.splide__slide button');
     boton.on('click', function () {
         if (boton.hasClass('botonActivo')) {
-            var valor=$('.botonActivo').val();
+            var valor = $('.botonActivo').val();
+            alert(valor);
             $.ajax({
                 url: '../model/principal.php',
 
-                data: {valor:valor},
+                data: {valor: valor},
 
                 type: 'GET',
 
             })
-                .done(function (response){
+                .done(function (response) {
+                    alert(response);
                     $('.cuadro_publicacion').remove();
                     $('#publicaciones').append();
 
                 })
-        } else {
-            alert("Error");
+
         }
     })
 }
@@ -94,11 +95,7 @@ function buscador(){
 
                })
     });
-    /*busqueda.on('click', function (){
-        busqueda.val("");
-    })
 
-     */
 }
 
 

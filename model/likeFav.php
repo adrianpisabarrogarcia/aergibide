@@ -1,27 +1,19 @@
 <?php
 require "general.php";
-if(isset($_POST['like'])) {
+if(isset($_POST['like_fav'])) {
     //recoger ID de usuario conectado.
-
-
     $userID = $datos->ID;
-    //Comprobar que existe el like.
-    $stmt = comprobarLike($dbh, $userID, $_POST['like']);
-
-    if (!$stmt) {
-        //Si devuelve una fila, existe un like a esa publicación, asi
-        //que la borramos.
-        deleteLike($dbh, $userID, $_POST['like']);
-        echo false;
+    if ($_POST["operacion"]=="like")
+    {
+        //Comprobar que existe el like.
+        darQuitarLike($dbh, $userID, $_POST['like_fav']);
         die();
-    } else {
-        //Si devuelve null, insertamos el like en la base de datos.
-        insertarLike($dbh, $userID, $_POST['like']);
-        echo true;
+    }
+    else
+    {
+        darQuitarFav($dbh, $userID, $_POST['like_fav']);
         die();
     }
 }
-
-
 
 require "principal.php";

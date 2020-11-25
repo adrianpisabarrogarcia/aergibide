@@ -1,43 +1,40 @@
 $(document).ready(function (){
     darQuitarLike();
+    darQuitarFav();
 
 
 
 })
 function darQuitarLike(){
-    var boton= $('.like');
-        boton.on('click',function (event){
-            event.preventDefault();
-            var color= $(this);
-            var valor= $(this).val();
-            alert(valor);
-            $.ajax({
-                    url: "../model/likeFav.php",
+    ajax($('.like'),"like");
 
-                    data: {like: valor},
+}
+function darQuitarFav(){
+    ajax($('.fav'),"fav");
 
-                    type: "POST",
+}
 
-                })
-            .done(function (response){
-                alert(response);
-               if(response){
-                   alert(response+"añade");
-                   color.css({fill:'pink'});
-               }
-               else{
-                   color.css({fill:'black'});
-                   alert(response+"quita");
+function ajax(LikeOFav,dato){
+    var boton= LikeOFav;
+    boton.on('click',function (event){
+        event.preventDefault();
+        var valor= $(this).val();
+        $.ajax({
+            url: "../model/likeFav.php",
 
+            data: {operacion: dato, like_fav: valor},
 
-               }
+            type: "POST",
+
+        })
+            .done(function (){
+                location.reload();
+
             });
 
 
-
-
-        });
-
+    });
 }
+
 
 

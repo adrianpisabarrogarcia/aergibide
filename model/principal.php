@@ -12,6 +12,9 @@ if (isset($_GET["valor"])) {
 } else {
     if (isset($_POST["tituloPubli"])) {
         if (!empty($_POST["tituloPubli"])) {
+            if (isset($_POST["IDPubli"])){
+
+        }
             require "../views/principal-categorias.view.php";
             die();
         }
@@ -22,8 +25,10 @@ if (isset($_GET["valor"])) {
             die();
         }
     }
-}
+        }
+
 $publicacion = generarPublicaciones($dbh);
+$contador = $publicacion->rowcount();
 
 require "../views/principal.view.php";
 
