@@ -1,12 +1,15 @@
 <div class="cuadro_publicacion">
     <?php
-    if (isset($_GET['valor'])){
-        $publicacionporCat= mostrarPublicacionPorCategoria($_GET['valor'], $dbh);
+    if ($operacion=='categoria'){
+        $publicacionporCat= mostrarPublicacionPorCategoria($_POST['valor'], $dbh);
         $publicacion= $publicacionporCat;
     }
-    elseif($_POST['tituloPubli']!=""){
-        $publicacionBuscador= mostrarPublicacionPorBuscador($_POST['tituloPubli'], $dbh);
+    elseif($operacion=='buscar'){
+        $publicacionBuscador= mostrarPublicacionPorBuscador($_POST['valor'], $dbh);
         $publicacion=$publicacionBuscador;
+    }
+    elseif ($operacion=='generarTodo'){
+        $publicacion = generarPublicaciones($dbh);
     }
 
 

@@ -6,12 +6,14 @@ $(document).ready(function (){
     botonCategoria();
     ajaxCategorias();
     buscador();
+    removeFilter();
 });
 
 function mostrarCategorias(contador){
     let boton= $('#filtro>a').eq(0);
-    let menuCategoria=$('.splide').eq(0);
+    let menuCategoria=$('.splide, .removeFilter');
     condicionDespliegue(boton,contador,menuCategoria);
+
 }
 
 function mostrarMenuPerfil(contador){
@@ -49,30 +51,31 @@ function botonCategoria() {
         $(this).removeClass("botonDesactivado");
     });
 }
+function removeFilter(){
+    var boton= $('.removeFilter');
+    boton.on('click',function (){
+        var valor= "";
+        $('.splide__slide> button').removeClass('botonActivo').addClass('botonDesactivado');
+           llamadaAjax(valor,"removeFil");
+            $('.splide, .removeFilter').css('display','none');
+
+    })
+}
 
 function ajaxCategorias() {
-    let boton = $('.splide__slide button');
+    let boton = $('.splide__slide>button');
     boton.on('click', function () {
-        if (boton.hasClass('botonActivo')) {
-            var valor = $('.botonActivo').val();
-            alert(valor);
-            $.ajax({
-                url: '../model/principal.php',
 
-                data: {valor: valor},
 
-                type: 'GET',
+            if (boton.hasClass('botonActivo')) {
+               var valor = $('.botonActivo').val();
 
-            })
-                .done(function (response) {
-                    alert(response);
-                    $('.cuadro_publicacion').remove();
-                    $('#publicaciones').append();
+               llamadaAjax(valor,"cat");
 
-                })
-
+            }
         }
-    })
+    //}
+    )
 }
 
 function buscador(){
@@ -80,22 +83,26 @@ function buscador(){
     busqueda.keyup(function (){
        var titulo=busqueda.val();
 
-           $.ajax({
-               url: '../model/principal.php',
+        llamadaAjax(titulo,"search");
 
-               data: {tituloPubli: titulo},
-
-               type: 'POST',
-
-           })
-
-               .done(function (response){
-                   $('.cuadro_publicacion').remove();
-                   $('#publicaciones').append(response);
-
-               })
     });
 
+}
+
+function llamadaAjax(valor,oper){
+    $.ajax({
+        url: '../model/principal.php',
+
+        data: {operacion:oper,valor: valor},
+
+        type: "POST",
+
+    })
+        .done(function (response) {
+            $('.cuadro_publicacion').remove();
+            $('#publicaciones').append(response);
+
+        })
 }
 
 

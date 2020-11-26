@@ -4,31 +4,25 @@ require "general.php";
 
 $categorias = mostrarCategorias($dbh);
 
-if (isset($_GET["valor"])) {
+if (isset($_POST['valor'])) {
 
-    require "../views/principal-categorias.view.php";
-    die();
-
-} else {
-    if (isset($_POST["tituloPubli"])) {
-        if (!empty($_POST["tituloPubli"])) {
-            if (isset($_POST["IDPubli"])){
-
-        }
-            require "../views/principal-categorias.view.php";
-            die();
-        }
-        else
-        {
-            $publicacion = generarPublicaciones($dbh);
-            require "../views/principal-categorias.view.php";
-            die();
-        }
+    if ($_POST['operacion'] == "cat") {
+        $operacion = 'categoria';
     }
-        }
+    elseif($_POST['operacion'] == "search") {
+        $operacion = 'buscar';
+    }
+    else{
+        $operacion='generarTodo';
+
+    }
+    require '../views/principal-categorias.view.php';
+    die();
+}
 
 $publicacion = generarPublicaciones($dbh);
-$contador = $publicacion->rowcount();
+
+
 
 require "../views/principal.view.php";
 

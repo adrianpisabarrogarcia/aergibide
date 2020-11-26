@@ -1,5 +1,6 @@
 <?php
-
+$fallo= $publicacion;
+$contador = $fallo->rowCount();
 if($contador==0){
     ?>
     <h1>No se han encontrado publicaciones</h1>
@@ -13,8 +14,8 @@ while ($row= $publicacion->fetch()) {
     $archivo = $row->Archivo;
     $ID = $row->ID;
     $respuestas = generarRespuestas($ID, $dbh);
-    $row2 = $respuestas->fetchAll();
-    $numero = count($row2);
+    $row2 = $respuestas->rowCount();
+    $numero = $row2;
     ?>
 
     <div class="publicacion">
