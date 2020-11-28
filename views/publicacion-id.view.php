@@ -92,8 +92,10 @@
                 <div class="corazon">
                     <?php
                     $mostrarLike = comprobarLike($dbh, $datos->ID, $ID);
-                    $rowLikePregunta = $mostrarLike->fetch();
-                    $ID_publicacion = $rowLikePregunta->ID_Pregunta;
+                    $ID_publicacion = 0;
+                    while($row = $mostrarLike->fetch()){
+                        $ID_publicacion = $row->ID_Pregunta;
+                    }
                     $claseLike = "rosa"; ?>
 
                     <span><?= count($contadorL=contadorLikes($dbh,$ID));?></span>
@@ -115,8 +117,10 @@
                 <div class="favorito">
                     <?php
                     $mostrarFav = comprobarFav($dbh, $datos->ID, $ID);
-                    $rowFav = $mostrarFav->fetch();
-                    $ID_publicacion = $rowFav->ID_Pregunta;
+                    $ID_publicacion = 0;
+                    while($row = $mostrarFav->fetch()){
+                        $ID_publicacion = $row->ID_Pregunta;
+                    }
                     $claseFav = "amarillo"; ?>
 
                     <button class="fav" value="<?= $ID ?>">
@@ -204,8 +208,10 @@
                 <div class="corazon">
                     <?php
                     $mostrarLikeRespuesta = comprobarLikeRespuesta($dbh, $datos->ID, $idRespuesta );
-                    $rowLikeRespuesta = $mostrarLikeRespuesta->fetch();
-                    $ID_resp = $rowLikeRespuesta->ID_Respuesta;
+                    $ID_resp = 0;
+                    while($row = $mostrarLikeRespuesta->fetch()){
+                        $ID_resp = $row->ID_Respuesta;
+                    }
                     $claseLikeRespuesta = "rosa"; ?>
 
                     <button class="likeRespuesta" value="<?= $idRespuesta ?>">

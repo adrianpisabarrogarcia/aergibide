@@ -203,6 +203,7 @@ function modificarimagen() {
         }
     });
 }
+
 function mostrarMenuPerfil(){
     var contador=0;
     let boton= $('#perfil');

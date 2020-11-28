@@ -29,7 +29,7 @@ if (isset($_POST["introducir"])){
     $fecha = date("Y-m-d");
     insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $idCategoria, $archivoRuta);
 
-    header('Location: ../model/mis-publicaciones.php');
+    header('Location: ../model/mis-publicaciones.php?action=publicacion');
 
 }else{
     require "../views/nueva-publicacion.view.php";

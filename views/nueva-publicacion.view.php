@@ -19,8 +19,8 @@
 
     <div id="menu_usuario">
         <ul>
-            <li><a>Perfil</a></li>
-            <li><a>Cerrar sesión</a></li>
+            <li><a href="../model/perfil.php">Perfil</a></li>
+            <li><a onClick="cerrarsesion()">Cerrar sesión</a></li>
         </ul>
     </div>
 </article>
@@ -93,5 +93,7 @@
 <script src="https://cdn.tiny.cloud/1/u3odj6obwmpr4y5vzm7zy8bk6ef0bfe8cv4yta79dv9ksh9k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>tinymce.init({selector:'textarea'});</script>
 <script src="../js/validacionPregunta.js"> </script>
+<script src="../js/perfil.js"></script>
+
 </body>
 </html>

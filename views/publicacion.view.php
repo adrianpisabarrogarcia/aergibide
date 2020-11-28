@@ -47,8 +47,14 @@ while ($row= $publicacion->fetch()) {
         <div class="corazon">
             <?php
             $mostrarLike = comprobarLike($dbh, $datos->ID, $ID);
-            $row = $mostrarLike->fetch();
-            $ID_publicacion = $row->ID_Pregunta;
+            $ID_publicacion = 0;
+            while($row = $mostrarLike->fetch()){
+                $ID_publicacion = $row->ID_Pregunta;
+            }
+
+
+
+
             $claseLike = "rosa"; ?>
 
             <button class="like "name="publicacion" value="<?= $ID ?>">
@@ -67,9 +73,13 @@ while ($row= $publicacion->fetch()) {
 
         <div class="favorito">
             <?php
-            $mostrarLike = comprobarFav($dbh, $datos->ID, $ID);
-            $row = $mostrarLike->fetch();
-            $ID_publicacion = $row->ID_Pregunta;
+            $mostrarFav = comprobarFav($dbh, $datos->ID, $ID);
+            $ID_publicacion = 0;
+            while($row = $mostrarFav->fetch()){
+                $ID_publicacion = $row->ID_Pregunta;
+            }
+
+
             $claseFav = "amarillo"; ?>
 
             <button class="fav" name="favorito" value="<?= $ID ?>">
