@@ -6,5 +6,5 @@
     else
     {
         $dbh=connect();
-        $datos=datosusuario($dbh,"");
+        $datos=guardarDatosUsuario($dbh,"");
     }

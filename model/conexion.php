@@ -44,11 +44,14 @@ function entrarLogin($dbh, $usuario, $password)
 
 }
 
-function guardarDatosUsuario($dbh)
+function guardarDatosUsuario($dbh,$usuario)
 {
-    $data = array('user' => $_SESSION['usuario']);
+    if (empty($usuario))
+        $usuario=$_SESSION['usuario'];
+
+    $data = array('user' => $usuario);
     $stmt = recogerDatosUsuario($dbh, $data);
-    return $stmt;
+    return $stmt->fetch();
 }
 
 function recogerDatosUsuario($dbh, $data)
@@ -88,6 +91,17 @@ function insercionRegistro($dbh, $usuario, $nombre, $apellido, $email, $password
 
 
 }
+function generarPublicacionID($dbh, $dat)
+{
+    $data = array('identificador' => $dat);
+    $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
+                            FROM Pregunta, Usuario
+                            WHERE Pregunta.ID = :identificador AND 
+                            Pregunta.ID_Usuario= Usuario.ID;");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt->fetch();
+}
 
 function generarPublicaciones($dbh)
 {
@@ -102,6 +116,20 @@ function generarPublicaciones($dbh)
     return $stmt;
 }
 
+function generarRespuestasTodas($pregunta, $dbh)
+{
+    $data = array('pregunta' => $pregunta);
+    $stmt = $dbh->prepare("SELECT Respuesta.ID as ID, Respuesta.Descripcion AS Descripcion, Respuesta.Fecha as Fecha, Usuario.Usuario as Usuario, Respuesta.Archivos as Archivo 
+                            FROM Respuesta, Usuario, Pregunta 
+                            WHERE Respuesta.ID_Usuario = Usuario.ID 
+                            AND Respuesta.ID_Pregunta = :pregunta 
+                            GROUP BY Respuesta.ID  
+                            ORDER BY Respuesta.Fecha ");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+
+    return $stmt;
+}
 function generarRespuestas($pregunta, $dbh)
 {
     $data = array('pregunta' => $pregunta);
@@ -168,9 +196,8 @@ function generarMisPublicaciones($dbh)
 
 function generarMisFavoritos($dbh)
 {
-    $usuario = guardarDatosUsuario($dbh);
-    $row = $usuario->fetch();
-    $user = $row->ID;
+    $usuario = guardarDatosUsuario($dbh,"");
+    $user = $usuario->ID;
     $data = array("id" => $user);
     $stmt = $dbh->prepare("SELECT Pregunta.ID as ID,Pregunta.Titulo AS Titulo, Pregunta.Descripcion AS Descripcion, Usuario.Usuario as Usuario, Pregunta.Fecha as Fecha, Pregunta.ID_Categoria as Categoria, Pregunta.Archivo as Archivo
                             FROM Pregunta, Usuario, Favoritos
@@ -194,18 +221,6 @@ function mostrarPublicacionPorBuscador($title, $dbh)
     $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     return $stmt;
-}
-
-function datosusuario($dbh, $usuario)
-{
-    if (empty($usuario))
-        $usuario = $_SESSION["usuario"];
-    $data = array('usuario' => $usuario);
-    $stmt = $dbh->prepare("SELECT * FROM Usuario WHERE Usuario=:usuario OR Correo=:usuario");
-    $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt->execute($data);
-
-    return $stmt->fetch();
 }
 
 function eliminarcuenta($dbh)
@@ -263,10 +278,29 @@ function insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $
                             VALUES (:titulo, :descripcion, :idUsuario, :fecha, :idCategoria, :archivo);");
     $stmt->execute($data);
 }
-//Funciones orientadas a los Likes
-function comprobarLike($dbh, $userID,$publicacionID)
+function insercionRespuesta($dbh, $descripcion, $idUsuario, $idPublicacion, $fecha, $archivoRuta)
 {
-    $data = array('userID' => $userID, 'publicacionID' => $publicacionID);
+    $data = array('descripcion' => $descripcion, 'idUsuario' => $idUsuario, 'idPublicacion' => $idPublicacion, 'fecha' => $fecha, 'archivo' => $archivoRuta);
+    $stmt = $dbh->prepare("INSERT INTO Respuesta (Descripcion, Fecha, ID_Pregunta, ID_Usuario, Archivos) 
+                            VALUES (:descripcion, :fecha, :idPublicacion, :idUsuario, :archivo);");
+    $stmt->execute($data);
+}
+function eliminarRespuesta($dbh, $idRespuesta)
+{
+    $data = array('idRespuesta' => $idRespuesta);
+    $stmt = $dbh->prepare("DELETE FROM Respuesta WHERE ID = :idRespuesta;");
+    $stmt->execute($data);
+}
+function eliminarPregunta($dbh, $idPregunta)
+{
+    $data = array('idPregunta' => $idPregunta);
+    $stmt = $dbh->prepare("DELETE FROM Pregunta WHERE ID = :idPregunta;");
+    $stmt->execute($data);
+}
+//Funciones orientadas a los Likes de las publicaciones.
+function comprobarLike($dbh, $userID,$ID)
+{
+    $data = array('userID' => $userID, 'publicacionID' => $ID);
     $stmt = $dbh->prepare("SELECT * FROM Likes
                                     WHERE ID_Usuario= :userID
                                     AND ID_Pregunta= :publicacionID;");
@@ -274,7 +308,6 @@ function comprobarLike($dbh, $userID,$publicacionID)
     $stmt->execute($data);
     return $stmt;
 }
-
 function darQuitarLike($dbh, $userID,$publicacionID){
     $stmt=comprobarLike($dbh, $userID,$publicacionID);
     if($stmt->rowcount()>0){
@@ -283,10 +316,7 @@ function darQuitarLike($dbh, $userID,$publicacionID){
     else{
         insertarLike($dbh, $userID, $_POST['like_fav']);
     }
-
 }
-
-
 
 function insertarLike($dbh,$userID, $publicacionID){
     $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
@@ -296,8 +326,45 @@ function insertarLike($dbh,$userID, $publicacionID){
 
 function deleteLike($dbh,$userID, $publicacionID){
     $data= array('userID'=>$userID, 'publicacionID'=>$publicacionID);
-    $stmt = $dbh->prepare("DELETE FROM Likes
+        $stmt = $dbh->prepare("DELETE FROM Likes
                              WHERE ID_Pregunta= :publicacionID
+                             AND ID_Usuario= :userID;");
+    $stmt->execute($data);
+
+}
+//Funciones orientadas a los Likes de las respuestas.
+
+function comprobarLikeRespuesta($dbh, $userID,$ID)
+{
+    $data = array('userID' => $userID, 'pubRespID' => $ID);
+    $stmt = $dbh->prepare("SELECT * FROM Likes
+                                    WHERE ID_Usuario= :userID
+                                    AND  ID_Respuesta= :pubRespID;");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt;
+}
+function darQuitarLikeRespuesta($dbh, $userID,$respuestaID){
+    $stmt=comprobarLikeRespuesta($dbh, $userID,$respuestaID);
+    if($stmt->rowcount()>0){
+        deleteLikeRespuesta($dbh, $userID, $_POST['like_fav']);
+    }
+    else{
+        insertarLikeRespuesta($dbh, $userID, $_POST['like_fav']);
+    }
+}
+
+function insertarLikeRespuesta($dbh,$userID, $respuestaID){
+    $data= array('userID'=>$userID, 'respuestaID'=>$respuestaID);
+    $stmt=$dbh->prepare("INSERT INTO Likes (ID_Usuario,ID_Respuesta) VALUES (:userID,:respuestaID)");
+    $stmt->execute($data);
+}
+
+function deleteLikeRespuesta($dbh,$userID, $respuestaID)
+{
+    $data = array('userID' => $userID, 'respuestaID' => $respuestaID);
+        $stmt = $dbh->prepare("DELETE FROM Likes
+                             WHERE ID_Respuesta= :respuestaID
                              AND ID_Usuario= :userID;");
     $stmt->execute($data);
 
@@ -337,6 +404,15 @@ function deleteFav($dbh,$userID, $publicacionID){
                              AND ID_Usuario= :userID;");
     $stmt->execute($data);
 
+}
+function contadorLikes($dbh,$idPublicacion){
+    $data= array( 'publicacionID'=>$idPublicacion);
+    $stmt = $dbh->prepare("SELECT * FROM Likes
+                             WHERE ID_Pregunta= :publicacionID
+                             ;");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    return $stmt ->fetchAll();
 }
 
 $dbhcerrar = close();

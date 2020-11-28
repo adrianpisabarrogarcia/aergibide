@@ -5,6 +5,7 @@
 }
 body{
     background-color: #9F9F9F;
+    overflow: hidden;
 }
 #datusu, #mod, #modcont, #puntua{
     background-color: white;

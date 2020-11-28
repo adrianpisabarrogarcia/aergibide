@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    mostrarMenuPerfil();
     let botones = $("#opciones button");
     botones.on('click', organizacion);
     $("#foto").on("change", modificarimagen);
@@ -199,6 +200,25 @@ function modificarimagen() {
         processData: false,
         success: function () {
             location.reload();
+        }
+    });
+}
+function mostrarMenuPerfil(){
+    var contador=0;
+    let boton= $('#perfil');
+    let menuperfil= $('#menu_usuario').eq(0);
+    menuperfil.css('display','none');
+    condicionDespliegue(boton,contador,menuperfil);
+}
+
+function condicionDespliegue(boton, contador, menu){
+    boton.on('click', function (){
+        contador++;
+        if(contador % 2==0){
+            menu.css('display', 'none');
+        }
+        else{
+            menu.css('display','flex');
         }
     });
 }

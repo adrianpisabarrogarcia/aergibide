@@ -1,24 +1,30 @@
 $(document).ready(function (){
-    darQuitarLike();
-    darQuitarFav();
+    darQuitarLikePublicacion();
+    darQuitarFavPublicacion();
+    darQuitarLikeRespuesta();
 
 
 
 })
-function darQuitarLike(){
+function darQuitarLikePublicacion(){
     ajax($('.like'),"like");
 
 }
-function darQuitarFav(){
+function darQuitarFavPublicacion(){
     ajax($('.fav'),"fav");
+
+}
+
+function darQuitarLikeRespuesta(){
+    ajax($('.likeRespuesta'),"likeRespuesta");
 
 }
 
 function ajax(LikeOFav,dato){
     var boton= LikeOFav;
     boton.on('click',function (event){
-        event.preventDefault();
         var valor= $(this).val();
+        alert(valor);
         $.ajax({
             url: "../model/likeFav.php",
 

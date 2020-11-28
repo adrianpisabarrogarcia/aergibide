@@ -19,12 +19,13 @@ while ($row= $publicacion->fetch()) {
     ?>
 
     <div class="publicacion">
+
         <div class="titulo">
             <h1 class="title"><?= utf8_encode($titulo) ?></h1>
         </div>
 
         <div class="descripcion">
-            <input type="text" maxlength="25" class="desc" value="<?= utf8_encode($descripcion) ?>">
+            <span style="height: 120px; overflow: hidden; line-height: 1.55em;margin-left: 5%"><?= utf8_encode($descripcion) ?></span>
         </div>
 
         <div class="fecha">
@@ -35,11 +36,11 @@ while ($row= $publicacion->fetch()) {
             <span class="user"><?= utf8_encode($user) ?></span>
         </div>
 
-
         <div class="respuestas">
             <h1 class="num_respuestas"><?= $numero ?></h1>
             <span>respuestas</span>
         </div>
+        <input type="hidden" value="<?=$ID?>" id="IDHidden">
 
     </div>
     <div class="like_fav">
@@ -50,7 +51,7 @@ while ($row= $publicacion->fetch()) {
             $ID_publicacion = $row->ID_Pregunta;
             $claseLike = "rosa"; ?>
 
-            <button class="like " value="<?= $ID ?>">
+            <button class="like "name="publicacion" value="<?= $ID ?>">
                 <?php if ($ID_publicacion == $ID){ ?>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill <?= $claseLike ?>"
                      xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +72,7 @@ while ($row= $publicacion->fetch()) {
             $ID_publicacion = $row->ID_Pregunta;
             $claseFav = "amarillo"; ?>
 
-            <button class="fav" value="<?= $ID ?>">
+            <button class="fav" name="favorito" value="<?= $ID ?>">
                 <?php if ($ID_publicacion == $ID){ ?>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill <?= $claseFav ?>"
                      xmlns="http://www.w3.org/2000/svg">
@@ -92,5 +93,12 @@ while ($row= $publicacion->fetch()) {
 </section>
 
 </main>
+
+<button id="subirPrincipio">
+    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+    </svg>
+</button>
 
 

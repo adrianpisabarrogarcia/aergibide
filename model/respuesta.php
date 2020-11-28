@@ -1,15 +1,11 @@
 <?php
-
 require "general.php";
 
-$categorias=mostrarCategorias($dbh);
 
-
-if (isset($_POST["introducir"])){
-    $titulo = $_POST["titulo"];
+if (isset($_POST["descripcion"])){
     $descripcion = $_POST["descripcion"];
-    $categorias = $_POST["categorias"];
-    if(isset($_FILES['archivo']['tmp_name'])){
+
+    if(!empty($_FILES['archivo']['name'])){
         $nombreArchivo = $_FILES['archivo']['tmp_name'];
         $nombreEspecial = str_shuffle($_FILES["archivo"]["name"].uniqid());
         $archivoRuta = "../img/files/" . $nombreEspecial . "." .pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION); // Ruta
@@ -18,19 +14,28 @@ if (isset($_POST["introducir"])){
         $archivoRuta= "";
     }
 
+    $idPublicacion = $_POST["pregunta-id"];
+
 
     $idUsuario = guardarDatosUsuario($dbh,"");
     $idUsuario = $idUsuario->ID;
 
-    $idCategoria = mostrarCategoria($dbh, $categorias);
-    $row2 = $idCategoria->fetch();
-    $idCategoria = $row2->ID;
-
     $fecha = date("Y-m-d");
-    insercionPublicacion($dbh, $titulo, $descripcion, $idUsuario, $fecha, $idCategoria, $archivoRuta);
+    insercionRespuesta($dbh, $descripcion, $idUsuario, $idPublicacion, $fecha, $archivoRuta);
+    die();
 
-    header('Location: ../model/mis-publicaciones.php');
-
-}else{
-    require "../views/nueva-publicacion.view.php";
 }
+if (isset($_POST["operacion"])){
+    $identificador = $_POST["datos"];
+    if ($_POST["operacion"] == 1){
+        eliminarPregunta($dbh, $identificador);
+    }else{
+        eliminarRespuesta($dbh, $identificador);
+    }
+    echo $_POST["operacion"];
+    die();
+}
+
+
+
+echo "Error grave en ajax";

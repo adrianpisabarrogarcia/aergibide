@@ -81,7 +81,7 @@
         }
         else
         {
-           $stmt = datosusuario($dbh,$usuario);
+           $stmt = guardarDatosUsuario($dbh,$usuario);
            if ($usuario == $stmt->Usuario)
            {
                echo "ErrorUsu";
@@ -102,7 +102,7 @@
             $correo = $datos->Correo;
         else
         {
-            $stmt = datosusuario($dbh,$correo);
+            $stmt = guardarDatosUsuario($dbh,$correo);
             if ($correo == $stmt->Correo)
             {
                 echo "ErrorCorreo";
