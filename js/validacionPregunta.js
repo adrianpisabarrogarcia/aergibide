@@ -19,7 +19,7 @@ function validarRegistro(titulo, descripcion, checked) {
     let error = false;
 
     //Titulo
-    let validarTitulo = new RegExp("^([A-zÀ-ÿ]+[ ]?)+$");
+    let validarTitulo = new RegExp("^[\\d\\w\\W\\sÀ-ÿ\u00f1\u00d1]+$");
 
     if (!validarTitulo.test(titulo)) {
         $('#titulo').css('border', '1px solid red');

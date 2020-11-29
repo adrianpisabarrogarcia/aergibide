@@ -4,7 +4,7 @@ require "general.php";
 
 if (isset($_POST["descripcion"])){
     $descripcion = $_POST["descripcion"];
-
+    $descripcion = utf8_decode($descripcion);
     if(!empty($_FILES['archivo']['name'])){
         $nombreArchivo = $_FILES['archivo']['tmp_name'];
         $nombreEspecial = str_shuffle($_FILES["archivo"]["name"].uniqid());
@@ -38,4 +38,4 @@ if (isset($_POST["operacion"])){
 
 
 
-echo "Error grave en ajax";
+echo "Error grave en respuesta.php lanzado desde js ajax";

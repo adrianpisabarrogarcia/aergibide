@@ -93,13 +93,13 @@ function llamadaAjax(valor,oper){
 
         })
 }
-
 function mostrarPublicacion(){
-    $('.publicacion').on('click', function (){
-        var id= $('#IDHidden',this).val();
-        location.href= '../model/publicacion-id.php?id='+id;
+    $('.publicacion').on('click', function () {
+        var id = $('#IDHidden', this).val();
+        location.href = '../model/publicacion-id.php?id=' + id;
     })
 }
+
 function subirPrin(){
     $('#subirPrincipio').on('click',function (){
         $("html, body").animate({ scrollTop: 0 }, 600);

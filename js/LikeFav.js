@@ -24,7 +24,6 @@ function ajax(LikeOFav,dato){
     var boton= LikeOFav;
     boton.on('click',function (event){
         var valor= $(this).val();
-        alert(valor);
         $.ajax({
             url: "../model/likeFav.php",
 

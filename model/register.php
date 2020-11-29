@@ -8,7 +8,9 @@ $dbh = connect();
 if (isset($_POST["entrar"]))  {
     $usuario = $_POST["user"];
     $nombre = $_POST["nombre"];
+    $nombre = utf8_decode($nombre);
     $apellido = $_POST["apellido"];
+    $apellido = utf8_decode($apellido);
     $email = $_POST["email"];
     $password = $_POST["password"];
 

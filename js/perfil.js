@@ -38,7 +38,7 @@ $(document).ready(function () {
                 else if (response === "ErrorCorreo")
                     mostrarerror($("#em"), "El correo ya existente");
                 else {
-                    alert(response);
+                    //alert("Los datos se han modificado correctamente");
                     location.reload();
                 }
             }
@@ -204,22 +204,24 @@ function modificarimagen() {
     });
 }
 
-function mostrarMenuPerfil(){
-    var contador=0;
-    let boton= $('#perfil');
-    let menuperfil= $('#menu_usuario').eq(0);
-    menuperfil.css('display','none');
-    condicionDespliegue(boton,contador,menuperfil);
+function mostrarMenuPerfil() {
+    var contador = 0;
+    let boton = $('#perfil');
+    let menuperfil = $('#menu_usuario').eq(0);
+    menuperfil.css('display', 'none');
+    condicionDespliegue(boton, contador, menuperfil);
 }
 
-function condicionDespliegue(boton, contador, menu){
-    boton.on('click', function (){
+function condicionDespliegue(boton, contador, menu) {
+    boton.on('click', function () {
         contador++;
-        if(contador % 2==0){
+        if (contador % 2 == 0) {
             menu.css('display', 'none');
-        }
-        else{
-            menu.css('display','flex');
+        } else {
+            menu.css('display', 'flex');
         }
     });
 }
+
+
+

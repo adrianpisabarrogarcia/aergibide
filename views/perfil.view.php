@@ -27,8 +27,8 @@ require "../vistasfijas/cabecera.php";
             <div id="datusu">
                 <div id="datos">
                     <p><b>Usuario: </b><?= $datos->Usuario; ?></p>
-                    <p><b>Nombre: </b><?= $datos->Nombre; ?></p>
-                    <p><b>Apellido: </b><?= $datos->Apellido; ?></p>
+                    <p><b>Nombre: </b><?= utf8_encode($datos->Nombre); ?></p>
+                    <p><b>Apellido: </b><?= utf8_encode($datos->Apellido); ?></p>
                     <p><b>Correo: </b><?= $datos->Correo; ?></p>
                 </div>
                 <div id="imag">

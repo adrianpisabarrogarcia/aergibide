@@ -90,10 +90,12 @@
         }
 
         $nombre = $_POST["nom"];
+        $nombre = utf8_decode($nombre);
         if (empty($nombre))
             $nombre = $datos->Nombre;
 
         $apellido = $_POST["ape"];
+        $apellido = utf8_decode($apellido);
         if (empty($apellido))
             $apellido = $datos->Apellido;
 
@@ -111,7 +113,7 @@
         }
 
         modificardatosusu($dbh,$usuario,$nombre,$apellido,$correo);
-        echo "Los datos se han modificado correctamente";
+        echo "OK";
     }
 
 

@@ -8,6 +8,8 @@ $categorias=mostrarCategorias($dbh);
 if (isset($_POST["introducir"])){
     $titulo = $_POST["titulo"];
     $descripcion = $_POST["descripcion"];
+    $titulo = utf8_decode($titulo);
+    $descripcion = utf8_decode($descripcion);
     $categorias = $_POST["categorias"];
     if(isset($_FILES['archivo']['tmp_name'])){
         $nombreArchivo = $_FILES['archivo']['tmp_name'];
