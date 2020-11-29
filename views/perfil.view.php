@@ -135,5 +135,6 @@ require "../vistasfijas/cabecera.php";
 </script>
 <script src="../js/perfil.js"></script>
 <script src="../js/validaciondatos.js"></script>
+
 </body>
 </html>

@@ -298,6 +298,7 @@
 <script src="https://cdn.tiny.cloud/1/u3odj6obwmpr4y5vzm7zy8bk6ef0bfe8cv4yta79dv9ksh9k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>tinymce.init({selector:'textarea'});</script>
 <script src="../js/respuesta.js"></script>
+<script src="../js/modificarcss.js"></script>
 
 
 </body>

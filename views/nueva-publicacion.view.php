@@ -94,6 +94,7 @@
 <script>tinymce.init({selector:'textarea'});</script>
 <script src="../js/validacionPregunta.js"> </script>
 <script src="../js/perfil.js"></script>
+<script src="../js/modificarcss.js"></script>
 
 </body>
 </html>

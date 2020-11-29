@@ -5,7 +5,7 @@
 }
 body{
     background-color: #9F9F9F;
-    overflow: hidden;
+    overflow: scroll;
 }
 #datusu, #mod, #modcont, #puntua{
     background-color: white;
@@ -52,18 +52,20 @@ body{
 #contenido {
     grid-column: 2/3;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #mostrardatos {
     width: 80%;
-    margin-top: 15%;
-    margin-left: 10%;
+    margin-bottom: 15%;
+
 }
 
 #contenido h1 {
     margin-bottom: 4%;
     font-size: 32pt;
-    -webkit-text-stroke: 0.01px black;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
@@ -99,8 +101,9 @@ body{
 
 #opciones button {
     width: 80%;
-    height: 5vh;
-    margin-top: 3%;
+    min-height: 5vh;
+    height: auto;
+    margin-top: 5%;
     border: none;
 }
 
@@ -116,8 +119,7 @@ body{
 }
 
 #modificarcuenta {
-    margin-left: 10%;
-    margin-top: 8%;
+    margin: 0;
     height: auto;
     width: 80%;
     display: none;
@@ -134,8 +136,8 @@ body{
 
 #dato {
     border: 1px solid black;
-    margin-top: 10%;
     margin: 7%;
+    margin-top: 10%;
     grid-column: 1/2;
 }
 
@@ -273,11 +275,26 @@ body{
     cursor: pointer;
 }
 
+#modificarusu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+label{
+    margin: 0 !important;
+}
+#modificarusu>.in{
+    width: 98% !important;
+}
+.in>input{
+    width: 90%;
+}
+
 #modificarcontra {
     display: none;
     width: 80%;
-    margin-left: 12%;
-    margin-top: 10%;
+
 }
 
 #modcont {
@@ -295,7 +312,7 @@ body{
 
 #datoscont > input {
     padding: 1%;
-    width: 40%;
+    width: 50%;
     border-radius: 1em;
     border: 1px solid black;
 }
@@ -343,7 +360,7 @@ body{
 
 #punt {
     padding: 5%;
-    padding-bottom: 0%;
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -362,68 +379,227 @@ body{
 #resumen {
     display: grid;
     grid-template-columns: repeat(5, 20%);
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: 30px auto 30px auto;
     padding: 5%;
 }
 
 #resumen > img {
-    padding-top: 25%;
+    margin-top: 0% !important;
     width: 70%;
     padding-left: 10%;
 }
 
 #resumen > h3:nth-of-type(1) {
+    text-align: center;
+    font-size: 1.5em !important;
     grid-column: 3/4;
     grid-row: 1/2;
-    padding-left: 12%;
 }
 
 #resumen > h3:nth-of-type(2) {
+    text-align: center;
+    font-size: 1.5em !important;
     grid-column: 3/4;
-    grid-row: 2/3;
-    padding-left: 28%;
+    grid-row: 3/4;
 }
 
 #resumen > img:nth-of-type(1) {
+    margin-top: 5%;
     grid-column: 2/3;
-    grid-row: 1/2;
+    grid-row: 2/3;
     padding-left: 60%;
 }
 
 #resumen > img:nth-of-type(2) {
+    margin-top: 5%;
     grid-column: 3/4;
-    grid-row: 1/2;
+    grid-row: 2/3;
     padding-left: 60%;
 }
 
 #resumen > img:nth-of-type(3) {
     grid-column: 1/2;
-    grid-row: 2/3;
-    padding-top: 30%;
+    grid-row: 4/5;
+    padding-top: 15%;
 }
 
 #resumen > img:nth-of-type(4) {
     grid-column: 2/3;
-    grid-row: 2/3;
-    padding-top: 30%;
+    grid-row: 4/5;
+    padding-top: 15%;
 }
 
 #resumen > img:nth-of-type(5) {
     grid-column: 3/4;
-    grid-row: 2/3;
-    padding-top: 30%;
+    grid-row: 4/5;
+    padding-top: 15%;
 }
 
 #resumen > img:nth-of-type(6) {
     grid-column: 4/5;
-    grid-row: 2/3;
-    padding-top: 30%;
+    grid-row: 4/5;
+    padding-top: 15%;
 }
 
 #resumen > img:nth-of-type(7) {
     grid-column: 5/6;
-    grid-row: 2/3;
-    padding-top: 30%;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+@media screen and ( max-width: 1000px) {
+    #opciones > button {
+        font-size: 1em;
+    }
+    #imag>img{
+        width: 65%;
+    }
+    #modificarimagen>label{
+        width:85% ;
+    }
+    #datosusu>form{
+        width: 80%;
+    }
+}
+
+@media screen and ( max-width: 800px){
+    h1{
+        font-size: 1.8em !important;
+        color: white !important;
+        -webkit-text-stroke:unset !important;
+    }
+    #imag{
+        height: 50%;
+    }
+    #imgper{
+        height: 40%;
+    }
+    #imag>img{
+        width: 65%;
+    }
+    #modificarcuenta{
+        width: 90%;
+        margin: 0;
+    }
+    #modificarimagen>label{
+        width:95% ;
+    }
+    #datosusu>form{
+        width: 90%;
+    }
+    #datosusu>form>div{
+        width: 60%;
+    }
+
+}
+@media screen and ( max-width: 600px){
+    #contenedor {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #mostrardatos{
+        margin-bottom: 10% !important;
+    }
+    #menu{
+        width: 100%;
+    }
+    #opciones{
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        overflow: scroll;
+    }
+    #opciones:last-child{
+        margin-bottom: 20px;
+    }
+    #opciones > button{
+        margin-top: 4% !important;
+    }
+    #opciones button:nth-of-type(1){
+        margin: 0;
+        margin-top: 8%;
+    }
+    #contenido{
+        grid-rows: 1/2;
+        width: 100%;
+        display: flex;
+        margin-top: 10%;
+    }
+    #imag{
+        height: 40%;
+    }
+    #opciones > button {
+        font-size: 0.9em;
+    }
+    label{
+        font-size: 0.8em;
+    }
+    #botonmod{
+        width: 100%;
+    }
+    #listaNuevaPublicacion{
+        display: flex !important;
+    }
+    #listaNuevaPublicacion > ul{
+        display: none;
+    }
+    #listaNuevaPublicacion>button>svg{
+        width: 90%;
+        height: 90%;
+    }
+    #punt{
+        font-size: 0.7em;
+    }
+    #puntuacion{
+        margin-left: 0px !important;
+        margin-bottom: 15%;
+    }
+    h3 > ins{
+        font-size: 0.7em !important;
+
+    }
+    #resumen > h3:nth-of-type(1){
+        grid-column: 2/4;
+        padding-left: 20%;
+    }
+    ins{
+        padding-left: 15%;
+    }
+
+}
+@media screen and ( max-width: 400px){
+    #imag{
+        height: 35%;
+    }
+    #imag>img{
+        width: 75%;
+    }
+    #opciones > button {
+        font-size: 0.8em;
+        margin-top: 8%;
+    }
+    #mostrardatos{
+        margin-bottom: 40%
+    }
+    #modificarcuenta{
+        margin-bottom: 30%;
+    }
+    #datusu{
+        padding-top: 5%;
+        padding-bottom: 15%!important;
+    }
+    #datos{
+        font-size: 0.8em;
+    }
+    #imgper{
+        height: 20%;
+    }
+    #datoscont > input{
+        width: 80%;
+    }
+    #modificarcontra{
+        margin-bottom: 30%;
+    }
 }
 
 

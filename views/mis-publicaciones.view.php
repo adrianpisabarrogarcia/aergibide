@@ -78,5 +78,6 @@
             <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
             <script src="../js/LikeFav.js"></script>
             <script src="../js/perfil.js"></script>
+            <script src="../js/modificarcss.js"></script>
             </body>
             </html>
