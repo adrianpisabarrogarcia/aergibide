@@ -1,3 +1,9 @@
+<?php
+if (empty($dbh))
+header("Location: ../model/login.php");
+else
+{
+?>
 <!DOCTYPE html>
             <!-- LOGIN DE USUARIOS -->
 <html lang="es">
@@ -31,3 +37,6 @@
 
 </body>
 </html>
+    <?php
+}
+?>

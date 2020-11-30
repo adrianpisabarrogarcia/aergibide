@@ -1,4 +1,11 @@
-<?php require "../vistasfijas/head.php"?>
+<?php
+if (empty($datos))
+{
+    header("Location: ../model/login.php");
+}
+else
+{
+require "../vistasfijas/head.php"?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -303,3 +310,4 @@
 
 </body>
 </html>
+<?php } ?>

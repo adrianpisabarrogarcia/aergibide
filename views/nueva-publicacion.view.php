@@ -1,4 +1,12 @@
-<?php require "../vistasfijas/head.php"?>
+<?php
+if (empty($categorias))
+{
+    header("Location: ../model/login.php");
+}
+else
+{
+    require "../vistasfijas/head.php"?>
+
 
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">
@@ -98,3 +106,4 @@
 
 </body>
 </html>
+<?php } ?>

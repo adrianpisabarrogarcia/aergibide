@@ -2,10 +2,10 @@
 -- version 4.6.6deb5ubuntu0.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 30, 2020 at 09:47 AM
--- Server version: 5.7.32-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.7
+-- Servidor: localhost:3306
+-- Tiempo de generación: 30-11-2020 a las 18:54:06
+-- Versión del servidor: 5.7.32-0ubuntu0.18.04.1
+-- Versión de PHP: 7.2.24-0ubuntu0.18.04.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `reto2`
+-- Base de datos: `reto2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Categoria`
+-- Estructura de tabla para la tabla `Categoria`
 --
 
 CREATE TABLE `Categoria` (
@@ -32,7 +32,7 @@ CREATE TABLE `Categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `Categoria`
+-- Volcado de datos para la tabla `Categoria`
 --
 
 INSERT INTO `Categoria` (`ID`, `Descripcion`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `Categoria` (`ID`, `Descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Favoritos`
+-- Estructura de tabla para la tabla `Favoritos`
 --
 
 CREATE TABLE `Favoritos` (
@@ -55,17 +55,10 @@ CREATE TABLE `Favoritos` (
   `ID_Usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `Favoritos`
---
-
-INSERT INTO `Favoritos` (`ID`, `ID_Pregunta`, `ID_Usuario`) VALUES
-(1, 5, 18);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Likes`
+-- Estructura de tabla para la tabla `Likes`
 --
 
 CREATE TABLE `Likes` (
@@ -76,7 +69,7 @@ CREATE TABLE `Likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Likes`
+-- Volcado de datos para la tabla `Likes`
 --
 
 INSERT INTO `Likes` (`ID`, `ID_Pregunta`, `ID_Usuario`, `ID_Respuesta`) VALUES
@@ -85,12 +78,13 @@ INSERT INTO `Likes` (`ID`, `ID_Pregunta`, `ID_Usuario`, `ID_Respuesta`) VALUES
 (3, NULL, 18, 13),
 (4, 3, 18, NULL),
 (5, NULL, 19, 14),
-(6, 7, 19, NULL);
+(6, 7, 19, NULL),
+(7, 3, 17, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Pregunta`
+-- Estructura de tabla para la tabla `Pregunta`
 --
 
 CREATE TABLE `Pregunta` (
@@ -104,19 +98,20 @@ CREATE TABLE `Pregunta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `Pregunta`
+-- Volcado de datos para la tabla `Pregunta`
 --
 
 INSERT INTO `Pregunta` (`ID`, `Titulo`, `Descripcion`, `ID_Usuario`, `Fecha`, `ID_Categoria`, `Archivo`) VALUES
-(3, 'Nuevos conceptos de Airbus', '<p>El mantra de las emisiones Cero.</p>\r\n<p><strong>&iquest;Os subir&iacute;as a un avi&oacute;n cuyo combustible es hidr&oacute;geno? Un elemento super vol&aacute;til y altamente inflamable.</strong></p>\r\n<p><code>https://www.vadeaviones.com/2020/09/...ero-emisiones/</code></p>\r\n<p>Airbus ha desvelado tres conceptos para los primeros aviones comerciales del mundo con cero emisiones, que podr&iacute;an ponerse en servicio en 2035. Cada uno de estos conceptos representa un enfoque diferente para conseguir un vuelo con cero emisiones, y explora distintas soluciones tecnol&oacute;gicas y configuraciones aerodin&aacute;micas. El objetivo es apoyar el prop&oacute;sito de la compa&ntilde;&iacute;a de liderar la descarbonizaci&oacute;n en todo el sector de la aviaci&oacute;n.</p>\r\n<p>Los tres conceptos se basan en el hidr&oacute;geno como fuente de energ&iacute;a primaria, un combustible para la aviaci&oacute;n que Airbus considera limpio y muy prometedor, y que probablemente es la soluci&oacute;n que se implantar&aacute; en el sector aeroespacial y en otras industrias para alcanzar sus objetivos de emisiones neutras para el clima.</p>\r\n<p>Los tres conceptos, cuya denominaci&oacute;n en clave es &ldquo;ZEROe&rdquo; y de entre los que surgir&aacute; el primer avi&oacute;n comercial con cero emisiones, consisten en:</p>', 17, '2020-11-29', 5, '../img/files/413b6c6567f05.'),
-(5, 'Como ver mapa GPS de FS2004 en tablet', '<p>Hola amigos, me gustaria saber como podria ver el GPS de los aviones de FS2004 en una tablet mientras veo el panel del avion en la pantalla principal. He visto videos de youtube donde lo hacen pero no he encontrado la forma.<br /><br />Alguiien lo ha hecho y puede ayudarme?<br /><br />gracias.</p>', 18, '2020-11-30', 2, '../img/files/3a54ac86f705e.'),
+(3, 'Nuevos conceptos de Airbus', '<p>El mantra de las emisiones Cero.</p>\r\n<p><strong>&iquest;Os subir&iacute;as a un avi&oacute;n cuyo combustible es hidr&oacute;geno? Un elemento super vol&aacute;til y altamente inflamable.</strong></p>\r\n<p><code>https://www.vadeaviones.com/2020/09/...ero-emisiones/</code></p>\r\n<p>Airbus ha desvelado tres conceptos para los primeros aviones comerciales del mundo con cero emisiones, que podr&iacute;an ponerse en servicio en 2035. Cada uno de estos conceptos representa un enfoque diferente para conseguir un vuelo con cero emisiones, y explora distintas soluciones tecnol&oacute;gicas y configuraciones aerodin&aacute;micas. El objetivo es apoyar el prop&oacute;sito de la compa&ntilde;&iacute;a de liderar la descarbonizaci&oacute;n en todo el sector de la aviaci&oacute;n.</p>\r\n<p>Los tres conceptos se basan en el hidr&oacute;geno como fuente de energ&iacute;a primaria, un combustible para la aviaci&oacute;n que Airbus considera limpio y muy prometedor, y que probablemente es la soluci&oacute;n que se implantar&aacute; en el sector aeroespacial y en otras industrias para alcanzar sus objetivos de emisiones neutras para el clima.</p>\r\n<p>Los tres conceptos, cuya denominaci&oacute;n en clave es &ldquo;ZEROe&rdquo; y de entre los que surgir&aacute; el primer avi&oacute;n comercial con cero emisiones, consisten en:</p>', 17, '2020-11-29', 5, ''),
+(5, 'Como ver mapa GPS de FS2004 en tablet', '<p>Hola amigos, me gustaria saber como podria ver el GPS de los aviones de FS2004 en una tablet mientras veo el panel del avion en la pantalla principal. He visto videos de youtube donde lo hacen pero no he encontrado la forma.<br /><br />Alguiien lo ha hecho y puede ayudarme?<br /><br />gracias.</p>', 18, '2020-11-30', 2, ''),
 (7, 'Cuál es el avión business que más os gusta', '<p>Lejos de los grandes reactores comerciales modificados para tal, pregunto los dise&ntilde;ados para este sector &iquest;cu&aacute;l os gusta m&aacute;s? A m&iacute; particularmente por su l&iacute;nea el Learjet 75 de Bombardier todo un cl&aacute;sico.</p>', 18, '2020-11-30', 1, '../img/files/a4994sdij9vg5n9p.cf4doao7.jpg'),
-(8, 'Prueba 54', '<p>Hola prueba 54</p>', 17, '2020-11-30', 3, '../img/files/c160f0c1d534b.');
+(9, 'Global AI Traffic V4 Disponible', '<p>Buenas tardes a tod@s, despu&eacute;s de muchos retrasos por diferentes motivos por fin podemos lanzar el primer Beta del tr&aacute;fico.<br /><br />Importante:<br /><br />&Eacute;sta versi&oacute;n es &uacute;nica y exclusivamente para P3Dv4.4+ ya que contiene archivos con sistema PBR<br />Estamos detectando un error y no logramos encontrar la causa, si alg&uacute;n usuario encuentra el error por favor hacerlo saber.<br />Todo el soporte se har&aacute; mediante mensajes privados en la p&aacute;gina de Facebook.<br />&Eacute;ste tr&aacute;fico es totalmente gratuito, no se permite la comercializaci&oacute;n con &eacute;l. Nuestro trabajo simplemente es la recopilaci&oacute;n y montaje de un tr&aacute;fico gratuito con material gratuito</p>', 19, '2020-11-30', 1, ''),
+(10, 'Cuál de los A320 me recomendáis para Xplane11', '<p>Hola a todos, estoy en dudas de elegir un A320 ( Flight Factor, Toliss, Jardesing, FlightSimLabs) no he conseguido aclararme con algunas informaciones, que he visto en videos que circulan por la red. Por hacer una comparaci&oacute;n en Prepar3D vuelo el737-800 de PMDG, y ahora que estoy d&aacute;ndole ca&ntilde;a al X-plane 11.50, quisiera volar un A320 funcional.<br />Gracias de antemano por vuestra atenci&oacute;n<br />Saludos</p>', 19, '2020-11-30', 3, '../img/files/coefo28et134fp55g3fj2..jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Respuesta`
+-- Estructura de tabla para la tabla `Respuesta`
 --
 
 CREATE TABLE `Respuesta` (
@@ -129,7 +124,7 @@ CREATE TABLE `Respuesta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Respuesta`
+-- Volcado de datos para la tabla `Respuesta`
 --
 
 INSERT INTO `Respuesta` (`ID`, `Descripcion`, `Fecha`, `ID_Pregunta`, `ID_Usuario`, `Archivos`) VALUES
@@ -141,12 +136,15 @@ INSERT INTO `Respuesta` (`ID`, `Descripcion`, `Fecha`, `ID_Pregunta`, `ID_Usuari
 (12, '<p>Gracias Tania!</p>', '2020-11-30', 5, 18, ''),
 (13, '<p>Hola a todos. He visto que el prepar3d 2.4 es una pasada y funciona casi todo de esc&aacute;ndalo. Pero hay aviones y escenarios a los que les tengo cari&ntilde;o y quiero seguir volandolos y no funcionan en p3d.<br /><br />Me gustar&iacute;a tener los dos instalados, por separado pero en un mismo disco. &iquest;Eso es posible? &iquest;Habra problemas con uno u otro? En caso afirmativo, &iquest;hay que hacer alg&uacute;n truco especial algo?<br /><br />Saludos.</p>', '2020-11-30', 5, 18, '../img/files/bepi4c53t8ajg9elae8.f8bl.jpg'),
 (14, '<p>Mi propuesta:<br /><br />1.Plan A Executive: Gulfstream series 600. La elegancia extrema.<br /><br />2.Plan B Executive/Enterprise: cualquier B757 reacondicionado. La versatilidad perfecta.<br /><br />3.Plan C Family/Executive: Cirrus Vision Jet with Safe Return &amp; CAPS. La seguridad completa.</p>', '2020-11-30', 7, 19, ''),
-(15, '<p>Hola por favor a&ntilde;adete</p>', '2020-11-30', 7, 17, '');
+(15, '<p>Hola por favor a&ntilde;adete</p>', '2020-11-30', 7, 17, ''),
+(16, '<p>I was able to get my hands on it before the file was taken down. While it\'s a great package, there were a lot of errors with the installer so it\'s probably a good idea that it was removed. One of the fatal errors I got actually crashed my whole system and I had to do a hard reboot on my computer. I was able to install using the manual SKYAI method and edited .CFG files manually. So far the aircrafts are awesome with PBR and no system crashes yet. I guess I will have to find out as I do more flights as I\'ve only done about two quick flights. This package is definitely a lot better than any payware packages out there; I just hope that the installer gets fixed&nbsp;or&nbsp;just include instructions on how to install manually. Thank you for compiling this package!</p>', '2020-11-30', 9, 19, '../img/files/cf7ef53caojd4c1ptoc5g..jpg'),
+(17, '<div>\r\n<div>\r\n<div id=\"post_message_673089\">\r\n<blockquote>FlightSimLabs es para P3D, no para XP11. Toliss no tiene A320 (Solo A319 y A321). Creo que entre JAR y FlightFactor me quedo con este &uacute;ltimo.</blockquote>\r\n</div>\r\n</div>\r\n</div>', '2020-11-30', 10, 17, ''),
+(18, '<p>Yo tengo el A320 de JAR y el de flightfactor, el cual tengo muy usado ya es una maravilla.<br /><br />Sin dudarlo te recomiendo el de FF, mucho mejor que el JAR.<br /><br />Lo que si es cierto es que el FF consume m&aacute;s, el JAR es m&aacute;s liviano y amigable con PCS menos potentes.</p>', '2020-11-30', 10, 18, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Usuario`
+-- Estructura de tabla para la tabla `Usuario`
 --
 
 CREATE TABLE `Usuario` (
@@ -160,26 +158,26 @@ CREATE TABLE `Usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Usuario`
+-- Volcado de datos para la tabla `Usuario`
 --
 
 INSERT INTO `Usuario` (`ID`, `Nombre`, `Apellido`, `Usuario`, `Correo`, `Password`, `Imagen`) VALUES
-(17, 'Tania', 'Garcia', 'tania.garcia', 'tania.garcia@gmail.com', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/persona.jpg'),
+(17, 'Tania', 'Garcia', 'tania.garcia', 'tania.garcia@gmail.com', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/tania.garcia'),
 (18, 'Mario', 'Zatón', 'userMario', 'mario.zaton@ikasle.egibide.org', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/persona.jpg'),
 (19, 'Adrián', 'Pisabarro García', 'apisabarro', 'adrian.pisabarro.garcia@gmail.com', '5758d90ad92b9200b483e299e9b62d26', '../img/uploads/persona.jpg');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `Categoria`
+-- Indices de la tabla `Categoria`
 --
 ALTER TABLE `Categoria`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `Favoritos`
+-- Indices de la tabla `Favoritos`
 --
 ALTER TABLE `Favoritos`
   ADD PRIMARY KEY (`ID`),
@@ -187,7 +185,7 @@ ALTER TABLE `Favoritos`
   ADD KEY `ID_Usuario` (`ID_Usuario`);
 
 --
--- Indexes for table `Likes`
+-- Indices de la tabla `Likes`
 --
 ALTER TABLE `Likes`
   ADD PRIMARY KEY (`ID`),
@@ -196,7 +194,7 @@ ALTER TABLE `Likes`
   ADD KEY `ID_Respuesta` (`ID_Respuesta`);
 
 --
--- Indexes for table `Pregunta`
+-- Indices de la tabla `Pregunta`
 --
 ALTER TABLE `Pregunta`
   ADD PRIMARY KEY (`ID`),
@@ -204,7 +202,7 @@ ALTER TABLE `Pregunta`
   ADD KEY `ID_Categoria` (`ID_Categoria`);
 
 --
--- Indexes for table `Respuesta`
+-- Indices de la tabla `Respuesta`
 --
 ALTER TABLE `Respuesta`
   ADD PRIMARY KEY (`ID`),
@@ -212,58 +210,58 @@ ALTER TABLE `Respuesta`
   ADD KEY `ID_Usuario` (`ID_Usuario`);
 
 --
--- Indexes for table `Usuario`
+-- Indices de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `Categoria`
+-- AUTO_INCREMENT de la tabla `Categoria`
 --
 ALTER TABLE `Categoria`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `Favoritos`
+-- AUTO_INCREMENT de la tabla `Favoritos`
 --
 ALTER TABLE `Favoritos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `Likes`
+-- AUTO_INCREMENT de la tabla `Likes`
 --
 ALTER TABLE `Likes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `Pregunta`
+-- AUTO_INCREMENT de la tabla `Pregunta`
 --
 ALTER TABLE `Pregunta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `Respuesta`
+-- AUTO_INCREMENT de la tabla `Respuesta`
 --
 ALTER TABLE `Respuesta`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT for table `Usuario`
+-- AUTO_INCREMENT de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `Favoritos`
+-- Filtros para la tabla `Favoritos`
 --
 ALTER TABLE `Favoritos`
   ADD CONSTRAINT `Favoritos_ibfk_1` FOREIGN KEY (`ID_Pregunta`) REFERENCES `Pregunta` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Favoritos_ibfk_2` FOREIGN KEY (`ID_Usuario`) REFERENCES `Usuario` (`ID`);
 
 --
--- Constraints for table `Likes`
+-- Filtros para la tabla `Likes`
 --
 ALTER TABLE `Likes`
   ADD CONSTRAINT `Likes_ibfk_1` FOREIGN KEY (`ID_Pregunta`) REFERENCES `Pregunta` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -271,14 +269,14 @@ ALTER TABLE `Likes`
   ADD CONSTRAINT `Likes_ibfk_3` FOREIGN KEY (`ID_Respuesta`) REFERENCES `Respuesta` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `Pregunta`
+-- Filtros para la tabla `Pregunta`
 --
 ALTER TABLE `Pregunta`
   ADD CONSTRAINT `Pregunta_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `Usuario` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Pregunta_ibfk_2` FOREIGN KEY (`ID_Categoria`) REFERENCES `Categoria` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `Respuesta`
+-- Filtros para la tabla `Respuesta`
 --
 ALTER TABLE `Respuesta`
   ADD CONSTRAINT `Respuesta_ibfk_1` FOREIGN KEY (`ID_Pregunta`) REFERENCES `Pregunta` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,

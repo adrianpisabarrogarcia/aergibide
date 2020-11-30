@@ -1,3 +1,9 @@
+<?php
+if (empty($datos))
+header("Location: ../model/login.php");
+else
+{
+?>
 <body>
     <header>
         <div id="logotipo">
@@ -47,3 +53,6 @@
             <button id="perfil"><img src="<?=$datos->Imagen?>"></button>
         </div>
     </header>
+    <?php
+}
+?>

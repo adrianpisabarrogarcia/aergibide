@@ -12,7 +12,7 @@ $(document).ready(function (){
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        if (scroll >500) {
+        if (scroll >300) {
             $("#subirPrincipio").css("display",'flex');
         } else {
             $("#subirPrincipio").css("display",'none');

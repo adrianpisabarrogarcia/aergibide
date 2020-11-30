@@ -1,4 +1,10 @@
 <?php
+if (empty($publicacion))
+{
+    header("Location: ../model/login.php");
+}
+else
+{
 $fallo= $publicacion;
 $contador = $fallo->rowCount();
 if($contador==0){
@@ -117,3 +123,4 @@ if($contador==0){
         crossorigin="anonymous">
 </script>
 <script src="../js/principal.js"></script>
+<?php } ?>

@@ -1,3 +1,10 @@
+<?php
+if (empty($dbh))
+header("Location: ../model/login.php");
+else
+{
+?>
+
 <!DOCTYPE html>
             <!-- LOGIN DE USUARIOS -->
 <html lang="es">
@@ -43,3 +50,7 @@
 <script src="../js/validaciondatos.js"></script>
 </body>
 </html>
+
+<?php
+}
+?>

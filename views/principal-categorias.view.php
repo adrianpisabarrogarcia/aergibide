@@ -1,3 +1,11 @@
+<?php
+if (empty($operacion))
+{
+    header("Location: ../model/login.php");
+}
+else
+{
+?>
 <div class="cuadro_publicacion">
     <?php
     if ($operacion=='categoria'){
@@ -15,3 +23,4 @@
 
     require "publicacion.view.php"; ?>
 </div>
+<?php } ?>

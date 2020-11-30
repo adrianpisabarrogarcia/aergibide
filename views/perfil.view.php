@@ -1,4 +1,9 @@
 <?php
+
+if (empty($datos))
+header('Location: ../model/login.php');
+else
+{
 require "../vistasfijas/head.php";
 ?>
 <link rel="stylesheet" href="../css/estiloperfil.css">
@@ -138,3 +143,4 @@ require "../vistasfijas/cabecera.php";
 
 </body>
 </html>
+<?php } ?>

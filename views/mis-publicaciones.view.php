@@ -1,4 +1,11 @@
-<?php require "../vistasfijas/head.php" ?>
+
+<?php
+if (empty($tituloPagina))
+{
+    header("Location: ../model/login.php");
+}
+else{
+require "../vistasfijas/head.php" ?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">
 
@@ -81,3 +88,4 @@
             <script src="../js/modificarcss.js"></script>
             </body>
             </html>
+            <?php } ?>

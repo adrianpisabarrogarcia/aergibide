@@ -13,6 +13,8 @@ function propiedadesCssMenu(ventana) {
                 $("#lista, #listaNuevaPublicacion > ul").css("display", "none");
                 contadormenu = 0;
                 $("#publicaciones").css("margin-top", "");
+                $('.splide, .removeFilter').css("display","none");
+                mostrarCategorias(0);
             }
         })
 
@@ -38,6 +40,8 @@ function propiedadesCssMenu(ventana) {
                 mostrarlista();
                 mostrarlista2();
                 mostrarMenuPerfil();
+                $('.splide, .removeFilter').css("display","none");
+                mostrarCategorias(0);
 
                 if ($("#barra_busqueda").css('height') == "0px")
                     $("#publicaciones").css("margin-top", "250px");
