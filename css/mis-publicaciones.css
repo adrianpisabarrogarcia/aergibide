@@ -1,0 +1,11 @@
+#barra_busqueda{
+    height: 0px !important;
+}
+body{
+    grid-template-rows: 9vh auto !important;
+}
+
+h1{
+    text-align: center;
+    padding: 10px;
+}

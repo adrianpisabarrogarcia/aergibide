@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #9F9F9F;
+    overflow-x: hidden;
+}
+#datusu, #mod, #modcont, #puntua{
+    background-color: white;
+}
+
+
+#listaNuevaPublicacion {
+    display: none !important;
+}
+
+#lista {
+    display: none;
+}
+
+#contenedor {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+#menu {
+    grid-column: 1/2;
+    background-color: black;
+}
+
+#opciones {
+    box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    height: 91vh;
+
+}
+
+#opciones > button {
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+#opciones button:nth-of-type(1) {
+    margin-top: 35%;
+}
+
+#contenido {
+    grid-column: 2/3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mostrardatos {
+    width: 80%;
+    margin-bottom: 15%;
+
+}
+
+#contenido h1 {
+    margin-bottom: 4%;
+    font-size: 32pt;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+#datusu {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    border: 1px solid black;
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.75);
+}
+
+#datos {
+    grid-column: 1/2;
+    padding: 12%;
+    padding-left: 10%;
+    line-height: 200%;
+}
+
+#imag {
+    margin-top: 11%;
+    margin-right: 8%;
+    grid-column: 2/3;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#imag img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+#opciones button {
+    width: 80%;
+    min-height: 5vh;
+    height: auto;
+    margin-top: 5%;
+    border: none;
+}
+
+#opciones button:hover {
+    background-color: #744484;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+#opciones button:focus {
+    outline-style: none;
+}
+
+#modificarcuenta {
+    margin: 0;
+    height: auto;
+    width: 80%;
+    display: none;
+}
+
+#mod {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: repeat(2, auto);
+    border: 1px solid black;
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.75);
+    height: auto;
+}
+
+#dato {
+    border: 1px solid black;
+    margin: 7%;
+    margin-top: 10%;
+    grid-column: 1/2;
+}
+
+#datosusu {
+    margin: 5%;
+}
+
+#datosusu {
+    display: flex;
+}
+
+#datosusu {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#datosusu > form {
+    width: 70%;
+}
+
+.in {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 2%;
+}
+
+#datosusu > form > label {
+    margin-left: 28%;
+}
+
+.in > input {
+    border-radius: 2em;
+    padding: 1%;
+    text-align: center;
+}
+
+.in > input:focus {
+    outline-style: none;
+}
+
+#datosusu > form > button:hover {
+    background-color: #3b3b3b;
+    cursor: pointer;
+}
+
+#datosusu > form > button:focus {
+    outline-style: none;
+}
+
+#datosusu > form > button {
+    margin-top: 10%;
+    padding: 3%;
+    width: 100%;
+    border-radius: 2em;
+    background-color: #744484;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+}
+
+.in button {
+    border: none;
+    color: #744484;
+    background-color: white;
+    margin-left: 5%;
+    font-weight: bold;
+}
+
+.in button:hover {
+    color: #3b3b3b;
+    cursor: pointer;
+}
+
+
+.in button:focus {
+    outline-style: none;
+}
+
+#imagen {
+    padding-top: 10%;
+    grid-column: 2/3;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#imgper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 25vh;
+}
+
+#imgper > img {
+    width: 60%;
+    border-radius: 50%;
+}
+
+#botonmod {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 80%;
+}
+
+#modificarimagen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#modificarimagen > input[type="file"] {
+    display: none;
+}
+
+#modificarimagen > label {
+    background-color: #744484;
+    color: white;
+    padding: 6% 0;
+    width: 55%;
+    border-radius: 2em;
+    text-align: center;
+}
+
+#modificarimagen > label:hover {
+    background-color: #3b3b3b;
+    cursor: pointer;
+}
+
+#modificarusu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+label{
+    margin: 0 !important;
+}
+#modificarusu>.in{
+    width: 98% !important;
+}
+.in>input{
+    width: 90%;
+}
+
+#modificarcontra {
+    display: none;
+    width: 80%;
+
+}
+
+#modcont {
+    border: 1px solid black;
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.75);
+}
+
+#datoscont {
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#datoscont > input {
+    padding: 1%;
+    width: 50%;
+    border-radius: 1em;
+    border: 1px solid black;
+}
+
+#datoscont > input:focus {
+    outline-style: none;
+}
+
+#datoscont > span {
+    color: red;
+    display: none;
+    margin-bottom: 3%;
+}
+
+#datoscont button {
+    margin-top: 5%;
+    border: none;
+    padding: 2%;
+    width: 30%;
+    border-radius: 2em;
+    background-color: #744484;
+    color: white;
+}
+
+#datoscont button:hover {
+    background-color: #3b3b3b;
+    cursor: pointer;
+}
+
+#datoscont button:focus {
+    outline-style: none;
+}
+
+#puntuacion {
+    display: none;
+    margin-left: 10%;
+    margin-top: 5%;
+    width: 80%;
+}
+
+#puntua {
+    border: 1px solid black;
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.75);
+}
+
+#punt {
+    padding: 5%;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#punt > p {
+    width: 80%;
+    text-align: center;
+}
+
+#punt > p > span {
+    margin-left: 1%;
+}
+
+#resumen {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: 30px auto 30px auto;
+    padding: 5%;
+}
+
+#resumen > img {
+    margin-top: 0% !important;
+    width: 70%;
+    padding-left: 10%;
+}
+
+#resumen > h3:nth-of-type(1) {
+    text-align: center;
+    font-size: 1.5em !important;
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+#resumen > h3:nth-of-type(2) {
+    text-align: center;
+    font-size: 1.5em !important;
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+#resumen > img:nth-of-type(1) {
+    margin-top: 5%;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding-left: 60%;
+}
+
+#resumen > img:nth-of-type(2) {
+    margin-top: 5%;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    padding-left: 60%;
+}
+
+#resumen > img:nth-of-type(3) {
+    grid-column: 1/2;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+#resumen > img:nth-of-type(4) {
+    grid-column: 2/3;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+#resumen > img:nth-of-type(5) {
+    grid-column: 3/4;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+#resumen > img:nth-of-type(6) {
+    grid-column: 4/5;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+#resumen > img:nth-of-type(7) {
+    grid-column: 5/6;
+    grid-row: 4/5;
+    padding-top: 15%;
+}
+
+@media screen and ( max-width: 1000px) {
+    #opciones > button {
+        font-size: 1em;
+    }
+    #imag>img{
+        width: 65%;
+    }
+    #modificarimagen>label{
+        width:85% ;
+    }
+    #datosusu>form{
+        width: 80%;
+    }
+}
+
+@media screen and ( max-width: 800px){
+    h1{
+        font-size: 1.8em !important;
+        color: white !important;
+        -webkit-text-stroke:unset !important;
+    }
+    #imag{
+        height: 50%;
+    }
+    #imgper{
+        height: 40%;
+    }
+    #imag>img{
+        width: 65%;
+    }
+    #modificarcuenta{
+        width: 90%;
+        margin: 0;
+    }
+    #modificarimagen>label{
+        width:95% ;
+    }
+    #datosusu>form{
+        width: 90%;
+    }
+    #datosusu>form>div{
+        width: 60%;
+    }
+
+}
+@media screen and ( max-width: 600px){
+    #contenedor {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #mostrardatos{
+        margin-bottom: 10% !important;
+    }
+    #menu{
+        width: 100%;
+    }
+    #opciones{
+        width: 100%;
+        margin: 0;
+        height: 100%;
+        overflow: scroll;
+    }
+    #opciones:last-child{
+        margin-bottom: 20px;
+    }
+    #opciones > button{
+        margin-top: 4% !important;
+    }
+    #opciones button:nth-of-type(1){
+        margin: 0;
+        margin-top: 8%;
+    }
+    #contenido{
+        grid-rows: 1/2;
+        width: 100%;
+        display: flex;
+        margin-top: 10%;
+    }
+    #imag{
+        height: 40%;
+    }
+    #opciones > button {
+        font-size: 0.9em;
+    }
+    label{
+        font-size: 0.8em;
+    }
+    #botonmod{
+        width: 100%;
+    }
+    #listaNuevaPublicacion{
+        display: none !important;
+    }
+    #listaNuevaPublicacion>button>svg{
+        width: 90%;
+        height: 90%;
+    }
+    #punt{
+        font-size: 0.7em;
+    }
+    #puntuacion{
+        margin-left: 0px !important;
+        margin-bottom: 15%;
+    }
+    h3 > ins{
+        font-size: 0.7em !important;
+
+    }
+    #resumen > h3:nth-of-type(1){
+        grid-column: 2/4;
+        padding-left: 20%;
+    }
+    ins{
+        padding-left: 15%;
+    }
+
+}
+@media screen and ( max-width: 400px){
+    #imag{
+        height: 35%;
+    }
+    #imag>img{
+        width: 75%;
+    }
+    #opciones > button {
+        font-size: 0.8em;
+        margin-top: 8%;
+    }
+    #mostrardatos{
+        margin-bottom: 40%
+    }
+    #modificarcuenta{
+        margin-bottom: 30%;
+    }
+    #datusu{
+        padding-top: 5%;
+        padding-bottom: 15%!important;
+    }
+    #datos{
+        font-size: 0.8em;
+    }
+    #imgper{
+        height: 20%;
+    }
+    #datoscont > input{
+        width: 80%;
+    }
+    #modificarcontra{
+        margin-bottom: 30%;
+    }
+}
+
+
+
+
+
+
+

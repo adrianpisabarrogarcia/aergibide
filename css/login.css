@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+hr {
+    color: #191D24;
+    background-color: black;
+}
+
+body {
+    background-color: #2F2F2F;
+    background-image: url('../img/5eaa3ff521d7c1cf80900cbe95b412ba.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+img {
+
+    max-width: 70%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div {
+    background-color: white;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 6px 7px 20px 1px #724085,
+    -6px -7px 20px 1px #724085  ;
+    z-index:1;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+form {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+input, button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    border: 2px solid #724085;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    font-size: 13px;
+    outline: none;
+}
+input:focus{
+    outline: none;
+}
+
+button:hover, input[type=button] {
+    cursor: pointer;
+}
+
+.boton {
+    border: 2px solid #3b3b3b;
+    color: white;
+    background-color: #724085;
+}
+.boton:hover{
+    border-color: #724085;
+    background-color: #3b3b3b;
+}
+
+@media (max-width: 768px) {
+    div{
+        width: 80%;
+    }
+}

@@ -1,0 +1,674 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 100% 90% 100%;
+    grid-template-rows: repeat(2, 100px) auto;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+/*El css principal del header esta en el archivo header.css.
+Unicamente le asignamos la columna y fila que va a ocupar.*/
+header {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    z-index: 1;
+    height: 100px;
+}
+header > div{
+    height: 100%;
+}
+
+a {
+    display: flex;
+    text-align: center;
+}
+
+a:hover {
+    color: #b5b5b5;
+}
+
+/*Articulo que contiene la barra de busqueda, el boton de filtrar y el menu desplegable del perfil.*/
+#barra_busqueda {
+    width: 100%;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 18vw 64vw 18vw;
+    background-color: #724085;
+
+}
+
+/*Div que guarda un elemento "a" que sirve como botón para desplegar el menú de categorias.*/
+#filtro {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+#filtro > a {
+    color: white;
+    text-decoration: none;
+
+}
+
+#filtro > a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #b5b5b5;
+}
+
+#filtro > a:focus {
+    text-decoration: underline;
+
+}
+.removeFilter{
+    margin-left: 5%;
+    display: none;
+
+}
+
+.circulo{
+    display: none;
+}
+.bi-x-circle:hover .circulo{
+    display: block;
+}
+
+/*Div que guarda un input y un boton, sirven como barra de busqueda para buscar publicaciones especificas.*/
+#buscador {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buscador > input {
+    width: 60%;
+    height: 45%;
+    text-align: center;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    outline: none;
+    border: 1px solid black;
+    font-size: 1.1em;
+    background-color: #b5b5b5;
+}
+
+#buscador > #lupa {
+    height: 45%;
+    width: 7%;
+    background-color: black;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid black;
+    font-size: 1.2em;
+}
+
+#lupa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lupa > span {
+    height: auto;
+}
+
+#lupa:hover {
+    cursor: pointer;
+}
+
+/*Div que se despliega al clickar el botón de usuario situado en el header.
+El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
+#menu_usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    width: 10%;
+    height: 130px;
+    z-index: 4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#menu_usuario > ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+#menu_usuario > ul > li {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#menu_usuario > ul > li:hover {
+    opacity: 90%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#menu_usuario > ul > li > a {
+    color: #363837;
+    font-size: 1.3em;
+}
+
+#menu_usuario > ul > li > a:hover {
+    text-decoration: underline;
+}
+
+/*El main contiene el menú de categorias(un carousel), y la sección dedicada a las publicaciones*/
+main {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 88%;
+    height: auto;
+    box-shadow: 0 -4px 10px 0 rgba(0,0,0,0.75);
+
+
+}
+
+/* Todos los elementos relacionados con splide estan relacionados con el menú de categorias.*/
+.splide {
+    display: none;
+    width: 95%;
+    justify-content: center;
+    align-content: center;
+    margin: 20px 0;
+    height: 10vh;
+    order: 1;
+
+}
+
+.splide__track {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+}
+
+.splide__list {
+    width: 100% !important;
+}
+
+.splide__slide {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.splide__slide > button {
+    background-color: #302f2f;
+    color: white;
+    width: 55%;
+    height: 80%;
+    border-radius: 10px;
+    font-size: 1.1em;
+    outline: none;
+    border: 2px solid #724085;
+}
+
+.botonActivo {
+    background-color: #724085 !important;
+}
+
+.botonDesactivado {
+    background-color: #302f2f !important;
+
+}
+
+
+.splide__pagination {
+    display: none !important;
+}
+
+/*Sección que contiene todas las publicaciones.*/
+#publicaciones {
+    order: 2;
+    width: 90%;
+    min-height: 200px;
+    margin-top: 40px;
+    background-color: #9c9a9a;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+}
+
+.cuadro_publicacion {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    margin: 30px;
+    margin-bottom: 0;
+}
+/* Las publicaciones se van generando automaticamente según los datos recogidos en las base de datos*/
+.publicacion {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
+    grid-template-rows: 60px auto 60px;
+}
+
+.publicacion:hover {
+    cursor: pointer;
+}
+
+.publicacion > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div[class=titulo] {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    justify-content: flex-start;
+}
+
+div[class=descripcion] {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+
+}
+
+div[class=descripcion] >span {
+    height: 120px;
+    overflow: hidden;
+    line-height: 1.55em;
+    margin-left: 5%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 95%;
+    font-size: 1.2em;
+
+}
+
+.fecha {
+    grid-row: 1/2;
+    grid-column: 4/5;
+    font-size: 1.2em;
+}
+
+div[class=usuario] {
+    grid-row: 3/4;
+    grid-column: 4/5;
+    font-size: 1.2em;
+}
+
+div[class=respuestas] {
+    grid-row: 1/4;
+    grid-column: 5/6;
+    justify-content: space-around;
+    border-left: 2px solid dimgrey;
+}
+
+.num_respuestas {
+    padding: 13%;
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 10px 2px dimgrey,
+    -2px -2px 5px 2px dimgrey;
+    border: 1px solid dimgrey;
+    font-size: 2.6em;
+    color: dimgrey;
+}
+
+.respuestas > span {
+    grid-row: 3/4;
+}
+
+.like_fav {
+    margin-left: 20px;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(2, 5%);
+    grid-template-rows: 60px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid dimgrey;
+
+
+}
+.like_fav:last-child{
+    border-bottom: none;
+}
+
+.corazon {
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.corazon> span{
+    display: flex;
+    align-items: center;
+}
+
+.favorito {
+    width: 100%;
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+
+}
+
+.like, .fav, .likeRespuesta {
+    width: 80%;
+    height: 100%;
+    box-shadow: 2px 2px 10px 2px dimgrey,
+    -2px -2px 5px 2px dimgrey;
+    border: 1px solid dimgrey;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+button > .bi {
+    color: black;
+}
+
+.bi {
+    font-size: 34px;
+
+}
+.rosa{
+    fill: #d4425f;
+}
+.amarillo{
+    fill: #dec83a;
+}
+#listaMovil {
+    display: none;
+}
+/*Boton para subir al inicio de la pagina*/
+#subirPrincipio{
+    position: fixed;
+    bottom: 2%;
+    right: 0.8%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 10%;
+    height: 15%;
+    display: none;
+    justify-content: flex-end;
+    fill: white;
+
+}
+#subirPrincipio>svg{
+    width: 1.8em;
+    height: 1.8em;
+}
+#subirPrincipio:hover{
+    cursor: pointer;
+}
+@media screen and ( max-width: 1400px) {
+    #menu_usuario{
+        width: 15%;
+    }
+    .respuestas{
+        padding-left: 20px;
+    }
+    .num_respuestas{
+        padding: 20%;
+    }
+    .like_fav{
+        grid-template-columns: repeat(2, 10%);
+
+    }
+    .like, .fav, .likeRespuesta{
+        width: 62%;
+    }
+
+
+}
+
+@media screen and ( max-width: 1000px) {
+    #buscador > input{
+        width: 70%;
+    }
+    #buscador > #lupa{
+        width: 12%;
+    }
+    #menu_usuario{
+        width: 20%;
+    }
+    .cuadro_publicacion{
+        margin: 25px    ;
+    }
+    .publicacion{
+        grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
+        grid-template-rows: 50px 100px 40px;
+        margin-top: 0 !important;
+    }
+    .like, .fav, .likeRespuesta{
+        width: 77%;
+    }
+
+}
+@media screen and ( max-width: 824px){
+    *{
+        font-size: 1em;
+    }
+    .publicacion{
+        grid-template-columns: 45% 30.5% 25.5% ;
+        grid-template-rows: 60px 100px 40px;
+    }
+    div[class=titulo] {
+        grid-row: 1/2;
+        grid-column: 1/4;
+        justify-content: flex-start;
+    }
+
+    div[class=descripcion] {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20px;
+
+    }
+    div[class=usuario] {
+        grid-row: 3/4;
+        grid-column: 2/3;
+        font-size: 1.2em;
+    }
+
+    div[class=respuestas] {
+        grid-row: 1/4;
+        grid-column: 3/4;
+        justify-content: space-around;
+        border-left: 2px solid dimgrey;
+    }
+    .fecha {
+        grid-row: 1/2;
+        grid-column: 2/3;
+        font-size: 1.2em;
+    }
+    .respuestas{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .respuestas >span{
+        font-size: 1.1em;
+    }
+    .like_fav{
+        grid-template-columns: repeat(2, 20%);
+    }
+    .like, .fav, .likeRespuesta{
+        width: 60%;
+    }
+
+    .splide__slide{
+        width: 33%;
+    }
+    .splide__slide > button{
+        width: 90%;
+        height: 60%;
+    }
+    .splide__arrows{
+        display: flex;
+        justify-content: center;
+    }
+    .splide__arrows>button{
+        margin-top: 40px;
+
+    }
+    .splide__arrow--prev{
+        margin-left: 30%;
+    }
+    .splide__arrow--next{
+        margin-right: 30%;
+
+    }
+
+}
+@media screen and ( max-width: 600px) {
+    *, #filtro>a{
+        font-size: 1em;
+    }
+    .publicacion{
+        grid-template-columns: 45% 30.5% 25.5% ;
+        grid-template-rows: 60px 100px 40px;
+    }
+    .like, .fav, .likeRespuesta{
+        width: 80%;
+    }
+    .num_respuestas{
+        padding: 30%;
+    }
+    .fecha {
+        grid-row: 3/4;
+        grid-column: 1/2;
+        font-size: 0.9em;
+    }
+    div[class=descripcion]{
+        grid-row: 2/3;
+        grid-column: 1/3;
+        margin-top: 0;
+        margin-right: 3%;
+        align-items: flex-start;
+    }
+    div[class=descripcion]>span {
+
+        font-size: 0.8em;
+        height: 55px;
+
+    }
+    div[class=respuestas]{
+        grid-row: 2/4;
+
+    }
+    .respuestas >span{
+        font-size: 0.9em;
+    }
+    div[class=usuario] >span{
+        font-size: 0.8em;
+    }
+
+    #barra_busqueda{
+        grid-template-columns: 35vw 65vw;
+
+    }
+    #filtro{
+    }
+    #buscador {
+        grid-column: 2/4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 8%;
+    }
+    #buscador > input{
+        display: none;
+        border-radius: 50px;
+        margin-right: 18%;
+        width: 100%;
+    }
+    #buscador > #lupa{
+        height: 45%;
+        width:16%;
+        border-radius: 50px;
+        border: 1px solid black;
+    ;
+    }
+    #menu_usuario{
+        width: 100%;
+
+    }
+    #menu_usuario>ul{
+        width: 100%;
+        height: 100%;
+        border: none;
+
+    }
+    #menu_usuario>ul>li{
+        border: 1px solid white;
+    }
+    #menu_usuario>ul:first-child{
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+
+    }
+    #menu_usuario > ul > li:hover{
+        border: none;
+    }
+
+}
+@media screen and ( max-width: 400px){
+    #buscador > #lupa {
+        height: 45%;
+        width: 20%;
+    }
+    #buscador > input{
+        margin-right: 12%;
+        width: 100%;
+    }
+
+}
+
+
+
