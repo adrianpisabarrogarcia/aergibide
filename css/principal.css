@@ -143,7 +143,6 @@ El menú contiene los enlaces para entrar en el perfil o para cerrar sesión.*/
     justify-content: center;
     align-items: center;
     background-color: black;
-    opacity: 75%;
     position: absolute;
     right: 0;
     width: 10%;
@@ -261,7 +260,6 @@ main {
     order: 2;
     width: 90%;
     min-height: 200px;
-    height:auto;
     margin-top: 40px;
     background-color: #9c9a9a;
     border-radius: 10px;
@@ -308,11 +306,10 @@ div[class=descripcion] {
     display: flex;
     justify-content: flex-start;
     margin-top: 20px;
-    height:auto;
 
 }
 
-.desc {
+div[class=descripcion] >span {
     height: 120px;
     overflow: hidden;
     line-height: 1.55em;
@@ -636,7 +633,7 @@ button > .bi {
         width:16%;
         border-radius: 50px;
         border: 1px solid black;
-
+    ;
     }
     #menu_usuario{
         width: 100%;

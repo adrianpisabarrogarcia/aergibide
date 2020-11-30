@@ -5,7 +5,7 @@
 }
 body{
     background-color: #9F9F9F;
-    overflow: scroll;
+    overflow-x: hidden;
 }
 #datusu, #mod, #modcont, #puntua{
     background-color: white;
@@ -538,10 +538,7 @@ label{
         width: 100%;
     }
     #listaNuevaPublicacion{
-        display: flex !important;
-    }
-    #listaNuevaPublicacion > ul{
-        display: none;
+        display: none !important;
     }
     #listaNuevaPublicacion>button>svg{
         width: 90%;
