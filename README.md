@@ -18,6 +18,11 @@ Este portal tiene las siguientes funcionalidades:
 *  Montar un servidor basado en scripts de Apache, MySQL, PHP, FTP y SSH.
 
 
+## Demo 
+Se puede probar la demo en el siguiente enlace: [https://adrianpisabarro.com/aergibide/model/login.php](https://adrianpisabarro.com/aergibide/model/login.php) 
+
+
+
 ## Documentación
 *   [Manual de Usuario](https://github.com/adrianpisabarrogarcia/aergibide/blob/master/documentacion/Documentaci%C3%B3n%20General.pdf)
 *   [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](https://github.com/adrianpisabarrogarcia/aergibide/blob/master/documentacion/Gu%C3%ADa%20de%20estilo.pdf)
