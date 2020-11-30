@@ -19,21 +19,23 @@ Este portal tiene las siguientes funcionalidades:
 
 
 ## Documentación
-*  [Manual de Usuario](/documentation/Documentación%20General.pdf)
-*  [Git Development Model](/documentation/ANEXO%20II%20-%20Documentación%20Control%20de%20Versiones%20Git.pdf)
-*  [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](/documentation/ANEXO%20I%20-%20Gu%C3%ADa%20de%20estilo.pdf)
-*  [Presentación Aeronatic Engines SA by EuskalDev](/documentation/Presentación%20Reto%20AE.pdf
-)
+*  [Manual de Usuario](./documentacion/Documentación General.pdf)
+*  [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](./documentacion/Guía de estilo.pdf)
+*  [Presentación Aergibide S.L. by WeApp](./documentacion/Presentación Reto Aergibide.pdf)
 
 
 ## Desarollador por
-Desarrollador por EuskalDev: [Adrián](https://github.com/adrianpisabarrogarcia), [Mario](https://github.com/mariozaton01), [Tania](https://github.com/TaniaGarciaOlarte).   
+Desarrollador por WeApp: [Adrián](https://github.com/adrianpisabarrogarcia), [Mario](https://github.com/mariozaton01), [Tania](https://github.com/TaniaGarciaOlarte).   
  ![](./readme-images/EuskalDev.png) 
 
 ## Capturas del Portal
+![](/images-readme/img1.png) 
+![/images-readme/logo.png](./images-readme/img2.png) 
+![/images-readme/logo.png](./images-readme/img3.png) 
+![/images-readme/logo.png](./images-readme/img4.png) 
 
-![](./readme-images/login.png)  
-![](./readme-images/portal.png)  
 
-## Logotipo de A.E. S.A.    
-![](./readme-images/logo_horizontal.png)  
+
+## Logotipo de WeApp S. Coop.
+![/images-readme/logo.png](./images-readme/logo.png) 
+
