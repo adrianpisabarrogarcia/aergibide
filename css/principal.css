@@ -261,6 +261,7 @@ main {
     order: 2;
     width: 90%;
     min-height: 200px;
+    height:auto;
     margin-top: 40px;
     background-color: #9c9a9a;
     border-radius: 10px;
@@ -307,6 +308,7 @@ div[class=descripcion] {
     display: flex;
     justify-content: flex-start;
     margin-top: 20px;
+    height:auto;
 
 }
 
@@ -634,7 +636,7 @@ button > .bi {
         width:16%;
         border-radius: 50px;
         border: 1px solid black;
-    ;
+
     }
     #menu_usuario{
         width: 100%;

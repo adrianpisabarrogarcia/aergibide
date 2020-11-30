@@ -1,19 +1,25 @@
 #barra_busqueda{
-    height: 0px;
+    display: none;
 }
 
 main{
     margin-top:-130px;
+    display: flex;
+    justify-content: center !important;
 }
-
-/* quitar la linea de abajo */
-.like_fav{
-    border-bottom: none;
+#publicaciones .like_fav{
+    grid-template-columns: 10% 6% 10% 6%;
+}
+#publicaciones .like{
+    width: 50%;
+}
+#publicaciones .favorito{
+    width: 100%;
 }
 
 /* botones de modificar y borrar */
 .respuestas{
-    border-left: 1px solid black !important;
+    border-left: 1px solid dimgrey !important;
     padding: 20px;
     height: 150px;
 }
@@ -47,7 +53,7 @@ main{
 }
 
 /* añadir boton de descarga */
-.like_fav_down {
+.like_fav {
     grid-column: 1/2;
     grid-row: 2/3;
     display: grid;
@@ -56,9 +62,29 @@ main{
     padding-bottom: 20px;
     border-bottom: 2px solid dimgrey;
 }
+.like_fav_down {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 60px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid dimgrey;
+}
 #repuesta_like_fav_down{
-    grid-template-columns: 5% 22% 5% !important;
+    grid-template-columns: 10% 22% 5% !important;
     margin-left: 72px;
+}
+
+.likeRespuesta{
+    width: 55%;
+}
+#publicaciones .down_title{
+    grid-column:3/4;
+    grid-row: 1/2;
+}
+#publicaciones .descargar{
+    grid-column:4/5;
+    grid-row: 1/2;
 }
 .down_title{
     display: flex;
@@ -76,21 +102,31 @@ main{
     border-radius: 5px;
     outline: none;
 }
+div[class=descripcion] {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    height: auto;
+
+}
+
+div[class=descripcion] .desc {
+    height: auto;
+    overflow: hidden;
+    line-height: 1.55em;
+    margin-left: 5%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 95%;
+    font-size: 1.2em;
+
+}
 
 /* evitar que se comprima la pregunta */
-.cuadro_publicacion{
-    height: auto !important;
-}
-.publicacion{
-    grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
-    grid-template-rows: 60px auto 60px;
-    height: auto !important;
-}
-.descripcion{
-    margin-left: 20px !important;
-    justify-content: flex-start !important;
 
-}
 .responses{
     grid-template-columns: 5% 5% 45% repeat(2, 22.5%);
     grid-template-rows: 60px auto 60px;
@@ -139,4 +175,104 @@ form{
     margin-right: 10%;
     font-size: 1.5em;
     justify-content: flex-end;
+}
+@media screen and (max-width: 1000px) {
+    #publicaciones .like_fav{
+        grid-template-columns: 15% 9%;
+    }
+
+    #repuesta_like_fav_down{
+        grid-template-columns: 15% 22% 15% !important;
+        margin-left: 72px;
+    }
+
+    .likeRespuesta{
+        width: 60%;
+    }
+    .respuestas{
+        border-left: 1px solid dimgrey !important;
+        padding: 0;
+        height: 150px;
+    }
+    .respuestas > button{
+        width: 50%;
+        height: 50%;
+    }
+
+}
+@media screen and (max-width: 824px) {
+    #publicaciones .like_fav{
+        grid-template-columns: 20% 15%;
+    }
+    #repuesta_like_fav_down{
+        grid-template-columns: 20% 22% 20% !important;
+        margin-left: 72px;
+    }
+
+    .likeRespuesta{
+        width: 60%;
+    }
+    .down_title{
+        font-size: 0.9em;
+    }
+    .publicacion{
+        grid-template-rows: 60px auto 40px;
+    }
+    div[class=descripcion]{
+        height: auto !important;
+        width: 70%;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    #publicaciones .like_fav{
+        grid-template-columns: 32% 21%;
+        margin-left: 0;
+    }
+    #repuesta_like_fav_down{
+        grid-template-columns: 22% 22% 22% !important;
+        margin-left: 0;
+    }
+
+    .likeRespuesta{
+        width: 60%;
+    }
+    .respuestas > button{
+        width: 70%;
+        height: 50%;
+    }
+    .publicacion{
+        grid-template-rows: 60px auto 40px;
+    }
+    div[class=descripcion]{
+        height: auto !important;
+        width: 70%;
+    }
+
+
+}
+@media screen and (max-width: 420px) {
+    #publicaciones .like_fav{
+        grid-template-columns: 38% 25%;
+    }
+
+    .likeRespuesta{
+        width: 80%;
+    }
+    .down_title{
+        display: none;
+    }
+    .respuestas > button{
+        width: 80%;
+        height: 50%;
+    }
+    .publicacion{
+        grid-template-rows: 60px auto 40px !important;
+    }
+    div[class=descripcion]{
+        height: auto !important;
+        width: 50% !important;
+    }
+
+
 }
