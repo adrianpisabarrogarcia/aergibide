@@ -19,9 +19,9 @@ Este portal tiene las siguientes funcionalidades:
 
 
 ## Documentación
-*  [Manual de Usuario](/documentacion/Documentación General.pdf)
-*  [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](/documentacion/Guía de estilo.pdf)
-*  [Presentación Aergibide S.L. by WeApp](/documentacion/Presentación Reto Aergibide.pdf)
+*   [Manual de Usuario](https://github.com/adrianpisabarrogarcia/aergibide/blob/master/documentacion/Documentaci%C3%B3n%20General.pdf)
+*   [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](https://github.com/adrianpisabarrogarcia/aergibide/blob/master/documentacion/Gu%C3%ADa%20de%20estilo.pdf)
+*   [Presentación Aergibide S.L. by WeApp](https://github.com/adrianpisabarrogarcia/aergibide/blob/master/documentacion/Presentaci%C3%B3n%20Reto%20Aergibide.pdf)
 
 
 ## Desarollador por
