@@ -19,9 +19,9 @@ Este portal tiene las siguientes funcionalidades:
 
 
 ## Documentación
-*  [Manual de Usuario](./documentacion/Documentación General.pdf)
-*  [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](./documentacion/Guía de estilo.pdf)
-*  [Presentación Aergibide S.L. by WeApp](./documentacion/Presentación Reto Aergibide.pdf)
+*  [Manual de Usuario](/documentacion/Documentación General.pdf)
+*  [Guía de Estilo (Boceto, Mock Up, Colores, Fuentes, etc.)](/documentacion/Guía de estilo.pdf)
+*  [Presentación Aergibide S.L. by WeApp](/documentacion/Presentación Reto Aergibide.pdf)
 
 
 ## Desarollador por
