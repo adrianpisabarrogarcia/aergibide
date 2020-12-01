@@ -75,7 +75,7 @@ $('.borrar_preg').on('click', function (event) {
 /****** borrar respuesta **********/
 
 $('.borrar').on('click', function (event) {
-    var idRespuesta = $('.borrar').val();
+    var idRespuesta = $(this).val();
     if (confirm("¿Estas seguro/a de eliminar la respuesta?")){
         borrar(idRespuesta, 2);
     }else{
