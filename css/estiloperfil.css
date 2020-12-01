@@ -169,13 +169,14 @@ body{
 }
 
 #datosusu > form > label {
-    margin-left: 28%;
+    margin-right: 35px;
 }
 
 .in > input {
     border-radius: 2em;
     padding: 1%;
     text-align: center;
+
 }
 
 .in > input:focus {
@@ -281,14 +282,9 @@ body{
     align-items: center;
     flex-direction: column;
 }
-label{
-    margin: 0 !important;
-}
+
 #modificarusu>.in{
     width: 98% !important;
-}
-.in>input{
-    width: 90%;
 }
 
 #modificarcontra {
@@ -479,7 +475,7 @@ label{
     }
     #modificarcuenta{
         width: 90%;
-        margin: 0;
+        margin-bottom: 5%;
     }
     #modificarimagen>label{
         width:95% ;
@@ -489,6 +485,10 @@ label{
     }
     #datosusu>form>div{
         width: 60%;
+    }
+
+    #imagen{
+        margin-top: 80px;
     }
 
 }

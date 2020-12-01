@@ -1,10 +1,12 @@
 
 <?php
+/*En caso de que no exista el titulo de la pagina*/
 if (empty($tituloPagina))
 {
     header("Location: ../model/login.php");
 }
 else{
+    /*En caso de que exista el titulo de la pagina generaremos el html de las publicaciones y favoritos*/
 require "../vistasfijas/head.php" ?>
 <link type="text/css" rel="stylesheet" href="../css/principal.css">
 <link type="text/css" rel="stylesheet" href="../css/mis-publicaciones.css">

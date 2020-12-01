@@ -1,27 +1,32 @@
 $(document).ready(function () {
+    /*Mostramos el menu de perfil y gestionamos las operaciones*/
     mostrarMenuPerfil();
     let botones = $("#opciones button");
     botones.on('click', organizacion);
-    $("#foto").on("change", modificarimagen);
+    /*En caso de que cambie el valor del input*/
+        $("#foto").on("change", modificarimagen);
 
-    $(".in button").on('click', function (event) {
-        event.preventDefault();
-        switch (this.value) {
-            case "usu":
-                habilitaropcion($("#usu").eq(0));
-                break;
-            case "nom":
-                habilitaropcion($("#nom").eq(0));
-                break;
-            case "ape":
-                habilitaropcion($("#ape").eq(0));
-                break;
-            case "em":
-                habilitaropcion($("#em").eq(0));
-                break;
-        }
-    })
 
+    /*En caso de que se pulse los botones del menu*/
+        $(".in button").on('click', function (event) {
+            event.preventDefault();
+            switch (this.value) {
+                case "usu":
+                    habilitaropcion($("#usu").eq(0));
+                    break;
+                case "nom":
+                    habilitaropcion($("#nom").eq(0));
+                    break;
+                case "ape":
+                    habilitaropcion($("#ape").eq(0));
+                    break;
+                case "em":
+                    habilitaropcion($("#em").eq(0));
+                    break;
+            }
+        })
+
+    /*En caso de que se manden los datos*/
     $("#modificarusu").submit(function (event) {
         event.preventDefault();
         var parametros = new FormData($("#modificarusu")[0]);
@@ -38,7 +43,7 @@ $(document).ready(function () {
                 else if (response === "ErrorCorreo")
                     mostrarerror($("#em"), "El correo ya existente");
                 else {
-                    //alert("Los datos se han modificado correctamente");
+                    alert("Los datos se han modificado correctamente");
                     location.reload();
                 }
             }

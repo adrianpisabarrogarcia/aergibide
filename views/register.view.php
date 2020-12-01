@@ -1,8 +1,10 @@
 <?php
+/*En caso de que no existan la conexion dbg nos redigira al login.php*/
 if (empty($dbh))
 header("Location: ../model/login.php");
 else
 {
+    /*En caso de que existan la conexion dbh mostraremos la vista del registro */
 ?>
 
 <!DOCTYPE html>

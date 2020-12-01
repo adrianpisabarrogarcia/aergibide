@@ -1,9 +1,10 @@
 <?php
-
+/*En caso de que no existan los datos*/
 if (empty($datos))
 header('Location: ../model/login.php');
 else
 {
+    /*En caso de que exista generaremos la pagina del perfil*/
 require "../vistasfijas/head.php";
 ?>
 <link rel="stylesheet" href="../css/estiloperfil.css">

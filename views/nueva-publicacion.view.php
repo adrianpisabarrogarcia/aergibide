@@ -1,10 +1,12 @@
 <?php
+/*En caso de que no exista la categoria*/
 if (empty($categorias))
 {
     header("Location: ../model/login.php");
 }
 else
 {
+    /*En caso de que exista la categoria realizaremos el htlml de la nueva publicacion*/
     require "../vistasfijas/head.php"?>
 
 

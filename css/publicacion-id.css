@@ -206,10 +206,6 @@ div[class=descripcion] >span {
         padding: 0;
         height: 150px;
     }
-    .respuestas > button{
-        width: 50%;
-        height: 50%;
-    }
     .cuadro_publicacion{
         margin: 20px;
     }
@@ -261,8 +257,8 @@ div[class=descripcion] >span {
         grid-column: 3/5 !important;
         justify-content:flex-end;
         margin-right: 5px;
-
     }
+
     div[class=respuestas] {
         grid-row: 2/4;
         grid-column: 5/6 !important;
@@ -270,7 +266,11 @@ div[class=descripcion] >span {
         border-left: 2px solid dimgrey;
     }
 
-
+    .respuestas > button{
+        width: 70%;
+        height: 50%;
+        margin-bottom: 10%;
+    }
 }
 @media screen and (max-width: 600px) {
     .publicacion {
@@ -280,8 +280,8 @@ div[class=descripcion] >span {
     }
     #publicaciones .like_fav {
         grid-template-columns: 32% 22% 25% 22%;
-
         margin-left: 0;
+        margin-top: 30px;
     }
     #repuesta_like_fav_down{
         grid-template-columns: 22% 22% 22% !important;
@@ -294,13 +294,12 @@ div[class=descripcion] >span {
     .respuestas > button{
         width: 70%;
         height: 50%;
+        margin-bottom: 10%;
     }
 
     .usuario{
         grid-column: 4/5;
-
     }
-
 }
 @media screen and (max-width: 420px) {
     #publicaciones .like_fav{
@@ -317,8 +316,4 @@ div[class=descripcion] >span {
         width: 80%;
         height: 50%;
     }
-
-
-
-
 }

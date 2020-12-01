@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <?php
+/*En caso de que no hayan datos iremos rediccionaremos al login.php*/
 if (empty($datos))
 header("Location: ../model/login.php");
 else
 {
+    /*En caso de que existan generaremos el head de todas las paginas*/
 ?>
 <html>
     <head>
